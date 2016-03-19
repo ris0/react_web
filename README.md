@@ -12,7 +12,7 @@ Development mode uses [React Hot Loader](http://gaearon.github.io/react-hot-load
 
 To kick things off, make sure you can successfully `npm install` dependencies, then just run: `npm start`
 
-Point your browser at `http://localhost:8080/public/index.html`
+Point your browser at `http://localhost:8080/`
 
 ## Production
 
