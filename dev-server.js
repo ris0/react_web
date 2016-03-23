@@ -12,5 +12,5 @@ new WebpackDevServer(webpack(config), {
         return console.log(err);
     }
 
-    console.log(`Dev server listening on port ${PORT}, App is live at http://localhost:${8080}/public/index.html`);
+    console.log(`Dev server listening on port ${PORT}, App is live at http://localhost:${8080}/`);
 });
