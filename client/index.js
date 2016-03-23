@@ -1,16 +1,34 @@
+import 'babel-polyfill';
 import React from 'react';
+import { Router, browserHistory } from 'react-router';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import { render } from 'react-dom';
-import { IndexRoute, Route, Router, browserHistory } from 'react-router';
-import Root from './routes/Root';
-import Home from './routes/Home';
-import getCategories from './routes/Categories';
-import Categories from './routes/Categories/handlers/Categories';
+import routes from './routes';
+import rootReducer from './reducers';
+
+function configureStore(initialState) {
+    return createStore(
+        rootReducer,
+        initialState,
+        applyMiddleware(thunk)
+    )
+}
+
+const store = configureStore({
+    videos: {
+        1: {
+            name: 'A'
+        },
+        2: {
+            name: 'B'
+        }
+    },
+    categories: {}
+});
 
 render((
-    <Router history={browserHistory}>
-        <Route path="/" component={Root}>
-            <IndexRoute component={Home} />
-            <Route path="home" component={Home} />
-            <Route path="categories" getComponent={getCategories} />
-        </Route>
-    </Router>), document.getElementById('app'));
+    <Provider store={store}>
+        <Router history={browserHistory} routes={routes} />
+    </Provider>), document.getElementById('app'));
