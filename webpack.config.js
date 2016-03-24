@@ -23,13 +23,21 @@ module.exports = {
                 loaders: ['react-hot', 'babel-loader?presets[]=react,presets[]=es2015'],
                 exclude: /node_modules/,
                 include: path.join(__dirname, 'client')
+            },
+            {
+                test: /\.scss$/,
+                loaders: ['react-hot', 'style', 'css', 'sass']
             }
         ]
     },
 
+    sassLoader: {
+        includePaths: [path.resolve(__dirname, 'client/assets/stylesheets')]
+    },
+
     resolve: {
         alias: {
-            config: path.join(__dirname, 'config', process.env.NODE_ENV || 'development')
+            config: path.join(__dirname, 'config', process.env.NODE_ENV)
         }
     },
 
