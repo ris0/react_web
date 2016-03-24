@@ -9,22 +9,21 @@ class Root extends React.Component {
 
     render() {
         const { isLoading } = this.props;
-        console.log(isLoading)
 
         return (
             <div>
-                <header style={{width: '100%', background: 'gray'}}>
-                    <h1 style={{float: 'left'}}>Knowsy</h1>
-                    <div style={{float: 'right'}}>
+                <header>
+                    <h1>Knowsy</h1>
+                    <div className="nav">
                         <Link to="/">Home</Link>&nbsp;
                         <Link to="categories">Categories</Link>
                         <Link to="about">About</Link>
                     </div>
-                    <div style={{clear: 'both'}}></div>
+                    <div className="clearfix"></div>
                 </header>
                 { isLoading ? <h1>L O A D I N G</h1> : null}
                 <div>{this.props.children}</div>
-                <footer style={{width: '100%', background: 'gray'}}>
+                <footer>
                     <h1>I AM A FOOTER</h1>
                 </footer>
             </div>
