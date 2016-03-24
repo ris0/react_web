@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+import 'isomorphic-fetch';
 import React from 'react';
 import { Router, browserHistory } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
@@ -17,6 +18,10 @@ function configureStore(initialState) {
 }
 
 const store = configureStore({
+    user: {},
+    app: {
+        isLoading: false
+    },
     videos: {
         1: {
             name: 'A'
@@ -25,7 +30,14 @@ const store = configureStore({
             name: 'B'
         }
     },
-    categories: {}
+    categories: {},
+    pageHome: {
+        recentVideos: [1, 2],
+        featuredVideos: [1],
+        loaded: false
+    },
+    pageCategories: {},
+    pageVideo: {}
 });
 
 render((
