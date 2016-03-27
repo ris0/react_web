@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development node dev-server.js"
+    "start": "NODE_ENV=development node index.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "babel-polyfill": "^6.7.2",
     "express": "^4.13.4",
     "isomorphic-fetch": "^2.2.1",
+    "jade": "^1.11.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.1",
