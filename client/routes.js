@@ -20,7 +20,7 @@ const routes = (
         <IndexRoute component={Home} />
         <Route path="home" component={Home} />
         <Route path="about" component={Placeholder} />
-        <Route path="categories" getComponent={getCategories} />
+        <Route path="categories" getComponents={getCategories} />
         <Route path="videos/:video_id" getComponent={getVideos}>
             <IndexRoute component={Placeholder} />
         </Route>

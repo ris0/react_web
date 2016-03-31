@@ -22,7 +22,15 @@ function configureStore(initialState) {
 const store = configureStore({
     user: {},
     app: {
-        isLoading: false
+        isLoading: false,
+        navLinks: [
+            'about',
+            'subscribe',
+            'jobs',
+            'advertise',
+            'contact'
+        ],
+        showDropdownNav: true
     },
     videos: {
         1: {
