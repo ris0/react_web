@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ContentDescription from '../components/ContentDescription';
+import VideoGrid from '../components/VideoGrid';
 
 class VideosMain extends React.Component {
 
@@ -19,7 +20,7 @@ class VideosMain extends React.Component {
     render() {
         const { video } = this.props;
         return (
-            <div className="video-page">
+            <section className="video-page">
                 {/*
                     <div className="section video-user-controls">
                     <div>
@@ -30,13 +31,9 @@ class VideosMain extends React.Component {
                     </div>
                 */}
                 <ContentDescription />
-                <div className="section video-list">
-                    more from category...
-                </div>
-                <div className="section video-list">
-                    more...
-                </div>
-            </div>
+                <VideoGrid title="Sample Category"/>
+                <VideoGrid title="Some Title"/>
+            </section>
         )
     }
 }

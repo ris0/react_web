@@ -32,8 +32,87 @@
     color: white;
     height: 100%;
     display: flex;
-    //flex-direction: column;
-    //justify-content: flex-end;
+}
+
+$video-list-item-width: 300;
+$video-list-items-width-xlarge: 4 * $video-list-item-width;
+$video-list-items-width-large: 3 * $video-list-item-width;
+$video-list-items-width-medium: 2 * $video-list-item-width;
+$video-list-items-width-small: $video-list-item-width;
+
+.video-list {
+    display: flex;
+    flex-direction: column;
+
+    .video-list-title {
+        display: flex;
+        align-self: center;
+        align-items: baseline;
+        margin-top: 20px;
+        margin-bottom: 5px;
+
+        h1 {
+            font-size: 1.2em;
+        }
+
+        i {
+            font-size: 0.9em;
+        }
+    }
+
+    .video-list-items {
+        display: flex;
+        max-width: $video-list-items-width-xlarge;
+        margin: 0 auto;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        // fill in empty/missing items to left-align last row
+        // http://stackoverflow.com/questions/18744164/flex-box-align-last-row-to-grid
+        &:after {
+            content: "";
+            flex: auto;
+        }
+
+        .video-list-item {
+            display: flex;
+            width: $video-list-item-width;
+            height: 180px;
+            background: lightgray;
+            border: 6px solid white;
+            box-sizing: border-box;
+
+            div {
+                height: 100%;
+                border: 1px solid black;
+                flex-grow: 1;
+            }
+        }
+    }
+}
+
+@media(max-width: $video-list-items-width-xlarge + px) {
+    .video-list {
+        .video-list-items {
+            max-width: $video-list-items-width-large;
+        }
+    }
+}
+
+@media(max-width: $video-list-items-width-large  + px) {
+    .video-list {
+        .video-list-items {
+            max-width: $video-list-items-width-medium;
+        }
+    }
+}
+
+@media(max-width: $video-list-items-width-medium + px) {
+    .video-list {
+        .video-list-items {
+            max-width: $video-list-items-width-small;
+        }
+    }
 }
 
 
