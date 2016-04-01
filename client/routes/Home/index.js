@@ -1,11 +1,11 @@
 import React from 'react';
-import { fetchHomeIfNeeded } from '../../actions';
+import { fetchHome } from '../../actions';
 import { connect } from 'react-redux';
 
 class Home extends React.Component {
 
-    static fetchData() {
-        console.log('fetching...');
+    static fetchData(dispatch, params, query) {
+        return fetchHome(dispatch);
     }
 
     constructor() {
@@ -20,16 +20,19 @@ class Home extends React.Component {
     }
 
     render() {
+
+        const { featuredVideos, recentVideos } = this.props;
+
         return (
             <div>
                 <h3>Home</h3>
                 <p>Featured Videos</p>
                 <ul>
-                    {this.props.featuredVideos.map((video) => <li key={video.name}>{video.name}</li>)}
+                    {featuredVideos.map((video) => <li key={video.title}>{video.title}</li>)}
                 </ul>
                 <p>Recent Videos</p>
                 <ul>
-                    {this.props.recentVideos.map((video) => <li key={video.name}>{video.name}</li>)}
+                    {recentVideos.map((video) => <li key={video.title}>{video.title}</li>)}
                 </ul>
             </div>
         )

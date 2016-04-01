@@ -8,7 +8,7 @@ class SocialButtons extends React.Component {
     render() {
         const { className } = this.props;
         return (
-            <div className={className}>
+            <div className={`social-buttons ${className}`}>
                 <a href="#"><i className="fa fa-facebook" /></a>
                 <a href="#"><i className="fa fa-twitter" /></a>
                 <a href="#"><i className="fa fa-pinterest-p" /></a>
@@ -17,6 +17,10 @@ class SocialButtons extends React.Component {
             </div>
         );
     }
+}
+
+SocialButtons.defaultProps = {
+    className: ''
 }
 
 export default SocialButtons;

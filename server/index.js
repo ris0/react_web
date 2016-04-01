@@ -1,30 +1,76 @@
-const path = require('path');
-const express = require('express');
+import path from 'path'
+import express from 'express'
+import proxy from 'express-http-proxy'
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import { match, RouterContext } from 'react-router'
+import { Provider } from 'react-redux';
+import routes from '../client/routes'
+import configureStore from '../client/configureStore'
+import resolver from './resolver'
 
-const app = express();
+const store = configureStore({
+    user: {},
+    app: {
+        isLoading: false,
+        navLinks: [
+            'about',
+            'subscribe',
+            'jobs',
+            'advertise',
+            'contact'
+        ],
+        showDropdownNav: false
+    },
+    videos: {},
+    categories: {},
+    pageHome: {
+        recentVideos: [],
+        featuredVideos: [],
+        loaded: false
+    },
+    pageCategories: {},
+    pageVideo: {}
+});
 
-app.set('env', process.env.NODE_ENV || 'development');
-app.set('host', process.env.HOST || 'localhost');
-app.set('port', process.env.PORT || '3000');
-app.set('views', path.join(__dirname, 'views'));
+const app = express()
+
+app.set('env', process.env.NODE_ENV || 'development')
+app.set('host', process.env.HOST || 'localhost')
+app.set('port', process.env.PORT || '3000')
+app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
 
-app.use(express.static(path.join(__dirname, 'assets')));
-app.use(express.static(path.join(__dirname, '..', 'build')));
+app.use(express.static(path.join(__dirname, 'assets')))
+app.use(express.static(path.join(__dirname, '..', 'build')))
 
 // TODO CSRF
 
-app.get('/api', function(req, res) {
-    res.send('OK');
-});
+app.use(/^\/api(.+)/, proxy('https://staging-api.theknowsy.com', {
+    forwardPath: (req) => req.params[0]
+}))
 
-app.get('/*', function(req, res) {
-    res.render('index', {
-        // TODO render server-side react app to string
-        content: '<p>loading...</p>'
-    });
+
+app.get('/*', (req, res) => {
+    match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
+        if (err) {
+            res.status(500).send(error.message)
+        } else if (redirectLocation) {
+            res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+        } else if (renderProps) {
+            //Promise.all(resolver(renderProps.components, store.dispatch, {}))
+            debugger;
+            res.render('index', {
+                state: JSON.stringify(store.getState()),
+                content: renderToString(
+                    <Provider store={store}>
+                        <RouterContext {...renderProps} />
+                    </Provider>)
+            })
+        } else {
+            res.status(404).send('Not Found')
+        }
+    })
 })
 
-module.exports = function(cb) {
-    app.listen(app.get('port'), cb);
-}
+module.exports = (cb) => app.listen(app.get('port'), cb)

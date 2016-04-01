@@ -1,4 +1,6 @@
-const devServer = require('./webpack/server');
-const server = require('./server');
+require('babel-register')
 
-server(devServer);
+const devServer = require('./webpack/server')
+const server = require('./server/index')
+
+server(devServer)

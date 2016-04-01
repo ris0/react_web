@@ -1,9 +1,4 @@
-import { req } from '../utils';
-
-export function fetchHome() {
-    return function() {
-    }
-}
+import { getHomepageFeed } from '../utils';
 
 export const RECEIVE_HOMEPAGE_DATA = 'RECEIVE_HOMEPAGE_DATA';
 export function receiveHomepageData(data) {
@@ -29,24 +24,32 @@ export function setLoading(isLoading) {
     }
 }
 
+export function fetchHome(dispatch) {
+    dispatch(setLoading(true));
+    return getHomepageFeed()
+        .then((response) => {
+            dispatch(setLoading(false));
+            return response.json();
+        })
+        .then((result) => {
+            dispatch(receiveVideoData([...result.featured, ...result.recent]));
+            dispatch(receiveHomepageData(result));
+        });
+}
+
 export function fetchHomeIfNeeded() {
     return function(dispatch, getState) {
         // TODO figure out what we need to decide if a fetch is needed:
-        // - pageHome?
+        // - pageHome.loaded?
         // - videos not empty?
-        const shouldFetch = true;
+        const shouldFetch = !getState().pageHome.loaded;
         if (shouldFetch) {
-            dispatch(setLoading(true));
-            setTimeout(function() {
-                dispatch(receiveHomepageData({ something: 123 }))
-                dispatch(receiveVideoData({ 1: {}, 2: {} }))
-                dispatch(setLoading(false));
-            }, 1500);
+            fetchHome(dispatch)
         }
     }
 }
 
-export function fetchVideoIfNeeded() {
+export function fetchVideoIfNeeded(videoId) {
     return function(dispatch, getState) {
     }
 }

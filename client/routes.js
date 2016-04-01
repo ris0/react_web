@@ -17,9 +17,9 @@ class Placeholder extends React.Component {
 
 const routes = (
     <Route path="/" component={Root}>
-        <IndexRoute component={Home} />
-        <Route path="home" component={Home} />
-        <Route path="about" component={Placeholder} />
+        <IndexRoute components={{ main: Home }} />
+        <Route path="home" components={{ main: Home }} />
+        <Route path="about" components={{ main: Placeholder }} />
         <Route path="categories" getComponents={getCategories} />
         <Route path="videos/:video_id" getComponent={getVideos}>
             <IndexRoute component={Placeholder} />

@@ -1,8 +1,9 @@
 // API
-import { API_VERSION, API_KEY } from 'config';
+// TODO improve config
+import { API_VERSION, API_KEY } from '../../config/development';
 
 function buildUrl(url) {
-    return `/${API_VERSION}${url}`;
+    return `/api/${API_VERSION}${url}`;
 }
 
 // TODO which one for home?
@@ -14,7 +15,7 @@ const FEED = buildUrl('/feed'); // + /[account_name]
 // TODO compose this with query param builder
 const CATEGORY_FEED = buildUrl('/content/sample'); // + ?category_ids=123,456,789
 
-function req(url, body) {
+function request(url, body) {
     return fetch(url, {
         headers: {
             Authorization: `KnowsyAPI api_key="${API_KEY}"`
@@ -22,10 +23,10 @@ function req(url, body) {
     });
 }
 
-export function home() {
-    return fetch(HOMEPAGE);
+export function getHomepageFeed() {
+    return request(HOMEPAGE);
 }
 
-export function categories(categories) {
+export function getCategoriesFeed(categories) {
     return fetch(CATEGORY_FEED);
 }

@@ -31,8 +31,8 @@ class VideosMain extends React.Component {
                     </div>
                 */}
                 <ContentDescription />
-                <VideoGrid title="Sample Category"/>
-                <VideoGrid title="Some Title"/>
+                <VideoGrid title="Sample Category" />
+                <VideoGrid title="Some Title" hasMore={true} />
             </section>
         )
     }
