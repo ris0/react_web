@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchHome } from '../../actions';
+import { fetchHomeIfNeeded } from '../../actions';
 import { connect } from 'react-redux';
 
 class Home extends React.Component {
@@ -20,7 +20,6 @@ class Home extends React.Component {
     }
 
     render() {
-
         const { featuredVideos, recentVideos } = this.props;
 
         return (

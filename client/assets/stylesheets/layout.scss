@@ -1,4 +1,4 @@
-.container {
+.l-container {
     display: flex;
     -moz-flex-direction: column;
     -webkit-flex-direction: column;
@@ -6,16 +6,8 @@
     min-height: 100vh;
 }
 
-.main {
+.l-main {
     flex: 1;
-}
-
-footer {
-    &>div {
-        margin-left: 6.25%;
-        margin-right: 6.25%;
-        flex-grow: 1;
-    }
 }
 
 .l-header-container {
@@ -37,10 +29,19 @@ footer {
 .video-page {
     background: darkgray;
 
+    // TODO Move to modules
     .video-main {
-        //padding: 0 3.5% 0 3.5%;
         padding: 0;
-        height: 400px;
+        height: 70vh;
+        display: flex;
+
+        .video {
+            width: 100%;
+        }
+
+        video {
+            width: 100%;
+        }
     }
 
     .video-user-controls {
@@ -69,12 +70,12 @@ footer {
         padding: 20px 3.5% 20px 3.5%;
 
         .content-title {
-            flex-basis: 33.33333%;
+            flex-basis: 30%;
         }
 
         .content-body {
             padding-left: 3.5%;
-            flex-basis: 50%;
+            flex-basis: 70%;
             flex-grow: 1;
             line-height: 1.5em;
         }

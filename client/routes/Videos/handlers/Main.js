@@ -19,6 +19,10 @@ class VideosMain extends React.Component {
 
     render() {
         const { video } = this.props;
+        if (!video) {
+            return null;
+        }
+
         return (
             <section className="video-page">
                 {/*
@@ -30,7 +34,7 @@ class VideosMain extends React.Component {
                     </div>
                     </div>
                 */}
-                <ContentDescription />
+                <ContentDescription caption={video.caption} title={video.title} />
                 <VideoGrid title="Sample Category" />
                 <VideoGrid title="Some Title" hasMore={true} />
             </section>
@@ -42,7 +46,7 @@ function mapStateToProps(state, ownProps) {
     const videos = state.videos || {};
 
     return {
-        video: videos[ownProps.params.video_id]
+        video: ownProps.params.video_id ? videos[Number(ownProps.params.video_id)] : null
     }
 }
 

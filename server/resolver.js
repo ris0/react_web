@@ -1,4 +1,4 @@
-export function extractDataFn(component) {
+function extractDataFn(component) {
     if (component.WrappedComponent && component.WrappedComponent.fetchData) {
         return component.WrappedComponent.fetchData;
     } else if (component.fetchData) {
@@ -8,24 +8,17 @@ export function extractDataFn(component) {
     }
 }
 
-export function resolve(components) {
+export function resolve(components = []) {
     return components.reduce((results, componentOrComponents) => {
-        if (typeof componentOrComponents === 'object') {
-            for (obj of componentOrComponents) {
-                const dataFn = extractDataFn(obj);
-                results.push(dataFn);
-            }
-        } else {
+        if (typeof componentOrComponents === 'function') {
             const dataFn = extractDataFn(componentOrComponents);
             return dataFn ? results.concat(dataFn) : results;
+        } else {
+            return results.concat(resolve(Object.values(componentOrComponents)));
         }
     }, []);
 }
 
-export function invoke(fns = [], ...args) {
-    return fns.map((fn) => fn(...args));
-}
+export const invoke = (fns = [], ...args) => fns.map((fn) => fn(...args))
 
-export default function resolver(components, ...args) {
-    return invoke(resolve(components), ...args);
-}
+export default (components, ...args) => invoke(resolve(components), ...args)

@@ -7,31 +7,10 @@ import { match, RouterContext } from 'react-router'
 import { Provider } from 'react-redux';
 import routes from '../client/routes'
 import configureStore from '../client/configureStore'
+import initialState from '../client/initialState'
 import resolver from './resolver'
 
-const store = configureStore({
-    user: {},
-    app: {
-        isLoading: false,
-        navLinks: [
-            'about',
-            'subscribe',
-            'jobs',
-            'advertise',
-            'contact'
-        ],
-        showDropdownNav: false
-    },
-    videos: {},
-    categories: {},
-    pageHome: {
-        recentVideos: [],
-        featuredVideos: [],
-        loaded: false
-    },
-    pageCategories: {},
-    pageVideo: {}
-});
+const store = configureStore(initialState)
 
 const app = express()
 
@@ -59,7 +38,6 @@ app.get('/*', (req, res) => {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search)
         } else if (renderProps) {
             //Promise.all(resolver(renderProps.components, store.dispatch, {}))
-            debugger;
             res.render('index', {
                 state: JSON.stringify(store.getState()),
                 content: renderToString(

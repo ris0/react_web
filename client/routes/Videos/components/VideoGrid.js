@@ -1,4 +1,27 @@
-import React from 'react';
+import React from 'react'
+
+class VideoThumbnail extends React.Component {
+    constructor() {
+        super()
+    }
+
+    render() {
+        return (
+            <section className="video-list-item">
+                <div className="video-list-item-thumb">
+                </div>
+                <div className="video-list-item-description">
+                    <h1>CATEGORY / COLLECTION</h1>
+                    <h2>header</h2>
+                    <p>
+                        lorem ipstum blah est and something her with wow ermaherd lerem ipsum sdolkj dollar dollar bill 3 dollar bill
+                        lorem ipstum blah est and something her with wow ermaherd lerem ipsum sdolkj dollar dollar bill 3 dollar bill
+                    </p>
+                </div>
+            </section>
+        )
+    }
+}
 
 class VideoGrid extends React.Component {
     constructor() {
@@ -16,7 +39,7 @@ class VideoGrid extends React.Component {
                 </div>
                 <div className="video-list-items">
                     {
-                        [0,1,2,3,4,5,6,7].map((i) => <div key={i} className="video-list-item"><div></div></div>)
+                        [0,1,2,3,4,5,6,7].map((i) => <VideoThumbnail key={i} />)
                     }
                 </div>
                 {

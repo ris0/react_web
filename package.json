@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production ./node_modules/.bin/pm2 index.js -i",
-    "start-dev": "NODE_ENV=development ./node_modules/.bin/pm2-dev index.js"
+    "start-dev": "NODE_ENV=development node index.js",
+    "test": "./node_modules/.bin/mocha",
+    "test:watch": "./node_modules/.bin/mocha -w"
   },
   "repository": {
     "type": "git",

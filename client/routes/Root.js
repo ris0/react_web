@@ -16,11 +16,11 @@ class Root extends React.Component {
         {/* isLoading ? <h1>L O A D I N G</h1> : null*/}
 
         return (
-            <div className="container">
+            <div className="l-container">
                 <Header navLinks={navLinks} showDropdownNav={showDropdownNav}>
                     {header}
                 </Header>
-                <div className="main">{main}</div>
+                <div className="l-main">{main}</div>
                 <Footer navLinks={navLinks} />
             </div>
         );

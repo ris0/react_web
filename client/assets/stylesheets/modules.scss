@@ -33,7 +33,7 @@
     display: flex;
 }
 
-$video-list-item-width: 300;
+$video-list-item-width: 400;
 $video-list-items-width-xlarge: 4 * $video-list-item-width;
 $video-list-items-width-large: 3 * $video-list-item-width;
 $video-list-items-width-medium: 2 * $video-list-item-width;
@@ -76,18 +76,38 @@ $video-list-items-width-small: $video-list-item-width;
 
         .video-list-item {
             display: flex;
+            flex-direction: column;
+            height: 300px;
             width: $video-list-item-width;
-            height: 180px;
             background: lightgray;
             border: 6px solid white;
             box-sizing: border-box;
 
-            div {
+            .video-list-item-thumb {
                 height: 100%;
+                border-bottom: none;
+            }
+
+            div {
                 border: 1px solid black;
                 flex-grow: 1;
             }
+
+            .video-list-item-description {
+                background: white !important;
+                padding: 10px 20px 10px 20px;
+
+                p {
+                    // for now...
+                    display: none;
+                    font-size: 0.85em;
+                    line-height: 1.5em;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
         }
+
     }
 
     .video-list-footer {
@@ -121,6 +141,17 @@ $video-list-items-width-small: $video-list-item-width;
     }
 }
 
+@media(max-width: $video-list-items-width-small + px) {
+    .video-list {
+        .video-list-items {
+            max-width: 90vw;
+
+            .video-list-item {
+                width: 90vw;
+            }
+        }
+    }
+}
 
 // COMPONENTS
 .tags {
@@ -140,6 +171,37 @@ $video-list-items-width-small: $video-list-item-width;
         &:hover {
             background: black;
             color: white;
+        }
+    }
+}
+
+.header-topbar {
+    .page-title {
+        margin: 0 10px 0 10px;
+        text-transform: uppercase;
+    }
+
+    .fa-bars {
+        margin: 0 10px 0 10px;
+        font-size: 1.5em;
+    }
+}
+
+@media(max-width: 700px) {
+    .header-topbar {
+        h1, .fa-bars {
+            font-size: 1em;
+        }
+
+        .page-title {
+            flex-basis: 100%;
+            flex-grow: 1;
+            text-align: right;
+            font-size: 0.8em;
+        }
+
+        .social-buttons {
+            display: none;
         }
     }
 }

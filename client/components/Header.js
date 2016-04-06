@@ -38,7 +38,7 @@ class Header extends React.Component {
                             <Link to="/">
                                 <h1>Knowsy</h1>
                             </Link>
-                            <Link to="/videos/1">TestVideo</Link>
+                            <Link className="page-title" to="/videos/2">TestVideo</Link>
 
                             {/* breadcrumbs? <h2>Categories</h2> */}
                             <div className="nav">
