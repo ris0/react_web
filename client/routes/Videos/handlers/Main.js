@@ -1,26 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import ContentDescription from '../components/ContentDescription';
-import VideoGrid from '../components/VideoGrid';
+import React from 'react'
+import { connect } from 'react-redux'
+import { fetchRelatedContent, fetchVideoIfNeeded } from '../../../actions'
+import ContentDescription from '../components/ContentDescription'
+import VideoGrid from '../components/VideoGrid'
 
 class VideosMain extends React.Component {
 
     static fetchData() {
-        console.log('fetching...');
+        console.log('fetching individual video...')
     }
 
     constructor() {
-        super();
+        super()
     }
 
     componentDidMount() {
-        VideosMain.fetchData();
+        const { videoId } = this.props.params
+        //VideosMain.fetchData()
+        this.props.fetchRelatedContent()
+        this.props.fetchVideoIfNeeded(videoId)
     }
 
     render() {
-        const { video } = this.props;
+        const { relatedContent, video } = this.props
         if (!video) {
-            return null;
+            return null
         }
 
         return (
@@ -34,20 +38,27 @@ class VideosMain extends React.Component {
                     </div>
                     </div>
                 */}
-                <ContentDescription caption={video.caption} title={video.title} />
-                <VideoGrid title="Sample Category" />
-                <VideoGrid title="Some Title" hasMore={true} />
+                { video ? <ContentDescription caption={video.caption} title={video.title} /> : null }
+                {
+                    relatedContent.length ?
+                        <div>
+                            <VideoGrid title="Sample Category" relatedContent={relatedContent} hasMore={false} />
+                            <VideoGrid title="Some Title" relatedContent={relatedContent} hasMore={false} />
+                        </div> : null
+                }
             </section>
         )
     }
 }
 
 function mapStateToProps(state, ownProps) {
-    const videos = state.videos || {};
+    const videos = state.videos || {}
+    // TODO synchronize this with Video Header somehow
 
     return {
-        video: ownProps.params.video_id ? videos[Number(ownProps.params.video_id)] : null
+        video: ownProps.params.videoId ? videos[ownProps.params.videoId] : null,
+        relatedContent: state.pageVideo.relatedContent
     }
 }
 
-export default connect(mapStateToProps, {})(VideosMain);
+export default connect(mapStateToProps, { fetchRelatedContent, fetchVideoIfNeeded })(VideosMain)

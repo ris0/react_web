@@ -1,44 +1,29 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import VideoHeader from '../../../components/VideoHeader'
+import { connect } from 'react-redux'
 
 class VideosHeader extends React.Component {
     constructor() {
-        super();
+        super()
     }
 
     render() {
-        const { video } = this.props;
+        const { video } = this.props
         if (!video) {
-            return null;
+            return null
         }
 
-        return (
-            <div className="video-page">
-                <div className="video-main">
-                    <div className="video">
-                        { video ?
-                                <video src={video.resource} controls="controls"></video> : null }
-                        {/*
-                        TODO figure out how to float text over video... obviously I can
-                        absolute position this stuff, but that seems hacky... can this be done
-                        via whatever video player we use?
-                        <div>HEALTH / YOGA COLLECTION</div>
-                        <h1>header</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        */}
-                    </div>
-                </div>
-            </div>
-        );
+        return <VideoHeader video={video}/>
     }
 }
 
 function mapStateToProps(state, ownProps) {
-    const videos = state.videos || {};
+    const videos = state.videos || {}
+    // TODO synchronize this with Video Main somehow
 
     return {
-        video: ownProps.params.video_id ? videos[Number(ownProps.params.video_id)] : null
+        video: ownProps.params.videoId ? videos[ownProps.params.videoId] : null,
     }
 }
 
-export default connect(mapStateToProps, {})(VideosHeader);
+export default connect(mapStateToProps, {})(VideosHeader)

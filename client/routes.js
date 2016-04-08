@@ -1,13 +1,13 @@
-import React from 'react';
-import { IndexRoute, Route } from 'react-router';
-import Root from './routes/Root';
-import Home from './routes/Home';
-import getCategories from './routes/Categories';
-import getVideos from './routes/Videos';
+import React from 'react'
+import { IndexRoute, Route } from 'react-router'
+import Root from './routes/Root'
+import HomeRoutes from './routes/Home'
+import getCategories from './routes/Categories'
+import getVideos from './routes/Videos'
 
 class Placeholder extends React.Component {
     constructor() {
-        super();
+        super()
     }
 
     render() {
@@ -17,14 +17,14 @@ class Placeholder extends React.Component {
 
 const routes = (
     <Route path="/" component={Root}>
-        <IndexRoute components={{ main: Home }} />
-        <Route path="home" components={{ main: Home }} />
+        <IndexRoute components={HomeRoutes} />
+        <Route path="home" components={HomeRoutes} />
         <Route path="about" components={{ main: Placeholder }} />
         <Route path="categories" getComponents={getCategories} />
-        <Route path="videos/:video_id" getComponent={getVideos}>
+        <Route path="videos/:videoId" getComponent={getVideos}>
             <IndexRoute component={Placeholder} />
         </Route>
     </Route>
-);
+)
 
-export default routes;
+export default routes

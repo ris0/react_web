@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SocialButtons from '../components/SocialButtons';
+import { toggleDropdownNav } from '../actions'
 
 class Root extends React.Component {
     constructor() {
@@ -11,13 +12,23 @@ class Root extends React.Component {
     }
 
     render() {
-        // TODO set up object rest spread...
-        const { main, header, isLoading, navLinks, showDropdownNav } = this.props;
-        {/* isLoading ? <h1>L O A D I N G</h1> : null*/}
+        const {
+            main,
+            header,
+            isLoading,
+            categories,
+            navLinks,
+            toggleDropdownNav,
+            showDropdownNav
+        } = this.props;
 
         return (
             <div className="l-container">
-                <Header navLinks={navLinks} showDropdownNav={showDropdownNav}>
+                <Header
+                    categories={categories}
+                    navLinks={navLinks}
+                    onToggleDropdownNav={toggleDropdownNav}
+                    showDropdownNav={showDropdownNav}>
                     {header}
                 </Header>
                 <div className="l-main">{main}</div>
@@ -31,8 +42,9 @@ function mapStateToProps(state, ownProps) {
     return {
         isLoading: state.app.isLoading,
         navLinks: state.app.navLinks,
+        categories: state.app.categories,
         showDropdownNav: state.app.showDropdownNav
     }
 }
 
-export default connect(mapStateToProps)(Root);
+export default connect(mapStateToProps, { toggleDropdownNav })(Root);

@@ -1,35 +1,46 @@
-import React from 'react';
-import SocialButtons from './SocialButtons';
-import { Link } from 'react-router';
+import React from 'react'
+import SocialButtons from './SocialButtons'
+import NavDropdown from './NavDropdown'
+import { Link } from 'react-router'
 
 class Header extends React.Component {
     constructor() {
-        super();
+        super()
+        this.state = { showCategoryDropdown: false }
     }
 
     toggleDropdownNav() {
-        console.log('toggle...');
+        this.props.onToggleDropdownNav()
+    }
+
+    toggleCategoryDropdown() {
+        this.setState({
+            showCategoryDropdown: !this.state.showCategoryDropdown
+        })
     }
 
     render() {
-        const { children, navLinks, showDropdownNav } = this.props;
+        const { categories, children, navLinks, showDropdownNav } = this.props
+        const { showCategoryDropdown } = this.state
 
         return (
             <div className="l-header-container">
                 {
                     showDropdownNav ?
-                        <div className="collapsible-nav">
+                        <div className="header-topbar collapsible-nav">
                             <header>
-                                <a onClick={this.toggleDropdownNav.bind(this)}><i className="fa fa-times" /></a>
+                                <a onClick={this.toggleDropdownNav.bind(this)}>
+                                    <h1><i className="fa fa-times" /></h1>
+                                </a>
                             </header>
                             {navLinks.map((link) => <div className="link" key={link}><a>{link}</a></div>)}
-                            <SocialButtons className="" />
+                            <SocialButtons />
                         </div> : null
                 }
                 <div className="l-header-main">
                     <div className="header-topbar">
                         <header>
-                            { /* TODO remove vs hide? */
+                            {
                                 !showDropdownNav ?
                                     <a onClick={this.toggleDropdownNav.bind(this)}>
                                         <i className="fa fa-bars" />
@@ -38,9 +49,12 @@ class Header extends React.Component {
                             <Link to="/">
                                 <h1>Knowsy</h1>
                             </Link>
-                            <Link className="page-title" to="/videos/2">TestVideo</Link>
-
-                            {/* breadcrumbs? <h2>Categories</h2> */}
+                            <NavDropdown
+                                className="header-link"
+                                label={'categories'}
+                                items={categories}
+                                onToggle={this.toggleCategoryDropdown.bind(this)}
+                                showDropdown={showCategoryDropdown} />
                             <div className="nav">
                                 <SocialButtons />
                             </div>
@@ -49,7 +63,7 @@ class Header extends React.Component {
                     {children}
                 </div>
             </div>
-        );
+        )
     }
 }
 
@@ -64,4 +78,4 @@ Header.defaultProps = {
 }
 
 
-export default Header;
+export default Header

@@ -10,11 +10,10 @@ class ContentDescription extends React.Component {
         const { caption, title } = this.props;
 
         return (
-            <div className="section content-description">
+            <div className="content-description">
                 <div className="content-title">
-                    <div>HEALTH / YOGA COLLECTION</div>
+                    <p>category / collection</p>
                     <h1>{title}</h1>
-                    <p>{caption}</p>
                     <Tags items={['health', 'yoga', 'sport', 'body', 'collection', 'workout']}/>
                 </div>
                 <div className="content-body">

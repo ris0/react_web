@@ -1,52 +1,67 @@
-import { combineReducers } from 'redux';
-import { RECEIVE_HOMEPAGE_DATA, RECEIVE_VIDEO_DATA, SET_LOADING } from '../actions';
+import { combineReducers } from 'redux'
+import {
+    TOGGLE_DROPDOWN_NAV,
+    RECEIVE_HOMEPAGE_DATA,
+    RECEIVE_RELATED_CONTENT,
+    RECEIVE_VIDEO_DATA,
+    SET_LOADING
+} from '../actions'
 
 function videos(state = {}, action) {
     switch (action.type) {
         case RECEIVE_VIDEO_DATA:
-            const results = action.data.reduce((acc, video) => {
-                return Object.assign({}, state, acc, { [video.id]: video });
-            }, {});
-            return results;
+            const videos = action.data.length ? action.data : [action.data];
+            const results = videos.reduce((acc, video) => {
+                return Object.assign({}, state, acc, { [video.unique_key]: video })
+            }, {})
+            return results
     }
-    return state;
+    return state
 }
 
 function categories(state = {}, action) {
-    return state;
+    return state
 }
 
 function pageCategories(state = {}, action) {
-    return state;
+    return state
 }
 
 function pageHome(state = {}, action) {
     switch (action.type) {
         case RECEIVE_HOMEPAGE_DATA:
-            const { featured, recent } = action.data;
+            const { featured, recent } = action.data
             return Object.assign({}, state, {
-                featuredVideos: featured.map((video) => video.id),
-                recentVideos: recent.map((video) => video.id),
+                featuredVideos: featured.map((video) => video.unique_key),
+                recentVideos: recent.map((video) => video.unique_key),
                 loaded: true
-            });
+            })
     }
-    return state;
+    return state
 }
 
 function pageVideo(state = {}, action) {
-    return state;
+    switch (action.type) {
+        case RECEIVE_RELATED_CONTENT:
+            return Object.assign({}, state, {
+                relatedContent: action.data
+            })
+    }
+    return state
 }
 
 function user(state = {}, action) {
-    return state;
+    return state
 }
 
 function app(state = {}, action) {
     switch (action.type) {
         case SET_LOADING:
-            return Object.assign({}, state, { isLoading: action.isLoading });
+            return Object.assign({}, state, { isLoading: action.isLoading })
+        case TOGGLE_DROPDOWN_NAV:
+            return Object.assign({}, state, { showDropdownNav: !state.showDropdownNav })
     }
-    return state;
+    return state
 }
 
 const rootReducer = combineReducers({
@@ -57,6 +72,6 @@ const rootReducer = combineReducers({
     pageHome,
     pageCategories,
     pageVideo
-});
+})
 
-export default rootReducer;
+export default rootReducer
