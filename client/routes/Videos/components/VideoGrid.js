@@ -7,7 +7,7 @@ class VideoGrid extends React.Component {
     }
 
     render() {
-        const { title, hasMore, relatedContent } = this.props
+        const { title, hasMore, videos } = this.props
 
         function take(n, coll) {
             let results = [];
@@ -27,7 +27,7 @@ class VideoGrid extends React.Component {
                 </div>
                 <div className="video-list-items">
                     {
-                        take(8, relatedContent).map((video, i) => <VideoThumbnail video={video} key={i} />)
+                        take(8, videos).map((video, i) => <VideoThumbnail video={video} key={i} />)
                     }
                 </div>
                 {

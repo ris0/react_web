@@ -54,28 +54,25 @@ export function fetchHome(dispatch) {
 
 export function fetchHomeIfNeeded() {
     return function(dispatch, getState) {
-        // TODO figure out what we need to decide if a fetch is needed:
-        // - pageHome.loaded?
-        // - videos not empty?
-        const shouldFetch = !getState().pageHome.loaded
-        if (shouldFetch) {
-            return fetchHome(dispatch)
-        } else {
+        const { loaded } = getState().pageHome
+        if (loaded) {
             return Promise.resolve()
+        } else {
+            return fetchHome(dispatch)
         }
     }
 }
 
 export function fetchVideoIfNeeded(videoId) {
     return function(dispatch, getState) {
-        const shouldFetch = !getState().videos[videoId]
-        if (shouldFetch) {
+        const video = getState().videos[videoId]
+        if (video) {
+            return Promise.resolve(video)
+        } else {
             dispatch(setLoading(true))
             return getVideo(videoId)
                 .then(handleResponse(dispatch))
                 .then((result) => dispatch(receiveVideoData(result)))
-        } else {
-            return Promise.resolve()
         }
     }
 }

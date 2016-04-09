@@ -1,10 +1,11 @@
 // API
-// TODO improve config, since webpack alias won't exist in node
-//http://stackoverflow.com/questions/32217165/can-i-detect-if-my-script-is-being-processed-by-webpack
-import { API_VERSION, API_KEY } from '../../config/development'
+import config from 'config'
+
+const { API_ROOT, API_VERSION, API_KEY } = config
 
 function buildUrl(url, params) {
-    let requestUrl = `/api/${API_VERSION}${url}`
+    let requestUrl = `${API_ROOT}/${API_VERSION}${url}`
+
     if (params) {
         requestUrl += '?'
         for (let key in params) {
@@ -15,7 +16,6 @@ function buildUrl(url, params) {
     return requestUrl
 }
 
-// TODO which one for home?
 const HOMEPAGE = '/web/homepage'
 const EXPLORE = '/explore'
 const VIDEO = '/content'

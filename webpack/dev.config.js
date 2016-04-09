@@ -1,5 +1,6 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require('webpack')
+const path = require('path')
+const config = require('config')
 
 module.exports = {
     entry: [
@@ -9,7 +10,7 @@ module.exports = {
     ],
 
     output: {
-        path: path.join(__dirname, '..', 'build'),
+        path: path.resolve(__dirname, '..', 'build'),
         filename: 'bundle.js',
         publicPath: 'http://localhost:3030/dist/'
     },
@@ -21,11 +22,16 @@ module.exports = {
             {
                 test: /\.js$/,
                 loaders: ['react-hot', 'babel-loader?presets[]=react,presets[]=es2015'],
-                exclude: /node_modules/,
-                include: path.join(__dirname, '..', 'client')
+                include: path.resolve(__dirname, '..', 'client')
+            },
+            {
+                test: /\.json$/,
+                loaders: ['json'],
+                include: path.resolve(__dirname, '..', 'config')
             },
             {
                 test: /\.scss$/,
+                include: path.resolve(__dirname, '..', 'client', 'assets', 'stylesheets'),
                 loaders: ['react-hot', 'style', 'css', 'sass']
             }
         ]
@@ -37,11 +43,19 @@ module.exports = {
 
     resolve: {
         alias: {
-            config: path.join(__dirname, '..', 'config', process.env.NODE_ENV || 'development')
+            // NOTE: currently, `config` module doesn't play well with webpack
+            // so we alias the appropriate browser config file
+            config: path.resolve(__dirname, '..', 'config', `${process.env.NODE_ENV}.browser.js`)
         }
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+          'process.env': {
+            'NODE_ENV': JSON.stringify('development')
+            //'NODE_ENV': JSON.stringify('production') //TODO use for production
+          }
+        })
     ]
 }

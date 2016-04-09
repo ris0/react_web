@@ -254,6 +254,9 @@
 
 .video-page {
     @include video-list-item;
+    .video-list-item {
+        flex-grow: 0;
+    }
 }
 
 @media(max-width: 1600px) {

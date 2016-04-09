@@ -6,8 +6,12 @@ import VideoGrid from '../components/VideoGrid'
 
 class VideosMain extends React.Component {
 
-    static fetchData() {
-        console.log('fetching individual video...')
+    static fetchData(dispatch, params, query) {
+        const { videoId } = params
+        return Promise.all([
+            dispatch(fetchVideoIfNeeded(videoId)),
+            dispatch(fetchRelatedContent())
+        ])
     }
 
     constructor() {
@@ -15,10 +19,8 @@ class VideosMain extends React.Component {
     }
 
     componentDidMount() {
-        const { videoId } = this.props.params
-        //VideosMain.fetchData()
-        this.props.fetchRelatedContent()
-        this.props.fetchVideoIfNeeded(videoId)
+        const { params, dispatch } = this.props
+        VideosMain.fetchData(this.props.dispatch, params)
     }
 
     render() {
@@ -42,8 +44,8 @@ class VideosMain extends React.Component {
                 {
                     relatedContent.length ?
                         <div>
-                            <VideoGrid title="Sample Category" relatedContent={relatedContent} hasMore={false} />
-                            <VideoGrid title="Some Title" relatedContent={relatedContent} hasMore={false} />
+                            <VideoGrid title="Sample Category" videos={relatedContent} hasMore={false} />
+                            <VideoGrid title="Some Title" videos={relatedContent} hasMore={false} />
                         </div> : null
                 }
             </section>
@@ -61,4 +63,4 @@ function mapStateToProps(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, { fetchRelatedContent, fetchVideoIfNeeded })(VideosMain)
+export default connect(mapStateToProps)(VideosMain)

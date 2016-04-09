@@ -8,6 +8,7 @@ import routes from './routes'
 import configureStore from './configureStore'
 
 // TODO include built version of this stylesheet for server-rendering
+// Dev only?
 require('./assets/stylesheets/main.scss')
 
 const store = configureStore(window.__INITIAL_STATE__)

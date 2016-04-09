@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 
 class HomeMain extends React.Component {
 
-    static fetchData(dispatch, params, query) {
-        return fetchHome(dispatch)
+    static fetchData(dispatch) {
+        return dispatch(fetchHomeIfNeeded())
     }
 
     constructor() {
@@ -14,10 +14,8 @@ class HomeMain extends React.Component {
     }
 
     componentDidMount() {
-        // TODO move this fetch call to Root, since the /home service call
-        // is really what loads the vast majority of the data... it needs
-        // to happen before any and all routes are loaded
-        this.props.fetchHomeIfNeeded()
+        const { dispatch } = this.props
+        HomeMain.fetchData(dispatch)
     }
 
     render() {
@@ -105,4 +103,4 @@ function mapStateToProps(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, { fetchHomeIfNeeded })(HomeMain)
+export default connect(mapStateToProps)(HomeMain)
