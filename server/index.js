@@ -48,6 +48,7 @@ app.get('/*', (req, res) => {
             Promise.all(resolver(renderProps.components, store.dispatch, {}))
                 .then(() => {
                     res.render('index', {
+                        ENV: process.env.NODE_ENV,
                         state: JSON.stringify(store.getState()),
                         content: renderToString(
                             <Provider store={store}>

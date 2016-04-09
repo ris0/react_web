@@ -6,8 +6,11 @@ html
     meta(name="description", content="")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+    if ENV == 'production'
+        link(rel="stylesheet", href="bundle.css")
 
   body
     #app!= content
     script(type="text/javascript") window.__INITIAL_STATE__ = !{state}
-    script(type="text/javascript", src="http://localhost:3030/dist/bundle.js")
+    if ENV == 'development'
+        script(type="text/javascript", src="http://localhost:3030/dist/bundle.js")
