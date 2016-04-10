@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production ./node_modules/.bin/pm2 index.js -i",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack/prod.config.js",
     "start-dev": "NODE_ENV=development node index.js",
     "test": "./node_modules/.bin/mocha",
     "test:watch": "./node_modules/.bin/mocha -w"
@@ -37,9 +38,11 @@
   "dependencies": {
     "babel-polyfill": "6.7.2",
     "babel-register": "6.7.2",
+    "bourbon": "^4.2.6",
     "config": "1.20.1",
     "express": "4.13.4",
     "express-http-proxy": "0.6.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "isomorphic-fetch": "2.2.1",
     "jade": "1.11.0",
     "json-loader": "^0.5.4",

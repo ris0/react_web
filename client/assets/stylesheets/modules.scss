@@ -1,16 +1,16 @@
 @import 'modules/nav-dropdown';
 
 .nav {
-    display: flex;
-    justify-content: flex-end;
-    flex-grow: 1;
+    @include display(flex);
+    @include justify-content(flex-end);
+    @include flex-grow(1);
 }
 
 .footer-right {
     .nav-links {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        @include display(flex);
+        @include justify-content(space-between);
+        @include flex-wrap(wrap);
 
         a {
             text-decoration: none;
@@ -21,15 +21,15 @@
 }
 
 .social-buttons {
-    display: flex;
-    flex-basis: 200px;
-    justify-content: space-around;
+    @include display(flex);
+    @include flex-basis(200px);
+    @include justify-content(space-around);
 }
 
 .content-description {
     $content-padding: 1%;
     padding: 20px 2% 20px 2%;
-    display: flex;
+    @include display(flex);
     background: white;
 
     h1 {
@@ -38,7 +38,7 @@
     }
 
     .content-title {
-        flex-basis: 30%;
+        @include flex-basis(30%);
         padding-left: $content-padding;
         padding-right: $content-padding;
 
@@ -52,8 +52,8 @@
     .content-body {
         padding-left: $content-padding;
         padding-right: $content-padding;
-        flex-basis: 70%;
-        flex-grow: 1;
+        @include flex-basis(70%);
+        @include flex-grow(1);
         line-height: 1.5em;
         p {
             margin: 10px 0 10px 0;
@@ -63,18 +63,18 @@
 
 @media(max-width: 800px) {
     .content-description {
-        flex-direction: column;
+        @include flex-direction(column);
 
         .tags {
             display: none;
         }
 
         .content-title {
-            flex-basis: initial;
+            @include flex-basis(initial);
         }
 
         .content-body {
-            flex-basis: initial;
+            @include flex-basis(initial);
         }
     }
 }
@@ -88,8 +88,8 @@
             background: black;
             padding: 0 3.5% 0 3.5%;
             color: white;
-            justify-content: center;
-            display: flex;
+            @include justify-content(center);
+            @include display(flex);
         }
 
         .video-image {
@@ -101,9 +101,9 @@
                 bottom: 0;
                 right: 0;
                 left: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                @include display(flex);
+                @include justify-content(center);
+                @include align-items(center);
 
                 i {
                     font-size: 8vw;
@@ -144,10 +144,10 @@
 
 @mixin video-list-item($width: 25%) {
     .video-list-item {
-        display: flex;
-        flex-direction: column;
-        flex-basis: $width;
-        flex-grow: 1;
+        @include display(flex);
+        @include flex-direction(column);
+        @include flex-basis($width);
+        @include flex-grow(1);
         border: 6px solid white;
         box-sizing: border-box;
         cursor: pointer;
@@ -159,8 +159,8 @@
         }
 
         .content-description {
-            flex-grow: 1;
-            flex-direction: column;
+            @include flex-grow(1);
+            @include flex-direction(column);
             padding: 0 20px 0 20px;
         }
 
@@ -175,15 +175,15 @@
 }
 
 .video-list {
-    display: flex;
-    flex-direction: column;
+    @include display(flex);
+    @include flex-direction(column);
     padding-bottom: 30px;
     background: white;
 
     .video-list-title {
-        display: flex;
-        align-self: center;
-        align-items: baseline;
+        @include display(flex);
+        @include align-self(center);
+        @include align-items(baseline);
         margin-top: 20px;
         margin-bottom: 5px;
 
@@ -197,17 +197,17 @@
     }
 
     .video-list-items {
-        display: flex;
+        @include display(flex);
         max-width: 1600px;
         margin: 0 auto;
-        justify-content: center;
-        flex-wrap: wrap;
+        @include justify-content(center);
+        @include flex-wrap(wrap);
 
         // fill in empty/missing items to left-align last row
         // http://stackoverflow.com/questions/18744164/flex-box-align-last-row-to-grid
         &:after {
             content: "";
-            flex: auto;
+            @include flex(auto);
         }
     }
 
@@ -218,30 +218,33 @@
     }
 }
 
+///////////////
+// HOME PAGE
+///////////////
 .home-page {
     .video-list {
         .video-list-items {
             .video-list-item-primary {
                 width: 50%;
-                display: flex;
+                @include display(flex);
                 @include video-list-item(100%);
             }
 
             .video-list-item-secondary {
                 width: 25%;
-                display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
+                @include display(flex);
+                @include flex-direction(column);
+                @include flex-wrap(wrap);
                 @include video-list-item(initial);
             }
 
             &.row-two {
                 .video-list-item-primary {
-                    order: 1;
+                    @include order(1);
                 }
 
                 .video-list-item-secondary:last-child {
-                    order: 1;
+                    @include order(1);
                 }
             }
 
@@ -252,10 +255,39 @@
     }
 }
 
+@media(max-width: 1200px) {
+    .home-page {
+        .video-list {
+            .video-list-items {
+                .video-list-item {
+                    //flex-basis: 50%;
+                }
+                .video-list-item-primary {
+                    //width: 75%;
+                }
+
+                .video-list-item-secondary {
+//                    width: 50%;
+//                    @include video-list-item(50%);
+                }
+
+                .video-list-item-secondary:last-child {
+                    width: 100%;
+                    @include flex-direction(row);
+                    @include video-list-item(50%);
+                }
+            }
+        }
+    }
+}
+
+///////////////
+// VIDEO PAGE
+///////////////
 .video-page {
     @include video-list-item;
     .video-list-item {
-        flex-grow: 0;
+        @include flex-grow(0);
     }
 }
 
@@ -278,7 +310,7 @@
         .video-list {
             .video-list-items {
                 .video-list-item {
-                    flex-basis: 33.333333%;
+                    @include flex-basis(33.333333%);
                 }
             }
         }
@@ -291,7 +323,7 @@
             .video-list-items {
                 max-width: 800px;
                 .video-list-item {
-                    flex-basis: 50%;
+                    @include flex-basis(50%);
                 }
             }
         }
@@ -303,7 +335,7 @@
         .video-list {
             .video-list-items {
                 .video-list-item {
-                    flex-basis: 100%;
+                    @include flex-basis(100%);
                 }
             }
         }
@@ -313,8 +345,8 @@
 // COMPONENTS
 .tags {
     margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
+    @include display(flex);
+    @include flex-wrap(wrap);
     font-size: 0.9em;
 
     .tag {
@@ -354,23 +386,23 @@
 
     .header-topbar {
         .header-link {
-            flex-basis: 100%;
-            flex-grow: 1;
+            @include flex-basis(100%);
+            @include flex-grow(1);
             text-align: right;
         }
     }
 }
 
 .collapsible-nav {
-    flex-basis: 20%;
+    @include flex-basis(20%);
     background: white;
     border-right: 1px solid gray;
-    display: flex;
-    flex-direction: column;
+    @include display(flex);
+    @include flex-direction(column);
 
     header {
-        display: flex;
-        align-items: center;
+        @include display(flex);
+        @include align-items(center);
     }
 
     div {
@@ -406,7 +438,7 @@
         z-index: 999;
 
         .social-buttons {
-            flex-basis: initial;
+            @include flex-basis(initial);
             font-size: inherit;
         }
     }
@@ -436,6 +468,6 @@
 
 @media(max-width: 700px) {
     .footer-main .footer-right .nav-links {
-        flex-direction: column;
+        @include flex-direction(column);
     }
 }

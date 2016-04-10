@@ -39,8 +39,8 @@ a {
 }
 
 header {
-    display: flex;
-    align-items: baseline;
+    @include display(flex);
+    @include align-items(baseline);
     padding: 15px 20px 15px 20px;
     border-bottom: 1px solid lightgray;
     letter-spacing: 2px;
@@ -60,7 +60,7 @@ header, footer {
 
 footer {
     background: #323232;
-    display: flex;
+    @include display(flex);
     padding-top: 20px;
     color: #494949;
 
@@ -73,7 +73,7 @@ footer {
     &>div {
         margin-left: 6.25%;
         margin-right: 6.25%;
-        flex-grow: 1;
+        @include flex-grow(1);
     }
 }
 

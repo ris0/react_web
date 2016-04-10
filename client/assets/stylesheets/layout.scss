@@ -1,23 +1,21 @@
 .l-container {
-    display: flex;
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
+    @include display(flex);
+    @include flex-direction(column);
     min-height: 100vh;
 }
 
 .l-main {
-    flex: 1;
+    @include flex(1);
 }
 
 .l-header-container {
-    display: flex;
+    @include display(flex);
     //height: 70vh;
 
     .l-header-main {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
+        @include display(flex);
+        @include flex-direction(column);
+        @include flex-grow(1);
     }
 }
 

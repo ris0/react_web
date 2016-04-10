@@ -15,9 +15,9 @@ import URL from 'url'
 import config from 'config'
 
 const store = configureStore(initialState)
-
 const app = express()
 
+// TODO set HOST, PORT, etc. in config...
 app.set('env', process.env.NODE_ENV || 'development')
 app.set('host', process.env.HOST || 'localhost')
 app.set('port', process.env.PORT || '3000')

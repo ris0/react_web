@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const config = require('config')
+const bourbon = require('bourbon').includePaths
 
 module.exports = {
     entry: [
@@ -31,8 +32,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                include: path.resolve(__dirname, '..', 'client', 'assets', 'stylesheets'),
-                loaders: ['react-hot', 'style', 'css', 'sass']
+                loaders: ['react-hot', 'style', 'css', `sass?includePaths[]=${bourbon}`]
             }
         ]
     },
