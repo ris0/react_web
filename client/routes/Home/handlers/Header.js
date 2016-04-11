@@ -1,26 +1,21 @@
 import React from 'react'
 import VideoHeader from '../../../components/VideoHeader'
+import { setCurrentVideoStatus } from '../../../actions'
 import { connect } from 'react-redux'
 
 class HomeHeader extends React.Component {
-
-    static fetchData(dispatch, params, query) {
-    }
 
     constructor() {
         super()
     }
 
-    componentDidMount() {
-    }
-
     render() {
-        const { video } = this.props
+        const { video, currentVideoStatus, setCurrentVideoStatus } = this.props
         if (!video) {
             return null
         }
 
-        return <VideoHeader video={video}/>
+        return <VideoHeader currentVideoStatus={currentVideoStatus} setCurrentVideoStatus={setCurrentVideoStatus} video={video}/>
     }
 }
 
@@ -30,8 +25,9 @@ function mapStateToProps(state, ownProps) {
     const [featuredVideo] = state.pageHome.recentVideos
 
     return {
-        video: state.videos[featuredVideo]
+        video: state.videos[featuredVideo],
+        currentVideoStatus: state.currentVideoData
     }
 }
 
-export default connect(mapStateToProps, {})(HomeHeader)
+export default connect(mapStateToProps, { setCurrentVideoStatus })(HomeHeader)

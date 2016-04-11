@@ -44,47 +44,29 @@ class HomeMain extends React.Component {
         return (
             <section className="home-page">
                 <div className="section video-list">
-                    <div className="video-list-items row-one">
-                        <div className="video-list-item-primary">
-                            {
-                                (function() {
-                                    const video = chooseRandom()
-                                    return <VideoThumbnail showCaption={true} video={video} />
-                                })()
-                            }
-                        </div>
-                        <div className="video-list-item-secondary">
-                            {
-                                range(2, chooseRandom).map((video, i) => <VideoThumbnail video={video} key={i} />)
-                            }
-                        </div>
-                        <div className="video-list-item-secondary">
-                            {
-                                range(2, chooseRandom).map((video, i) => <VideoThumbnail video={video} key={i} />)
-                            }
-                        </div>
-                    </div>
-                    <div className="video-list-items row-two">
-                        <div className="video-list-item-primary">
-                            {
-                                (function() {
-                                    const video = chooseRandom()
-                                    return <VideoThumbnail showCaption={true} video={video} />
-                                })()
-                            }
-                        </div>
-                        <div className="video-list-item-secondary">
-                            {
-                                range(2, chooseRandom).map((video, i) => <VideoThumbnail video={video} key={i} />)
-                            }
-                        </div>
-                        <div className="video-list-item-secondary">
-                            {
-                                range(2, chooseRandom).map((video, i) => <VideoThumbnail video={video} key={i} />)
-                            }
-                        </div>
-                    </div>
-                    <div className="video-list-items row-other">
+                    {
+                        [0, 1].map((i) => {
+
+                            return (
+                                <div className="video-list-items" key={i}>
+                                    <div className="video-list-item-primary">
+                                        {
+                                            (function() {
+                                                const video = chooseRandom()
+                                                return <VideoThumbnail showCaption={true} video={video} />
+                                            })()
+                                        }
+                                    </div>
+                                    <div className="video-list-item-secondary">
+                                        {
+                                            range(4, chooseRandom).map((video, i) => <VideoThumbnail video={video} key={i} />)
+                                        }
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                    <div className="video-list-items">
                         {
                             range(8, chooseRandom).map((video, i) => <VideoThumbnail video={video} key={i} />)
                         }

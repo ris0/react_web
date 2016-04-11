@@ -4,18 +4,16 @@ import {
     RECEIVE_HOMEPAGE_DATA,
     RECEIVE_RELATED_CONTENT,
     RECEIVE_VIDEO_DATA,
+    SET_CURRENT_VIDEO_STATUS,
     SET_LOADING
 } from '../actions'
 
 function videos(state = {}, action) {
     switch (action.type) {
         case RECEIVE_VIDEO_DATA:
-            const videos = action.data.length ? action.data : [action.data];
+            const videos = action.data.length ? action.data : [action.data]
             const results = videos.reduce((acc, video) => {
-                return Object.assign({},
-                                     state,
-                                     acc,
-                                     { [video.unique_key]: video })
+                return Object.assign({}, state, acc, { [video.unique_key] : video })
             }, {})
             return results
     }
@@ -57,6 +55,16 @@ function user(state = {}, action) {
     return state
 }
 
+function currentVideoData(state = {}, action) {
+    switch (action.type) {
+        case SET_CURRENT_VIDEO_STATUS:
+            return {
+                unique_key: action.video && action.video.unique_key
+            }
+    }
+    return state
+}
+
 function app(state = {}, action) {
     switch (action.type) {
         case SET_LOADING:
@@ -72,6 +80,7 @@ const rootReducer = combineReducers({
     user,
     videos,
     categories,
+    currentVideoData,
     pageHome,
     pageCategories,
     pageVideo

@@ -1,0 +1,52 @@
+.content-description {
+    $content-padding: 1%;
+    padding: 20px 2% 20px 2%;
+    @include display(flex);
+    background: white;
+
+    h1 {
+        margin: 15px 0 15px 0;
+    }
+
+    .content-title {
+        @include flex-basis(30%);
+        padding-left: $content-padding;
+        padding-right: $content-padding;
+
+        p {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+    }
+
+    .content-body {
+        padding-left: $content-padding;
+        padding-right: $content-padding;
+        @include flex-basis(70%);
+        @include flex-grow(1);
+        line-height: 1.5em;
+        p {
+            margin: 10px 0 10px 0;
+        }
+    }
+}
+
+@media(max-width: 800px) {
+    .content-description {
+        @include flex-direction(column);
+
+        .tags {
+            display: none;
+        }
+
+        .content-title {
+            @include flex-basis(initial);
+        }
+
+        .content-body {
+            @include flex-basis(initial);
+        }
+    }
+}
+

@@ -1,3 +1,5 @@
+@import 'modules';
+
 .l-container {
     @include display(flex);
     @include flex-direction(column);
@@ -10,7 +12,6 @@
 
 .l-header-container {
     @include display(flex);
-    //height: 70vh;
 
     .l-header-main {
         @include display(flex);
@@ -19,7 +20,10 @@
     }
 }
 
-// HOME
+///////////////
+// HOME PAGE
+///////////////
+.home-page { }
 
 // CATEGORIES
 

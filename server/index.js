@@ -49,6 +49,7 @@ app.get('/*', (req, res) => {
                 .then(() => {
                     try {
                         res.render('index', {
+                            title: 'Knowsy', // TODO set per-page title
                             ENV: process.env.NODE_ENV,
                             state: JSON.stringify(store.getState()),
                             content: renderToString(

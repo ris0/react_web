@@ -37,6 +37,14 @@ export function setLoading(isLoading) {
     }
 }
 
+export const SET_CURRENT_VIDEO_STATUS = 'SET_CURRENT_VIDEO_STATUS'
+export function setCurrentVideoStatus(video) {
+    return {
+        type: SET_CURRENT_VIDEO_STATUS,
+        video
+    }
+}
+
 const handleResponse = (dispatch) => (response) => {
     dispatch(setLoading(false))
     if (response.status >= 400) {

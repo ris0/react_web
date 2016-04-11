@@ -25,7 +25,8 @@ export default {
 //            'finance & investing',
 //            'legal',
 //            'home improvement'
-        ]
+        ],
+        currentVideoStatus: null,
     },
     videos: {},
     pageHome: {

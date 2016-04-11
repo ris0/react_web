@@ -1,0 +1,21 @@
+.tags {
+    margin-top: 30px;
+    @include display(flex);
+    @include flex-wrap(wrap);
+    font-size: 0.9em;
+
+    .tag {
+        padding: 10px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        border: 1px solid black;
+        cursor: pointer;
+
+        &:hover {
+            background: black;
+            color: white;
+        }
+    }
+}
+

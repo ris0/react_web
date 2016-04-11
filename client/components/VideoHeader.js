@@ -5,22 +5,29 @@ class VideoHeader extends React.Component {
         super()
     }
 
+    componentWillUnmount() {
+        const { setCurrentVideoStatus } = this.props
+        setCurrentVideoStatus(null)
+    }
+
+    loadVideo(video) {
+        const { setCurrentVideoStatus } = this.props
+        setCurrentVideoStatus(video)
+    }
+
     render() {
-        const { video } = this.props
-        const isPlaying = false;
-        if (!video) {
-            return null
-        }
+        const { video, currentVideoStatus, setCurrentVideoStatus } = this.props
+        const isLoaded = Boolean(currentVideoStatus && currentVideoStatus.unique_key)
 
         // TODO show placeholder image before user hits play
         return (
             <div className="video-header">
                 <div className="video-main">
                     <div className="video">
-                        { video && isPlaying ?
-                                <video src={video.resource} controls="controls"></video> : null }
+                        { video && isLoaded ?
+                                <video src={video.resource} controls="controls" autoPlay={true} /> : null }
                         {
-                            video && !isPlaying ?
+                            video && !isLoaded ?
                                 <div className="video-image">
                                     <div className="video-description">
                                         <h1>Header Title Thing&nbsp;<i className="fa fa-inverse fa-play-circle"></i></h1>
@@ -34,8 +41,8 @@ class VideoHeader extends React.Component {
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                         </p>
                                     </div>
-                                    <div className="play-overlay">
-                                        <i className="fa fa-inverse fa-play-circle"></i>
+                                    <div className="play-overlay" onClick={this.loadVideo.bind(this, video)}>
+                                        <i className="fa fa-inverse fa-play-circle" onClick={this.loadVideo.bind(this, video)} />
                                     </div>
                                     <img src={video.cover_resource} alt="" />
                                 </div> :
@@ -53,6 +60,18 @@ class VideoHeader extends React.Component {
             </div>
         )
     }
+}
+
+VideoHeader.propTypes = {
+    video: React.PropTypes.object,
+    currentVideoStatus: React.PropTypes.object,
+    setCurrentVideoStatus: React.PropTypes.func,
+}
+
+VideoHeader.defaultProps = {
+    video: null,
+    currentVideoStatus: null,
+    setCurrentVideoStatus: () => {}
 }
 
 export default VideoHeader
