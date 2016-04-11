@@ -11,14 +11,14 @@ export default {
         ],
         showDropdownNav: false,
         categories: [
-            { name: 'tech & digital', link: '' },
-            { name: 'social media', link: '' },
-            { name: 'health & wellness', link: '' },
-            { name: 'drinks & entertaining', link: '' },
-            { name: 'sex & relationships', link: '' },
-            { name: 'career & workplace', link: '' },
-            { name: 'style & beauty', link: '' },
-            { name: 'home', link: '' }
+            { name: 'tech & digital', link: 'tech-digital' },
+            { name: 'social media', link: 'social-media' },
+            { name: 'health & wellness', link: 'health-wellness' },
+            { name: 'drinks & entertaining', link: 'drinks-entertaining' },
+            { name: 'sex & relationships', link: 'sex-relationships' },
+            { name: 'career & workplace', link: 'career-workplace' },
+            { name: 'style & beauty', link: 'style-beauty' },
+            { name: 'home', link: 'home' }
 //            'parenting',
 //            'pets',
 //            'travel',

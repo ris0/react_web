@@ -20,7 +20,7 @@ const routes = (
         <IndexRoute components={HomeRoutes} />
         <Route path="home" components={HomeRoutes} />
         <Route path="about" components={{ main: Placeholder }} />
-        <Route path="categories" getComponents={getCategories} />
+        <Route path="categories/:categoryName" getComponents={getCategories} />
         <Route path="videos/:videoId" getComponent={getVideos}>
             <IndexRoute component={Placeholder} />
         </Route>

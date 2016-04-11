@@ -1,5 +1,5 @@
 import React from 'react'
-import VideoThumbnail from '../../../components/VideoThumbnail'
+import VideoThumbnail from './VideoThumbnail'
 
 class VideoGrid extends React.Component {
     constructor() {
@@ -19,12 +19,15 @@ class VideoGrid extends React.Component {
 
         return (
             <section className="video-list">
-                <div className="video-list-title">
-                    <h1>{title}&nbsp;</h1>
-                    {/*
-                        <a><i>See All</i></a>
-                    */}
-                </div>
+                {
+                    title ?
+                        <div className="video-list-title">
+                            <h1>{title}&nbsp;</h1>
+                            {/*
+                                <a><i>See All</i></a>
+                            */}
+                        </div> : null
+                }
                 <div className="video-list-items">
                     {
                         take(8, videos).map((video, i) => <VideoThumbnail video={video} key={i} />)

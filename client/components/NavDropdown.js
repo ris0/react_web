@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 class NavDropdown extends React.Component {
     constructor() {
@@ -14,7 +15,7 @@ class NavDropdown extends React.Component {
                 {
                     showDropdown ?
                         <div className="nav-dropdown-menu">
-                            { items.map((item) => <a href={item.link} key={item.name}>{item.name}</a>) }
+                            { items.map((item) => <Link to={`/categories/${item.link}`} onClick={onToggle} key={item.name}>{item.name}</Link>) }
                         </div> : null
                 }
             </div>

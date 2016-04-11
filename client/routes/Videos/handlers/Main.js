@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchRelatedContent, fetchVideoIfNeeded } from '../../../actions'
 import ContentDescription from '../components/ContentDescription'
-import VideoGrid from '../components/VideoGrid'
+import VideoGrid from '../../../components/VideoGrid'
 
 class VideosMain extends React.Component {
 
