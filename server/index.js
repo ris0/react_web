@@ -45,18 +45,23 @@ app.get('/*', (req, res) => {
             // TODO maybe use NODE_ENV to determine if we need /api prefix or not?
             // server won't need the /api prefix, what is the webpack env vs node?
             // or env-specific buildUrl method, env-specific prefix property
-            Promise.all(resolver(renderProps.components, store.dispatch, {}))
+            Promise.all(resolver(renderProps.components, store.dispatch, renderProps.params))
                 .then(() => {
-                    res.render('index', {
-                        ENV: process.env.NODE_ENV,
-                        state: JSON.stringify(store.getState()),
-                        content: renderToString(
-                            <Provider store={store}>
-                                <RouterContext {...renderProps} />
-                            </Provider>)
-                    })
-                })
-                .catch((err) => res.status(500).send(err.message))
+                    try {
+                        res.render('index', {
+                            ENV: process.env.NODE_ENV,
+                            state: JSON.stringify(store.getState()),
+                            content: renderToString(
+                                <Provider store={store}>
+                                    <RouterContext {...renderProps} />
+                                </Provider>)
+                        })
+                    } catch(err) {
+                        // TODO log
+                        res.status(500).send(err.message)
+                    }
+                }) // TODO render custom 404 page or 500 page
+                .catch((err) => res.status(err.status || 500).send(err.message))
         } else {
             res.status(404).send('Not Found')
         }

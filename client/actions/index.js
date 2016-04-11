@@ -39,6 +39,13 @@ export function setLoading(isLoading) {
 
 const handleResponse = (dispatch) => (response) => {
     dispatch(setLoading(false))
+    if (response.status >= 400) {
+        // TODO log
+        const err = new Error(response.statusText)
+        err.status = response.status
+        throw err
+    }
+
     return response.json()
 }
 

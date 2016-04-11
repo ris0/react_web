@@ -26,11 +26,37 @@
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
     .nav-dropdown {
         .nav-dropdown-menu {
-            right: 0;
+
+            a {
+                font-size: 1vw;
+            }
         }
     }
 }
 
+@media (max-width: 800px) {
+    .nav-dropdown {
+        .nav-dropdown-menu {
+            right: 0;
+
+            a {
+                font-size: 1.2vw;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .nav-dropdown {
+        .nav-dropdown-menu {
+            right: 0;
+
+            a {
+                font-size: 1.4vw;
+            }
+        }
+    }
+}

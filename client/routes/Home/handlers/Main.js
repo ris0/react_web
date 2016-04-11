@@ -16,6 +16,9 @@ class HomeMain extends React.Component {
     componentDidMount() {
         const { dispatch } = this.props
         HomeMain.fetchData(dispatch)
+            .catch((err) => {
+                // TODO redirect to Error page
+            })
     }
 
     render() {

@@ -21,6 +21,18 @@ class VideosMain extends React.Component {
     componentDidMount() {
         const { params, dispatch } = this.props
         VideosMain.fetchData(this.props.dispatch, params)
+            .catch((err) => {
+                // TODO redirect to Error page
+            })
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const { params, dispatch } = this.props
+        const { params: nextParams } = nextProps
+
+        if (nextParams.videoId !== params.videoId) {
+            VideosMain.fetchData(dispatch, nextParams)
+        }
     }
 
     render() {

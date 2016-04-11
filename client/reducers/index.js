@@ -12,7 +12,10 @@ function videos(state = {}, action) {
         case RECEIVE_VIDEO_DATA:
             const videos = action.data.length ? action.data : [action.data];
             const results = videos.reduce((acc, video) => {
-                return Object.assign({}, state, acc, { [video.unique_key]: video })
+                return Object.assign({},
+                                     state,
+                                     acc,
+                                     { [video.unique_key]: video })
             }, {})
             return results
     }

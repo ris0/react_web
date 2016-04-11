@@ -1,0 +1,54 @@
+.collapsible-nav {
+    @include flex-basis(20%);
+    background: white;
+    border-right: 1px solid gray;
+    @include display(flex);
+    @include flex-direction(column);
+
+    header {
+        @include display(flex);
+        @include align-items(center);
+    }
+
+    div {
+        padding: 20px 7% 20px 7%;
+    }
+
+    .link {
+        border-bottom: 1px solid gray;
+    }
+
+    a {
+        text-transform: uppercase;
+        color: black;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    i.fa-times {
+        font-size: 1.6vw;
+    }
+
+    .social-buttons {
+        font-size: 1.3vw;
+    }
+}
+
+@media(max-width: 1200px) {
+}
+
+@media(max-width: 800px) {
+    .collapsible-nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        border-bottom: 1px solid gray;
+
+        .social-buttons {
+            @include flex-basis(initial);
+            font-size: inherit;
+        }
+    }
+}

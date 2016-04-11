@@ -22,7 +22,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                loaders: ['react-hot', 'babel-loader?presets[]=react,presets[]=es2015'],
+                loaders: ['react-hot', 'babel-loader'],
                 include: path.resolve(__dirname, '..', 'client')
             },
             {

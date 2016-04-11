@@ -19,7 +19,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                loaders: ['babel-loader?presets[]=react,presets[]=es2015'],
+                loaders: ['babel-loader'],
                 include: path.resolve(__dirname, '..', 'client')
             },
             {
