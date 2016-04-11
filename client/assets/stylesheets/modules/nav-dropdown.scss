@@ -1,4 +1,11 @@
 .nav-dropdown {
+    h2 {
+        font-size: 0.8em;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
     .nav-dropdown-menu {
         text-align: left;
         display: flex;
@@ -13,7 +20,7 @@
         a {
             text-transform: uppercase;
             padding: 6px 0 6px 0;
-            font-size: 0.75vw;
+            font-size: 0.7em;
 
             &:first-child {
                 padding-top: 0;
@@ -29,10 +36,6 @@
 @media (max-width: 1200px) {
     .nav-dropdown {
         .nav-dropdown-menu {
-
-            a {
-                font-size: 1vw;
-            }
         }
     }
 }
@@ -41,10 +44,6 @@
     .nav-dropdown {
         .nav-dropdown-menu {
             right: 0;
-
-            a {
-                font-size: 1.2vw;
-            }
         }
     }
 }
@@ -53,10 +52,6 @@
     .nav-dropdown {
         .nav-dropdown-menu {
             right: 0;
-
-            a {
-                font-size: 1.4vw;
-            }
         }
     }
 }

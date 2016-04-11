@@ -7,11 +7,11 @@ class NavDropdown extends React.Component {
     }
 
     render() {
-        const { className, label, items, onToggle, showDropdown } = this.props
+        const { className, children, items, onToggle, showDropdown } = this.props
 
         return (
             <div className={`nav-dropdown ${className}`}>
-                <a className="nav-dropdown-trigger" onClick={onToggle}>{label}</a>
+                <a className="nav-dropdown-trigger" onClick={onToggle}>{children}</a>
                 {
                     showDropdown ?
                         <div className="nav-dropdown-menu">

@@ -43,7 +43,7 @@ class Header extends React.Component {
                             {
                                 !showDropdownNav ?
                                     <a onClick={this.toggleDropdownNav.bind(this)}>
-                                        <i className="fa fa-bars" />
+                                        <h1><i className="fa fa-bars" /></h1>
                                     </a> : null
                             }
                             <Link to="/">
@@ -51,10 +51,11 @@ class Header extends React.Component {
                             </Link>
                             <NavDropdown
                                 className="header-link"
-                                label={'categories'}
                                 items={categories}
                                 onToggle={this.toggleCategoryDropdown.bind(this)}
-                                showDropdown={showCategoryDropdown} />
+                                showDropdown={showCategoryDropdown}>
+                                <h2>categories</h2>
+                            </NavDropdown>
                             <div className="nav">
                                 <SocialButtons />
                             </div>

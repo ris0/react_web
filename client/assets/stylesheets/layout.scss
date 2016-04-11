@@ -14,6 +14,7 @@
     @include display(flex);
 
     .l-header-main {
+        min-width: 0;
         @include display(flex);
         @include flex-direction(column);
         @include flex-grow(1);

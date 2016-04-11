@@ -8,6 +8,7 @@
     header {
         @include display(flex);
         @include align-items(center);
+        border-bottom: none;
     }
 
     div {
@@ -16,6 +17,7 @@
 
     .link {
         border-bottom: 1px solid gray;
+        font-size: 0.9em;
     }
 
     a {
@@ -25,17 +27,12 @@
         font-weight: bold;
     }
 
-    i.fa-times {
-        font-size: 1.6vw;
-    }
-
     .social-buttons {
         font-size: 1.3vw;
     }
 }
 
-@media(max-width: 1200px) {
-}
+@media(max-width: 1200px) { }
 
 @media(max-width: 800px) {
     .collapsible-nav {

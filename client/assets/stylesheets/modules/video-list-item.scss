@@ -4,6 +4,7 @@
         @include flex-direction(column);
         @include flex-basis($width);
         @include flex-grow(1);
+        min-width: 0;
         border: 6px solid white;
         box-sizing: border-box;
         cursor: pointer;
