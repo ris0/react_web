@@ -3,6 +3,21 @@ import SocialButtons from './SocialButtons'
 import NavDropdown from './NavDropdown'
 import { Link } from 'react-router'
 
+function CollapsibleNav(props) {
+    const { onClick, navLinks } = props
+    return (
+        <div className="header-topbar collapsible-nav">
+            <header>
+                <a onClick={onClick}>
+                    <h1><i className="fa fa-times" /></h1>
+                </a>
+            </header>
+            {navLinks.map((link) => <div className="link" key={link}><a>{link}</a></div>)}
+            <SocialButtons />
+        </div>
+    )
+}
+
 class Header extends React.Component {
     constructor() {
         super()
@@ -25,17 +40,10 @@ class Header extends React.Component {
 
         return (
             <div className="l-header-container">
-                {
+                { 
                     showDropdownNav ?
-                        <div className="header-topbar collapsible-nav">
-                            <header>
-                                <a onClick={this.toggleDropdownNav.bind(this)}>
-                                    <h1><i className="fa fa-times" /></h1>
-                                </a>
-                            </header>
-                            {navLinks.map((link) => <div className="link" key={link}><a>{link}</a></div>)}
-                            <SocialButtons />
-                        </div> : null
+                        <CollapsibleNav onClick={this.toggleDropdownNav.bind(this)} navLinks={navLinks} /> :
+                        null
                 }
                 <div className="l-header-main">
                     <div className="header-topbar">

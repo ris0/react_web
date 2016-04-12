@@ -56,7 +56,10 @@ export function setCurrentVideoStatus(video) {
 export function fetchHome(dispatch) {
     dispatch(setLoading(true))
     return getHomepageFeed()
-        .then(handleResponse(dispatch))
+        .then((response) => {
+            dispatch(setLoading(false))
+            return handleResponse(response)
+        })
         .then((result) => {
             dispatch(receiveVideoData([...result.featured, ...result.recent]))
             dispatch(receiveHomepageData(result))
@@ -82,7 +85,10 @@ export function fetchVideoIfNeeded(videoId) {
         } else {
             dispatch(setLoading(true))
             return getVideo(videoId)
-                .then(handleResponse(dispatch))
+                .then((response) => {
+                    dispatch(setLoading(false))
+                    return handleResponse(response)
+                })
                 .then((result) => dispatch(receiveVideoData(result)))
         }
     }
@@ -92,7 +98,10 @@ export function fetchRelatedContent() {
     return function(dispatch, getState) {
         dispatch(setLoading(true))
         return getRandom()
-            .then(handleResponse(dispatch))
+            .then((response) => {
+                dispatch(setLoading(false))
+                return handleResponse(response)
+            })
             .then((result) => dispatch(receiveRelatedContent(result)))
     }
 }
@@ -105,7 +114,10 @@ export function fetchConfigData() {
         } else {
             dispatch(setLoading(true))
             return getConfigData()
-                .then(handleResponse(dispatch))
+                .then((response) => {
+                    dispatch(setLoading(false))
+                    return handleResponse(response)
+                })
                 .then((result) => dispatch(receiveConfigData(result)))
         }
 

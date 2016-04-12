@@ -32,8 +32,7 @@ function request(url, body) {
     })
 }
 
-export const handleResponse = (dispatch) => (response) => {
-    dispatch(setLoading(false))
+export const handleResponse = (response) => {
     if (response.status >= 400) {
         // TODO log
         const err = new Error(response.statusText)
