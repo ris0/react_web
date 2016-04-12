@@ -13,6 +13,7 @@ import initialState from '../client/initialState'
 import resolver from './resolver'
 import URL from 'url'
 import config from 'config'
+import logger from './utils/logger'
 
 const store = configureStore(initialState)
 const app = express()
@@ -27,7 +28,7 @@ app.set('view engine', 'jade')
 app.use(express.static(path.join(__dirname, 'assets')))
 app.use(express.static(path.join(__dirname, '..', 'build')))
 
-// TODO CSRF
+// TODO CSRF when we have user accounts n' such
 
 app.use(/^\/api(.+)/, proxy(config.API_ROOT, {
     forwardPath: (req) => { 
@@ -38,13 +39,12 @@ app.use(/^\/api(.+)/, proxy(config.API_ROOT, {
 app.get('/*', (req, res) => {
     match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
         if (err) {
+            logger.warn(err)
             res.status(500).send(err.message)
         } else if (redirectLocation) {
+            logger.info(redirectLocation)
             res.redirect(302, redirectLocation.pathname + redirectLocation.search)
         } else if (renderProps) {
-            // TODO maybe use NODE_ENV to determine if we need /api prefix or not?
-            // server won't need the /api prefix, what is the webpack env vs node?
-            // or env-specific buildUrl method, env-specific prefix property
             Promise.all(resolver(renderProps.components, store.dispatch, renderProps.params))
                 .then(() => {
                     try {
@@ -58,15 +58,16 @@ app.get('/*', (req, res) => {
                                 </Provider>)
                         })
                     } catch(err) {
-                        // TODO log
+                        logger.error(`Attempted to render ${req.url}`, err)
                         res.status(500).send(err.message)
                     }
                 }) // TODO render custom 404 page or 500 page
                 .catch((err) => {
-                    console.log(err.stack)
+                    logger.warn(`Attempted to fetch data for ${req.url}`, err)
                     res.status(err.status || 500).send(err.message)
                 })
         } else {
+            logger.warn(`${req.url} Not Found`)
             res.status(404).send('Not Found')
         }
     })
