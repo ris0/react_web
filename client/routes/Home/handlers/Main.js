@@ -36,6 +36,7 @@ class HomeMain extends React.Component {
             return arr
         }
 
+        // TODO get rid of this
         function chooseRandom() {
             const randIndex = Math.floor(Math.random() * 4)
             return recentVideos[randIndex]

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import {
     TOGGLE_DROPDOWN_NAV,
+    RECEIVE_CONFIG_DATA,
     RECEIVE_HOMEPAGE_DATA,
     RECEIVE_RELATED_CONTENT,
     RECEIVE_VIDEO_DATA,
@@ -21,9 +22,17 @@ function videos(state = {}, action) {
 }
 
 function categories(state = {}, action) {
+    switch (action.type) {
+        case RECEIVE_CONFIG_DATA:
+            const { categories } = action.data
+            return categories.map((category) => Object.assign({}, category, {
+                link: category.name
+            }))
+    }
     return state
 }
 
+// TODO do I need this?
 function pageCategories(state = {}, action) {
     return state
 }

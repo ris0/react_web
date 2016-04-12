@@ -1,21 +1,33 @@
 import React from 'react';
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SocialButtons from '../components/SocialButtons';
-import { toggleDropdownNav } from '../actions'
+import { fetchConfigData, toggleDropdownNav } from '../actions'
 
 class Root extends React.Component {
+    static fetchData(dispatch) {
+        return dispatch(fetchConfigData())
+    }
+
     constructor() {
         super();
+    }
+
+    componentDidMount() {
+        const { dispatch } = this.props
+        Root.fetchData(dispatch)
+            .catch((err) => {
+                // TODO redirect to Error page
+            })
     }
 
     render() {
         const {
             main,
             header,
-            isLoading,
             categories,
             navLinks,
             toggleDropdownNav,
@@ -39,12 +51,16 @@ class Root extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
+    const { categories, app } = state
     return {
-        isLoading: state.app.isLoading,
-        navLinks: state.app.navLinks,
-        categories: state.app.categories,
-        showDropdownNav: state.app.showDropdownNav
+        categories,
+        navLinks: app.navLinks,
+        showDropdownNav: app.showDropdownNav
     }
 }
 
-export default connect(mapStateToProps, { toggleDropdownNav })(Root);
+function mapDispatchToProps(dispatch) {
+    return Object.assign({ dispatch }, bindActionCreators({ toggleDropdownNav }, dispatch))
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);

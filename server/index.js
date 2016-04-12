@@ -62,7 +62,10 @@ app.get('/*', (req, res) => {
                         res.status(500).send(err.message)
                     }
                 }) // TODO render custom 404 page or 500 page
-                .catch((err) => res.status(err.status || 500).send(err.message))
+                .catch((err) => {
+                    console.log(err.stack)
+                    res.status(err.status || 500).send(err.message)
+                })
         } else {
             res.status(404).send('Not Found')
         }

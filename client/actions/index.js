@@ -1,8 +1,16 @@
-import { getRandom, getVideo, getHomepageFeed } from '../utils'
+import { handleResponse, getConfigData, getRandom, getVideo, getHomepageFeed } from '../utils'
 
 export const TOGGLE_DROPDOWN_NAV = 'TOGGLE_DROPDOWN_NAV'
 export function toggleDropdownNav() {
     return { type: TOGGLE_DROPDOWN_NAV }
+}
+
+export const RECEIVE_CONFIG_DATA = 'RECEIVE_CONFIG_DATA'
+export function receiveConfigData(data) {
+    return {
+        type: RECEIVE_CONFIG_DATA,
+        data
+    }
 }
 
 export const RECEIVE_HOMEPAGE_DATA = 'RECEIVE_HOMEPAGE_DATA'
@@ -45,18 +53,6 @@ export function setCurrentVideoStatus(video) {
     }
 }
 
-const handleResponse = (dispatch) => (response) => {
-    dispatch(setLoading(false))
-    if (response.status >= 400) {
-        // TODO log
-        const err = new Error(response.statusText)
-        err.status = response.status
-        throw err
-    }
-
-    return response.json()
-}
-
 export function fetchHome(dispatch) {
     dispatch(setLoading(true))
     return getHomepageFeed()
@@ -97,8 +93,21 @@ export function fetchRelatedContent() {
         dispatch(setLoading(true))
         return getRandom()
             .then(handleResponse(dispatch))
-            .then((result) => {
-                dispatch(receiveRelatedContent(result))
-            })
+            .then((result) => dispatch(receiveRelatedContent(result)))
+    }
+}
+
+export function fetchConfigData() {
+    return function(dispatch, getState) {
+        const { categories } = getState()
+        if (categories && categories.length) {
+            return Promise.resolve(categories)
+        } else {
+            dispatch(setLoading(true))
+            return getConfigData()
+                .then(handleResponse(dispatch))
+                .then((result) => dispatch(receiveConfigData(result)))
+        }
+
     }
 }
