@@ -31,17 +31,12 @@
 }
 
 .video-header {
+    background: black;
     .video-main {
+        max-width: 75%;
+        margin: 0 auto;
         cursor: pointer;
         padding: 0;
-
-        .video {
-            background: black;
-            padding: 0 3.5% 0 3.5%;
-            color: white;
-            @include justify-content(center);
-            @include display(flex);
-        }
 
         .video-image {
             min-width: 0;
@@ -80,16 +75,20 @@
             }
         }
 
-        img {
-            max-width: 100%;
-        }
-
         h1 {
             //font-size: 2.2em;
         }
 
         p {
             //font-size: 1.1em;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .video-header {
+        .video-main {
+            max-width: 100%;
         }
     }
 }

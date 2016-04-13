@@ -1,4 +1,5 @@
 import React from 'react'
+import FlowPlayer from './FlowPlayer'
 
 class VideoHeader extends React.Component {
     constructor() {
@@ -17,45 +18,35 @@ class VideoHeader extends React.Component {
 
     render() {
         const { video, currentVideoStatus, setCurrentVideoStatus } = this.props
-        const isLoaded = Boolean(currentVideoStatus && currentVideoStatus.unique_key)
+        //const isLoaded = Boolean(currentVideoStatus && currentVideoStatus.unique_key)
+        const isLoaded = true;
 
-        // TODO show placeholder image before user hits play
         return (
             <div className="video-header">
                 <div className="video-main">
-                    <div className="video">
-                        { video && isLoaded ?
-                                <video src={video.resource} controls="controls" autoPlay={true} /> : null }
-                        {
-                            video && !isLoaded ?
-                                <div className="video-image">
-                                    <div className="video-description">
-                                        <h1>Header Title Thing&nbsp;<i className="fa fa-inverse fa-play-circle"></i></h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        </p>
-                                    </div>
-                                    <div className="play-overlay" onClick={this.loadVideo.bind(this, video)}>
-                                        <i className="fa fa-inverse fa-play-circle" onClick={this.loadVideo.bind(this, video)} />
-                                    </div>
-                                    <img src={video.cover_resource} alt="" />
-                                </div> :
-                                null
-                        }
-
-                        {
-                        /*
-                        TODO figure out how to float text over video... obviously I can
-                        absolute position this stuff, but that seems hacky... can this be done
-                        via whatever video player we use?
-                        */}
-                    </div>
+                    <FlowPlayer video={video} />
+                    {
+                        false ?
+                            <div className="video-image">
+                                <div className="video-description">
+                                    <h1>Header Title Thing&nbsp;<i className="fa fa-inverse fa-play-circle"></i></h1>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </p>
+                                </div>
+                                <div className="play-overlay" onClick={this.loadVideo.bind(this, video)}>
+                                    <i className="fa fa-inverse fa-play-circle" onClick={this.loadVideo.bind(this, video)} />
+                                </div>
+                                <img src={'/tequila_sunrise.jpg'/*video.cover_resource*/} alt="" />
+                            </div> :
+                            null
+                    }
                 </div>
             </div>
         )
