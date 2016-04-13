@@ -15,6 +15,7 @@ import URL from 'url'
 import config from 'config'
 import logger from './utils/logger'
 
+process.env.PWD = path.join(process.cwd(), 'server')
 const store = configureStore(initialState)
 const app = express()
 
@@ -22,11 +23,11 @@ const app = express()
 app.set('env', process.env.NODE_ENV || 'development')
 app.set('host', process.env.HOST || 'localhost')
 app.set('port', process.env.PORT || '3000')
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(process.env.PWD, 'views'))
 app.set('view engine', 'jade')
 
-app.use(express.static(path.join(__dirname, 'assets')))
-app.use(express.static(path.join(__dirname, '..', 'build')))
+app.use(express.static(path.join(process.env.PWD, 'assets')))
+app.use(express.static(path.join(process.env.PWD, '..', 'build')))
 
 // TODO CSRF when we have user accounts n' such
 
