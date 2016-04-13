@@ -26,8 +26,9 @@ app.set('port', process.env.PORT || '3000')
 app.set('views', path.join(process.env.PWD, 'views'))
 app.set('view engine', 'jade')
 
-app.use(express.static(path.join(process.env.PWD, 'assets')))
-app.use(express.static(path.join(process.env.PWD, '..', 'build')))
+// TODO host static files elsewhere in prod?
+app.use('/assets', express.static(path.join(process.env.PWD, 'assets')))
+app.use('/assets', express.static(path.join(process.env.PWD, '..', 'build')))
 
 // TODO CSRF when we have user accounts n' such
 
