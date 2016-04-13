@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postInstall": "npm run build",
     "start": "NODE_ENV=production ./node_modules/.bin/pm2 start index.js -i 0 -e '/var/log/app_error.log' -o '/var/log/pm2.log'",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack/prod.config.js",
     "start-dev": "NODE_ENV=development node index.js",
