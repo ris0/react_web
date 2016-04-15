@@ -6,6 +6,10 @@ class VideoThumbnail extends React.Component {
         super()
     }
 
+    clipCaption(caption = '') {
+        return `${caption.slice(0, 240)}...`
+    }
+
     render() {
         const { video, showCaption } = this.props
 
@@ -20,7 +24,7 @@ class VideoThumbnail extends React.Component {
                             <h1>CATEGORY / COLLECTION</h1>
                         */}
                         <h1>{video.title}</h1>
-                        { showCaption ?  <p>{video.caption}</p> : null }
+                        { showCaption ? <p>{this.clipCaption(video.caption)}</p> : null }
                     </div>
                 </Link>
             </section>

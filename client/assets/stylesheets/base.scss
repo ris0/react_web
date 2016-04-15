@@ -1,3 +1,6 @@
+$font-color: #444444;
+$font-color-light: #494949;
+
 html {
     box-sizing: border-box;
     font-size: 16px;
@@ -6,7 +9,8 @@ html {
 body {
     background: lightgray;
     margin: 0;
-    font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
+    font-family: 'CenturySchoolbook', 'Open Sans', Arial, sans-serif;
+    color: $font-color;
 }
 
 h1 {
@@ -27,6 +31,8 @@ h3 {
 
 p {
     margin: 5px 0 5px 0;
+    line-height: 30px;
+    font-weight: 500;
 }
 
 a {
@@ -44,9 +50,10 @@ header {
     padding: 15px 20px 15px 20px;
     border-bottom: 1px solid lightgray;
     letter-spacing: 2px;
+    font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
 
     a {
-        color: black;
+        color: $font-color;
     }
 
     i {
@@ -62,7 +69,7 @@ footer {
     background: #323232;
     @include display(flex);
     padding-top: 20px;
-    color: #494949;
+    color: $font-color-light;
 
     a {
         font-size: 12px;

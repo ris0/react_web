@@ -30,15 +30,7 @@ class VideoHeader extends React.Component {
                             <div className="video-image">
                                 <div className="video-description">
                                     <h1>Header Title Thing&nbsp;<i className="fa fa-inverse fa-play-circle"></i></h1>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    </p>
+                                    <p>{video.caption}</p>
                                 </div>
                                 <div className="play-overlay" onClick={this.loadVideo.bind(this, video)}>
                                     <i className="fa fa-inverse fa-play-circle" onClick={this.loadVideo.bind(this, video)} />

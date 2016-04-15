@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchHomeIfNeeded } from '../../../actions'
 import VideoThumbnail from '../../../components/VideoThumbnail'
+import VideoSectionPrimary from '../components/VideoSectionPrimary'
 import { connect } from 'react-redux'
 
 class HomeMain extends React.Component {
@@ -25,51 +26,22 @@ class HomeMain extends React.Component {
         const { featuredVideos, recentVideos } = this.props
 
         if (!recentVideos.length) {
+            // TODO loading spinner instead
             return <div>Loading...</div>
         }
 
-        function range(n, fn) {
-            let arr = []
-            for (let i = 0; i < n; i++) {
-                arr.push(fn())
-            }
-            return arr
-        }
-
-        // TODO get rid of this
-        function chooseRandom() {
-            const randIndex = Math.floor(Math.random() * 4)
-            return recentVideos[randIndex]
-        }
+        const videoSectionOne = recentVideos.slice(0, 5)
+        const videoSectionTwo = recentVideos.slice(5, 10)
+        const videoSectionThree = recentVideos.slice(10)
 
         return (
             <section className="home-page">
                 <div className="section video-list">
-                    {
-                        [0, 1].map((i) => {
-
-                            return (
-                                <div className="video-list-items" key={i}>
-                                    <div className="video-list-item-primary">
-                                        {
-                                            (function() {
-                                                const video = chooseRandom()
-                                                return <VideoThumbnail showCaption={true} video={video} />
-                                            })()
-                                        }
-                                    </div>
-                                    <div className="video-list-item-secondary">
-                                        {
-                                            range(4, chooseRandom).map((video, i) => <VideoThumbnail video={video} key={i} />)
-                                        }
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
+                    <VideoSectionPrimary videos={videoSectionOne}/>
+                    <VideoSectionPrimary videos={videoSectionTwo}/>
                     <div className="video-list-items">
                         {
-                            range(8, chooseRandom).map((video, i) => <VideoThumbnail video={video} key={i} />)
+                            videoSectionThree.map((video, i) => <VideoThumbnail video={video} key={i} />)
                         }
                     </div>
                 </div>

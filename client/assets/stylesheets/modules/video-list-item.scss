@@ -1,10 +1,8 @@
 @mixin video-list-item($width: 25%) {
     .video-list-item {
-
         @include display(flex);
         @include flex-direction(column);
         @include flex-basis($width);
-        @include flex-grow(1);
         min-width: 0;
         border: 18px solid white;
         box-sizing: border-box;
@@ -32,7 +30,7 @@
         }
 
         a {
-            color: black;
+            color: $font-color;
         }
     }
 }

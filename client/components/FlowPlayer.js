@@ -21,8 +21,8 @@ class FlowPlayer extends React.Component {
             <div ref="player" className="functional">
                 {
                     isLoaded ?
-                        <video poster={'/assets/tequila_sunrise.jpg'}>
-                            <source type="video/mp4" src={'/assets/tequilla_sunrise_v2.mp4'/*video.resource*/}></source>
+                        <video poster={video.cover_resource}>
+                            <source type="video/mp4" src={video.resource}></source>
                             <h1>I'm sorry; your browser doesn't support HTML5 video.</h1>
                        </video> : null
                 }

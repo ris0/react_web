@@ -71,7 +71,7 @@ function mapStateToProps(state, ownProps) {
 
     return {
         video: ownProps.params.videoId ? videos[ownProps.params.videoId] : null,
-        relatedContent: state.pageVideo.relatedContent
+        relatedContent: [] //state.pageVideo.relatedContent
     }
 }
 
