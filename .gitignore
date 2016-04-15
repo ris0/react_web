@@ -27,4 +27,4 @@ build
 .DS_Store
 
 *.mp4
-server/assets
+server/assets/flowplayer
