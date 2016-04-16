@@ -28,11 +28,16 @@
     @include display(flex);
     @include flex-basis(200px);
     @include justify-content(space-around);
+
+    .icon {
+        font-size: 30px;
+    }
 }
 
 .video-header {
     background: white;
     h1 {
+        font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
         text-align: center;
         padding: 30px;
     }
@@ -45,24 +50,6 @@
         .video-image {
             min-width: 0;
             position: relative;
-
-            .play-overlay {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                right: 0;
-                left: 0;
-                @include display(flex);
-                @include justify-content(center);
-                @include align-items(center);
-
-                i {
-                    font-size: 8vw;
-                    &:hover {
-                        color: lightgray;
-                    }
-                }
-            }
 
             .video-description {
                 display: none;
@@ -77,14 +64,6 @@
             &:hover {
                 opacity: 0.9;
             }
-        }
-
-        h1 {
-            //font-size: 2.2em;
-        }
-
-        p {
-            //font-size: 1.1em;
         }
     }
 }
@@ -113,10 +92,6 @@
 
         h1 {
             font-size: 1.2em;
-        }
-
-        i {
-            font-size: 0.9em;
         }
     }
 
@@ -287,18 +262,17 @@
 // COMPONENTS
 .header-topbar {
     .header-link {
-        margin: 0 10px 0 10px;
+        margin: 0 10px 0 0;
         text-transform: uppercase;
     }
 
-    .fa-bars {
-        margin: 0 10px 0 0;
+    .header-link.header-link-right {
+        margin-right: 0;
     }
 }
 
 @media(max-width: 1200px) {
-    .header-topbar {
-    }
+    .header-topbar { }
 }
 
 @media(max-width: 800px) {
@@ -309,7 +283,7 @@
     }
 
     .header-topbar {
-        .header-link {
+        .header-link-right {
             @include flex-basis(100%);
             @include flex-grow(1);
             text-align: right;
@@ -326,17 +300,20 @@
     padding-bottom: 30px;
 
     h1 {
+        font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
         margin-top: 0;
     }
 
     a {
         font-size: 0.8em;
+        font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
     }
 
     p {
         margin: 2px 0 0 0;
         font-size: 0.8em;
         color: rgb(110, 113, 113);
+        line-height: 16px;
     }
 
     address {

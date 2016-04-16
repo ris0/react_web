@@ -1,5 +1,6 @@
 @import 'modules';
 
+// TODO get rid of layout stylesheets? I don't think I need these... everything is a module/component
 .l-container {
     @include display(flex);
     @include flex-direction(column);
@@ -8,10 +9,12 @@
 
 .l-main {
     @include flex(1);
+    background: white;
 }
 
 .l-header-container {
     @include display(flex);
+    border-bottom: 1px solid lightgray;
 
     .l-header-main {
         min-width: 0;
@@ -20,13 +23,4 @@
         @include flex-grow(1);
     }
 }
-
-///////////////
-// HOME PAGE
-///////////////
-.home-page { }
-
-// CATEGORIES
-
-// VIDEO
 

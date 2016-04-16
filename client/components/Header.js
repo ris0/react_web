@@ -9,7 +9,7 @@ function CollapsibleNav(props) {
         <div className="header-topbar collapsible-nav">
             <header>
                 <a onClick={onClick}>
-                    <h1><i className="fa fa-times" /></h1>
+                    <h1><span className="icon icon-cross" /></h1>
                 </a>
             </header>
             {navLinks.map((link) => <div className="link" key={link}><a>{link}</a></div>)}
@@ -50,15 +50,18 @@ class Header extends React.Component {
                         <header>
                             {
                                 !showDropdownNav ?
-                                    <a onClick={this.toggleDropdownNav.bind(this)}>
-                                        <h1><i className="fa fa-bars" /></h1>
-                                    </a> : null
+                                    <h1 className="header-link">
+                                        <a onClick={this.toggleDropdownNav.bind(this)}>
+                                            <span className="icon icon-menu" />
+                                        </a>
+                                    </h1>
+                                    : null
                             }
-                            <Link to="/">
-                                <h1>Knowsy</h1>
-                            </Link>
+                            <h1 className="header-link">
+                                <Link to="/">Knowsy</Link>
+                            </h1>
                             <NavDropdown
-                                className="header-link"
+                                className="header-link header-link-right"
                                 items={categories}
                                 onToggle={this.toggleCategoryDropdown.bind(this)}
                                 showDropdown={showCategoryDropdown}>

@@ -47,17 +47,13 @@ a {
 header {
     @include display(flex);
     @include align-items(baseline);
-    padding: 15px 20px 15px 20px;
+    padding: 15px;
     border-bottom: 1px solid lightgray;
     letter-spacing: 2px;
     font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
 
     a {
         color: $font-color;
-    }
-
-    i {
-        font-size: 1.6vw;
     }
 }
 
@@ -81,35 +77,5 @@ footer {
         margin-left: 6.25%;
         margin-right: 6.25%;
         @include flex-grow(1);
-    }
-}
-
-@media(max-width: 1200px) {
-    h1 {
-        //font-size: 1.8vw;
-    }
-
-    h2 {
-        //font-size: 1.4vw;
-    }
-}
-
-@media(max-width: 800px) {
-    h1 {
-        //font-size: 3vw;
-    }
-
-    h2 {
-        //font-size: 1.6vw;
-    }
-}
-
-@media(max-width: 500px) {
-    h1 {
-        //font-size: 3.2vw;
-    }
-
-    h2 {
-        //font-size: 1.8vw;
     }
 }
