@@ -10,7 +10,9 @@ class VideosMain extends React.Component {
         const { videoId } = params
         return Promise.all([
             dispatch(fetchVideoIfNeeded(videoId)),
-            dispatch(fetchRelatedContent())
+            // TODO probably won't use fetchRelatedContent (in its current state) for this, commenting
+            // out for now...
+            //dispatch(fetchRelatedContent())
         ])
     }
 
@@ -20,7 +22,7 @@ class VideosMain extends React.Component {
 
     componentDidMount() {
         const { params, dispatch } = this.props
-        VideosMain.fetchData(this.props.dispatch, params)
+        VideosMain.fetchData(dispatch, params)
             .catch((err) => {
                 // TODO redirect to Error page
             })
@@ -42,7 +44,7 @@ class VideosMain extends React.Component {
         }
 
         return (
-            <section className="video-page">
+            <section className="default-video-list video-page">
                 {/*
                     <div className="section video-user-controls">
                     <div>
@@ -67,7 +69,6 @@ class VideosMain extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     const videos = state.videos || {}
-    // TODO synchronize this with Video Header somehow
 
     return {
         video: ownProps.params.videoId ? videos[ownProps.params.videoId] : null,

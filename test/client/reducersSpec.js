@@ -74,7 +74,46 @@ describe('Reducer', function() {
                 expect(state.videos[666]).to.be.an('object')
                 expect(state.videos[666].name).to.equal('EVIL VIDEO')
             });
+
+            it('should modify or extend existing entries, but not delete them', function() {
+                const state = reducer({
+                    videos : {
+                        1234: {
+                            unique_key: 1234,
+                            name: 'Old Video Video'
+                        },
+                        6666: {
+                            unique_key: 6666,
+                            name: 'Existing Video Video'
+                        }
+                    }
+                    },
+                    {
+                        type: 'RECEIVE_VIDEO_DATA',
+                        data: [
+                            {
+                                unique_key: 1234,
+                                name: 'Video Video'
+                            },
+                            {
+                                unique_key: 5678,
+                                name: 'Radio Radio'
+                            }
+                        ]
+                    })
+
+                expect(Object.keys(state.videos).length).to.equal(3)
+                expect(state.videos[1234].name).to.equal('Video Video')
+                expect(state.videos[5678].name).to.equal('Radio Radio')
+                expect(state.videos[6666].name).to.equal('Existing Video Video')
+            });
         });
     });
+
+    describe('categories', function() {
+        // TODO WRITE
+         /* ??? */
+    });
+
 });
 

@@ -7,7 +7,7 @@ class NavDropdown extends React.Component {
     }
 
     render() {
-        const { className, children, items, onToggle, showDropdown } = this.props
+        const { className, children, items = [], onToggle, showDropdown } = this.props
 
         return (
             <div className={`nav-dropdown ${className}`}>
@@ -15,7 +15,7 @@ class NavDropdown extends React.Component {
                 {
                     showDropdown ?
                         <div className="nav-dropdown-menu">
-                            { items.map((item) => <Link to={`/categories/${item.link}`} onClick={onToggle} key={item.name}>{item.name}</Link>) }
+                            { Object.values(items).map((item) => <Link key={item.id} to={`/categories/${item.name}/${item.id}`} onClick={onToggle} key={item.name}>{item.name}</Link>) }
                         </div> : null
                 }
             </div>

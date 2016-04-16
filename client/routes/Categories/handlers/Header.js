@@ -8,21 +8,22 @@ class CategoriesHeader extends React.Component {
     }
 
     render() {
-        const { video } = this.props
+        const { category, video } = this.props
         if (!video) {
-            return null
+            //return null
         }
 
-        return <VideoHeader video={video}/>
+        return <VideoHeader title={category.name} video={video}/>
     }
 }
 
 function mapStateToProps(state, ownProps) {
     const videos = state.videos || {}
-    // TODO synchronize this with Video Main somehow
+    // TODO video from categoryContent
 
     return {
-        video: ownProps.params.videoId ? videos[ownProps.params.videoId] : null,
+        category: state.categories[ownProps.params.categoryId],
+        video: null
     }
 }
 

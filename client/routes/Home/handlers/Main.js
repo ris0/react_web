@@ -3,6 +3,7 @@ import { fetchHomeIfNeeded } from '../../../actions'
 import VideoThumbnail from '../../../components/VideoThumbnail'
 import VideoSectionPrimary from '../components/VideoSectionPrimary'
 import { connect } from 'react-redux'
+import { flatten, partitionN } from '../../../utils'
 
 class HomeMain extends React.Component {
 
@@ -30,9 +31,11 @@ class HomeMain extends React.Component {
             return <div>Loading...</div>
         }
 
-        const videoSectionOne = recentVideos.slice(0, 5)
-        const videoSectionTwo = recentVideos.slice(5, 10)
-        const videoSectionThree = recentVideos.slice(10)
+        const [
+            videoSectionOne = [],
+            videoSectionTwo = [],
+            ...videoSectionThree
+        ] = partitionN(5, recentVideos)
 
         return (
             <section className="home-page">
@@ -41,7 +44,7 @@ class HomeMain extends React.Component {
                     <VideoSectionPrimary videos={videoSectionTwo}/>
                     <div className="video-list-items">
                         {
-                            videoSectionThree.map((video, i) => <VideoThumbnail video={video} key={i} />)
+                            flatten(videoSectionThree).map((video, i) => <VideoThumbnail video={video} key={i} />)
                         }
                     </div>
                 </div>
@@ -55,9 +58,10 @@ function dereferenceVideos(state, name) {
 }
 
 function mapStateToProps(state, ownProps) {
+    const [_, ...recentVideos] = dereferenceVideos(state, 'recentVideos')
     return {
         featuredVideos: dereferenceVideos(state, 'featuredVideos'),
-        recentVideos: dereferenceVideos(state, 'recentVideos')
+        recentVideos
     }
 }
 

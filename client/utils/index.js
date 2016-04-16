@@ -22,7 +22,7 @@ const EXPLORE = '/explore'
 const VIDEO = '/content'
 const FEED = '/feed' // + /[account_name]
 const CONFIG = '/config'
-const CATEGORY_FEED = '/content/sample' // + ?category_ids=123,456,789
+const CATEGORY_FEED = '/content/sample'
 
 function request(url, body) {
     return fetch(url, {
@@ -47,8 +47,8 @@ export function getHomepageFeed() {
     return request(buildUrl(HOMEPAGE))
 }
 
-export function getCategoriesFeed(categories) {
-    return fetch(buildUrl(CATEGORY_FEED))
+export function getCategoriesFeed(categoryId) {
+    return request(buildUrl(CATEGORY_FEED, { category_ids: categoryId }))
 }
 
 export function getVideo(id) {
@@ -61,4 +61,19 @@ export function getRandom() {
 
 export function getConfigData() {
     return request(buildUrl(CONFIG))
+}
+
+// TODO move to fn utils
+export function flatten(collection = []) {
+    return collection.reduce((acc, arr) => [...acc, ...arr], [])
+}
+
+export function partitionN(n, collection = []) {
+    let idx = 0
+    let results = []
+    while (idx < collection.length) {
+        results.push(collection.slice(idx, idx + n))
+        idx += n
+    }
+    return results
 }

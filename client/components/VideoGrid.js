@@ -1,6 +1,7 @@
 import React from 'react'
 import VideoThumbnail from './VideoThumbnail'
 
+// TODO do I really need this component?
 class VideoGrid extends React.Component {
     constructor() {
         super()

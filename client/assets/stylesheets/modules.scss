@@ -31,7 +31,11 @@
 }
 
 .video-header {
-    background: black;
+    background: white;
+    h1 {
+        text-align: center;
+        padding: 30px;
+    }
     .video-main {
         max-width: 75%;
         margin: 0 auto;
@@ -223,9 +227,19 @@
 }
 
 ///////////////
+// CATEGORY PAGE
+///////////////
+.category-page { }
+
+///////////////
 // VIDEO PAGE
 ///////////////
-.video-page {
+.video-page { }
+
+///////////////////////
+// DEFAULT VIDEO LIST
+///////////////////////
+.default-video-list {
     @include video-list-item;
     .video-list-items {
         max-width: 100%;
@@ -236,7 +250,7 @@
 }
 
 @media(max-width: 1200px) {
-    .video-page {
+    .default-video-list {
         .video-list {
             .video-list-items {
                 .video-list-item {
@@ -248,7 +262,7 @@
 }
 
 @media(max-width: 800px) {
-    .video-page {
+    .default-video-list {
         .video-list {
             .video-list-items {
                 .video-list-item {
@@ -260,7 +274,7 @@
 }
 
 @media(max-width: 500px) {
-    .video-page {
+    .default-video-list {
         .video-list {
             .video-list-items {
                 .video-list-item {
@@ -270,7 +284,6 @@
         }
     }
 }
-
 // COMPONENTS
 .header-topbar {
     .header-link {

@@ -5,6 +5,7 @@ import {
     RECEIVE_HOMEPAGE_DATA,
     RECEIVE_RELATED_CONTENT,
     RECEIVE_VIDEO_DATA,
+    RECEIVE_VIDEOS_FOR_CATEGORY,
     SET_CURRENT_VIDEO_STATUS,
     SET_LOADING
 } from '../actions'
@@ -13,27 +14,31 @@ function videos(state = {}, action) {
     switch (action.type) {
         case RECEIVE_VIDEO_DATA:
             const videos = action.data.length ? action.data : [action.data]
-            const results = videos.reduce((acc, video) => {
-                return Object.assign({}, state, acc, { [video.unique_key] : video })
-            }, {})
-            return results
+            return videos.reduce((acc, video) => {
+                return Object.assign({}, acc, { [video.unique_key] : video })
+            }, state)
     }
     return state
 }
 
 function categories(state = {}, action) {
+    // TODO definitely need to test these
     switch (action.type) {
         case RECEIVE_CONFIG_DATA:
             const { categories } = action.data
-            return categories.map((category) => Object.assign({}, category, {
-                link: category.name
-            }))
+            return categories.reduce((categoriesMap, category) =>
+                Object.assign({}, categoriesMap, {
+                    [category.id]: Object.assign({}, categoriesMap[category.id] || {}, category)
+                }), state)
+        case RECEIVE_VIDEOS_FOR_CATEGORY:
+            const { categoryId, videoIds } = action.data
+            const updatedCategory = Object.assign({}, state[categoryId], {
+                videos: videoIds
+            })
+            return Object.assign({}, state, {
+                [categoryId]: updatedCategory
+            })
     }
-    return state
-}
-
-// TODO do I need this?
-function pageCategories(state = {}, action) {
     return state
 }
 
@@ -91,7 +96,6 @@ const rootReducer = combineReducers({
     categories,
     currentVideoData,
     pageHome,
-    pageCategories,
     pageVideo
 })
 

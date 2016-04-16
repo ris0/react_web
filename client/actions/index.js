@@ -1,4 +1,4 @@
-import { handleResponse, getConfigData, getRandom, getVideo, getHomepageFeed } from '../utils'
+import { handleResponse, getConfigData, getRandom, getCategoriesFeed, getVideo, getHomepageFeed } from '../utils'
 
 export const TOGGLE_DROPDOWN_NAV = 'TOGGLE_DROPDOWN_NAV'
 export function toggleDropdownNav() {
@@ -29,6 +29,14 @@ export function receiveVideoData(data) {
     }
 }
 
+export const RECEIVE_VIDEOS_FOR_CATEGORY = 'RECEIVE_VIDEOS_FOR_CATEGORY'
+export function receiveVideosForCategory(categoryId, videoIds) {
+    return {
+        type: RECEIVE_VIDEOS_FOR_CATEGORY,
+        data: { categoryId, videoIds }
+    }
+}
+
 export const RECEIVE_RELATED_CONTENT = 'RECEIVE_RELATED_CONTENT'
 export function receiveRelatedContent(data) {
     return {
@@ -53,7 +61,7 @@ export function setCurrentVideoStatus(video) {
     }
 }
 
-export function fetchHome(dispatch) {
+function fetchHome(dispatch) {
     dispatch(setLoading(true))
     return getHomepageFeed()
         .then((response) => {
@@ -90,6 +98,37 @@ export function fetchVideoIfNeeded(videoId) {
                     return handleResponse(response)
                 })
                 .then((result) => dispatch(receiveVideoData(result)))
+        }
+    }
+}
+
+function fetchCategoryContent(dispatch, categoryId) {
+    dispatch(setLoading(true))
+    return getCategoriesFeed(categoryId)
+        .then((response) => {
+            dispatch(setLoading(false))
+            return handleResponse(response)
+        })
+        .then((result) => {
+            dispatch(receiveVideosForCategory(categoryId, result.map((video) => video.unique_key)))
+            dispatch(receiveVideoData(result))
+        })
+}
+
+export function fetchCategoryContentIfNeeded(categoryId) {
+    return function(dispatch, getState) {
+        const { categories, videos } = getState()
+        const category = categories[categoryId] || {}
+
+        if (category.videos && category.videos.length) {
+            const hasAll = category.videos.every((videoId) => Boolean(videos[videoId]))
+            if (hasAll) {
+                return Promise.resolve(category.videos.map((videoId) => videos[videoId]))
+            } else {
+                return fetchCategoryContent(dispatch, categoryId)
+            }
+        } else {
+            return fetchCategoryContent(dispatch, categoryId)
         }
     }
 }
