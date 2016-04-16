@@ -110,8 +110,11 @@ function fetchCategoryContent(dispatch, categoryId) {
             return handleResponse(response)
         })
         .then((result) => {
-            dispatch(receiveVideosForCategory(categoryId, result.map((video) => video.unique_key)))
+            // Note: this sucks, but this needs to happen in this order or else mapping fns may
+            // look for a video (from a category) that isn't in the videos hash
+            // TODO investigate https://github.com/acdlite/redux-batched-updates
             dispatch(receiveVideoData(result))
+            dispatch(receiveVideosForCategory(categoryId, result.map((video) => video.unique_key)))
         })
 }
 
