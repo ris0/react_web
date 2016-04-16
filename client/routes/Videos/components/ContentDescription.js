@@ -6,6 +6,10 @@ class ContentDescription extends React.Component {
         super();
     }
 
+    setHTMLBody(__html) {
+        return { __html }
+    }
+
     render() {
         const { caption, title } = this.props;
 
@@ -19,7 +23,7 @@ class ContentDescription extends React.Component {
                     */}
                 </div>
                 <div className="content-body">
-                    <p>{caption}</p>
+                    <p dangerouslySetInnerHTML={this.setHTMLBody(caption)} />
                 </div>
             </div>
         );
