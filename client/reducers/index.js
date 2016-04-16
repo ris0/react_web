@@ -22,14 +22,14 @@ function videos(state = {}, action) {
 }
 
 function categories(state = {}, action) {
-    // TODO definitely need to test these
     switch (action.type) {
         case RECEIVE_CONFIG_DATA:
             const { categories } = action.data
             return categories.reduce((categoriesMap, category) =>
                 Object.assign({}, categoriesMap, {
-                    [category.id]: Object.assign({}, categoriesMap[category.id] || {}, category)
+                    [category.id]: Object.assign({}, categoriesMap[category.id] || { videos: [] }, category)
                 }), state)
+
         case RECEIVE_VIDEOS_FOR_CATEGORY:
             const { categoryId, videoIds } = action.data
             const updatedCategory = Object.assign({}, state[categoryId], {

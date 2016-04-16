@@ -111,9 +111,124 @@ describe('Reducer', function() {
     });
 
     describe('categories', function() {
-        // TODO WRITE
-         /* ??? */
-    });
+        describe('RECEIVE_CONFIG_DATA', function() {
+            it('should create a hash of category ids to categories', function() {
+                const state = reducer(
+                    {},
+                    {
+                        type: 'RECEIVE_CONFIG_DATA',
+                        data: {
+                            categories: [
+                                {
+                                    id: 1,
+                                    name: 'Porkchop Sandwiches'
+                                },
+                                {
+                                    id: 2,
+                                    name: 'Vegetarian Sandwiches'
+                                }
+                            ]
+                        }
+                    })
 
+                expect(state.categories[1].name).to.equal('Porkchop Sandwiches')
+                expect(state.categories[1].id).to.equal(1)
+                expect(state.categories[1].videos).to.eql([])
+                expect(state.categories[2].name).to.equal('Vegetarian Sandwiches')
+                expect(state.categories[2].id).to.equal(2)
+                expect(state.categories[2].videos).to.eql([])
+            });
+
+            it('should not override existing video properties', function() {
+                const state = reducer(
+                    {
+                        categories: {
+                            1: { videos: [1,2,3] },
+                            2: { videos: [4,5,6] },
+                        }
+                    },
+                    {
+                        type: 'RECEIVE_CONFIG_DATA',
+                        data: {
+                            categories: [
+                                {
+                                    id: 1,
+                                    name: 'Porkchop Sandwiches'
+                                },
+                                {
+                                    id: 2,
+                                    name: 'Vegetarian Sandwiches'
+                                }
+                            ]
+                        }
+                    })
+
+                expect(state.categories[1].videos).to.eql([1,2,3])
+                expect(state.categories[2].videos).to.eql([4,5,6])
+                expect(state.categories[1].name).to.equal('Porkchop Sandwiches')
+                expect(state.categories[1].id).to.equal(1)
+                expect(state.categories[2].name).to.equal('Vegetarian Sandwiches')
+                expect(state.categories[2].id).to.equal(2)
+            });
+        });
+
+        describe('RECEIVE_VIDEOS_FOR_CATEGORY', function() {
+            it('should update the specified category with the specified videos', function() {
+                const state = reducer(
+                    {
+                        categories: {
+                            1: { name: 'Bad Movies', id: 1, videos: [] },
+                            2: { name: 'Terrible Movies', id: 2, videos: [] }
+                        }
+                    },
+                    {
+                        type: 'RECEIVE_VIDEOS_FOR_CATEGORY',
+                        data: {
+                            categoryId: 2,
+                            videoIds: [7,34,8]
+                        }
+                    })
+
+                expect(state.categories[2].videos).to.eql([7,34,8])
+                expect(state.categories[1].videos).to.eql([])
+            });
+
+            it('should NOT update other properties', function() {
+                const state = reducer(
+                    {
+                        categories: {
+                            1: { name: 'Bad Movies', id: 1, videos: [] },
+                            2: { name: 'Terrible Movies', id: 2, videos: [] }
+                        }
+                    },
+                    {
+                        type: 'RECEIVE_VIDEOS_FOR_CATEGORY',
+                        data: {
+                            categoryId: 2,
+                            videoIds: [7,34,8]
+                        }
+                    })
+
+                expect(state.categories[2].id).to.equal(2)
+                expect(state.categories[2].name).to.equal('Terrible Movies')
+                expect(state.categories[1].name).to.eql('Bad Movies')
+                expect(state.categories[1].id).to.eql(1)
+            });
+
+            it('should play nicely with categories that do not yet exist in state', function() {
+                const state = reducer(
+                    {},
+                    {
+                        type: 'RECEIVE_VIDEOS_FOR_CATEGORY',
+                        data: {
+                            categoryId: 2,
+                            videoIds: [7,34,8]
+                        }
+                    })
+
+                expect(state.categories[2].videos).to.eql([7,34,8])
+            });
+        });
+    });
 });
 
