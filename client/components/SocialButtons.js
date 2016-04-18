@@ -3,7 +3,7 @@ import React from 'react';
 export default function SocialButtons(props) {
     const { className } = props;
     return (
-        <div className={`social-buttons ${className}`}>
+        <div className={`social-buttons ${className || ''}`}>
             <a href="#"><span className="icon icon-facebook" /></a>
             <a href="#"><span className="icon icon-twitter" /></a>
             <a href="#"><span className="icon icon-pinterest" /></a>
