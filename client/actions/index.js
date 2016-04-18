@@ -88,7 +88,7 @@ export function fetchHomeIfNeeded() {
 export function fetchVideoIfNeeded(videoId) {
     return function(dispatch, getState) {
         const hasLoadedVideoDetails = getState().pageVideo.similarContentByVideoId[videoId]
-        if (false && hasLoadedVideoDetails) {
+        if (hasLoadedVideoDetails) {
             const video = getState().videos[videoId]
             return Promise.resolve(video)
         } else {
