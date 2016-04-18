@@ -6,6 +6,19 @@ describe('Reducer', function() {
         expect(reducer({}, { type: 'BOGUS_ACTION' })).to.be.an('object')
     });
 
+    describe('pageVideo', function() {
+        it('should update the similarContentByVideoId for the given video', function() {
+            const state = reducer({}, {
+                type: 'RECEIVE_VIDEO_DETAILS',
+                data: {
+                    unique_key: 'ABC123'
+                }
+            })
+
+            expect(state.pageVideo.similarContentByVideoId['ABC123']).to.be.ok
+        });
+    });
+
     describe('app', function() {
         it('should allow setting the loading status to true', function() {
             expect(reducer({}, { type: 'SET_LOADING', isLoading: true }).app.isLoading).to.equal(true)
