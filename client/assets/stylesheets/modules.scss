@@ -91,7 +91,13 @@
         margin-bottom: 5px;
 
         h1 {
+            font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
+            margin-top: 0;
             font-size: 1.2em;
+
+            em {
+                font-size: 0.9em;
+            }
         }
     }
 

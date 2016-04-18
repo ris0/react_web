@@ -8,12 +8,7 @@ class VideosMain extends React.Component {
 
     static fetchData(dispatch, params, query) {
         const { videoId } = params
-        return Promise.all([
-            dispatch(fetchVideoIfNeeded(videoId)),
-            // TODO probably won't use fetchRelatedContent (in its current state) for this, commenting
-            // out for now...
-            //dispatch(fetchRelatedContent())
-        ])
+        return dispatch(fetchVideoIfNeeded(videoId))
     }
 
     constructor() {
@@ -43,6 +38,8 @@ class VideosMain extends React.Component {
             return null
         }
 
+        const similarContentTitle = <span>similar to <em>{video.title}</em></span>
+
         return (
             <section className="default-video-list video-page">
                 {/*
@@ -54,13 +51,11 @@ class VideosMain extends React.Component {
                     </div>
                     </div>
                 */}
-                { video ? <ContentDescription caption={video.caption} title={video.title} /> : null }
+                { <ContentDescription caption={video.caption} title={video.title} /> }
                 {
-                    relatedContent.length ?
-                        <div>
-                            <VideoGrid title="Sample Category" videos={relatedContent} hasMore={false} />
-                            <VideoGrid title="Some Title" videos={relatedContent} hasMore={false} />
-                        </div> : null
+                    video.similar && video.similar.length ?
+                        <VideoGrid title={similarContentTitle} videos={video.similar} hasMore={false} />
+                        : null
                 }
             </section>
         )

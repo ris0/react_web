@@ -37,10 +37,10 @@ export function receiveVideosForCategory(categoryId, videoIds) {
     }
 }
 
-export const RECEIVE_RELATED_CONTENT = 'RECEIVE_RELATED_CONTENT'
-export function receiveRelatedContent(data) {
+export const RECEIVE_VIDEO_DETAILS = 'RECEIVE_VIDEO_DETAILS'
+export function receiveVideoDetails(data) {
     return {
-        type: RECEIVE_RELATED_CONTENT,
+        type: RECEIVE_VIDEO_DETAILS,
         data
     }
 }
@@ -87,8 +87,10 @@ export function fetchHomeIfNeeded() {
 
 export function fetchVideoIfNeeded(videoId) {
     return function(dispatch, getState) {
-        const video = getState().videos[videoId]
-        if (video) {
+        const hasLoadedVideoDetails = getState().pageVideo[videoId]
+        if (hasLoadedVideoDetails) {
+            // TODO handle video not found
+            const video = getState().videos[videoId]
             return Promise.resolve(video)
         } else {
             dispatch(setLoading(true))
@@ -97,7 +99,10 @@ export function fetchVideoIfNeeded(videoId) {
                     dispatch(setLoading(false))
                     return handleResponse(response)
                 })
-                .then((result) => dispatch(receiveVideoData(result)))
+                .then((video) => {
+                    dispatch(receiveVideoData(video))
+                    dispatch(receiveVideoDetails(video))
+                })
         }
     }
 }
@@ -133,18 +138,6 @@ export function fetchCategoryContentIfNeeded(categoryId) {
         } else {
             return fetchCategoryContent(dispatch, categoryId)
         }
-    }
-}
-
-export function fetchRelatedContent() {
-    return function(dispatch, getState) {
-        dispatch(setLoading(true))
-        return getRandom()
-            .then((response) => {
-                dispatch(setLoading(false))
-                return handleResponse(response)
-            })
-            .then((result) => dispatch(receiveRelatedContent(result)))
     }
 }
 

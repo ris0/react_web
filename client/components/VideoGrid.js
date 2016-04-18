@@ -10,20 +10,12 @@ class VideoGrid extends React.Component {
     render() {
         const { title, hasMore, videos } = this.props
 
-        function take(n, coll) {
-            let results = [];
-            for (let i = 0; i < n; i++) {
-                results.push(coll[i])
-            }
-            return results
-        } 
-
         return (
             <section className="video-list">
                 {
                     title ?
                         <div className="video-list-title">
-                            <h1>{title}&nbsp;</h1>
+                            <h1>{title}</h1>
                             {/*
                                 <a><i>See All</i></a>
                             */}
@@ -31,7 +23,7 @@ class VideoGrid extends React.Component {
                 }
                 <div className="video-list-items">
                     {
-                        take(8, videos).map((video, i) => <VideoThumbnail video={video} key={i} />)
+                        videos.map((video, i) => <VideoThumbnail video={video} key={i} />)
                     }
                 </div>
                 {
@@ -43,6 +35,14 @@ class VideoGrid extends React.Component {
             </section>
         )
     }
+}
+
+VideoGrid.propType = {
+    videos: React.PropTypes.array
+}
+
+VideoGrid.defaultProps = {
+    videos: []
 }
 
 export default VideoGrid

@@ -3,7 +3,7 @@ import {
     TOGGLE_DROPDOWN_NAV,
     RECEIVE_CONFIG_DATA,
     RECEIVE_HOMEPAGE_DATA,
-    RECEIVE_RELATED_CONTENT,
+    RECEIVE_VIDEO_DETAILS,
     RECEIVE_VIDEO_DATA,
     RECEIVE_VIDEOS_FOR_CATEGORY,
     SET_CURRENT_VIDEO_STATUS,
@@ -57,9 +57,9 @@ function pageHome(state = {}, action) {
 
 function pageVideo(state = {}, action) {
     switch (action.type) {
-        case RECEIVE_RELATED_CONTENT:
+        case RECEIVE_VIDEO_DETAILS:
             return Object.assign({}, state, {
-                relatedContent: action.data
+                [action.data.unique_key]: true
             })
     }
     return state
