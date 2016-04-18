@@ -3,6 +3,7 @@
 @import 'modules/video-list-item';
 @import 'modules/content-description';
 @import 'modules/tags';
+@import 'modules/social-buttons';
 
 .nav {
     @include display(flex);
@@ -21,34 +22,6 @@
             color: white;
             text-transform: uppercase;
         }
-    }
-}
-
-.social-sidebar {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    background: white;
-
-    a {
-        border: 1px solid black;
-        padding: 10px;
-        color: black;
-    }
-
-    .social-buttons {
-        @include flex-direction(column);
-    }
-}
-
-.social-buttons {
-    @include display(flex);
-    @include flex-basis(200px);
-    @include justify-content(space-around);
-
-    .icon {
-        font-size: 30px;
     }
 }
 
