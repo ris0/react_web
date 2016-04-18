@@ -21,9 +21,7 @@ const routes = (
         <Route path="home" components={HomeRoutes} />
         <Route path="about" components={{ main: Placeholder }} />
         <Route path="categories/:categoryName/:categoryId" getComponents={getCategories} />
-        <Route path="videos/:videoId" getComponent={getVideos}>
-            <IndexRoute component={Placeholder} />
-        </Route>
+        <Route path="videos/:videoId" getComponent={getVideos} onEnter={() => window.scrollTo(0, 0)} />
     </Route>
 )
 
