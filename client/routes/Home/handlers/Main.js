@@ -24,29 +24,30 @@ class HomeMain extends React.Component {
     }
 
     render() {
-        const { featuredVideos, recentVideos } = this.props
-
-        if (!recentVideos.length) {
-            // TODO loading spinner instead
-            return <div>Loading...</div>
-        }
+        const { recentVideos } = this.props
 
         const [
             videoSectionOne = [],
             videoSectionTwo = [],
-            ...videoSectionThree
+            ...rest
         ] = partitionN(5, recentVideos)
+
+        const videoSectionThree = flatten(rest)
 
         return (
             <section className="home-page">
                 <div className="section video-list">
                     <VideoSectionPrimary videos={videoSectionOne}/>
                     <VideoSectionPrimary videos={videoSectionTwo}/>
-                    <div className="video-list-items">
-                        {
-                            flatten(videoSectionThree).map((video, i) => <VideoThumbnail video={video} key={i} />)
-                        }
-                    </div>
+                    {
+                        videoSectionThree.length ?
+                            <div className="video-list-items">
+                                {
+                                    videoSectionThree.map((video, i) => <VideoThumbnail video={video} key={i} />)
+                                }
+                            </div>
+                            : null
+                    }
                 </div>
             </section>
         )
@@ -60,7 +61,6 @@ function dereferenceVideos(state, name) {
 function mapStateToProps(state, ownProps) {
     const [_, ...recentVideos] = dereferenceVideos(state, 'recentVideos')
     return {
-        featuredVideos: dereferenceVideos(state, 'featuredVideos'),
         recentVideos
     }
 }

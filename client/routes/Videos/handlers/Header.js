@@ -1,6 +1,15 @@
 import React from 'react'
 import VideoHeader from '../../../components/VideoHeader'
+import SocialButtons from '../../../components/SocialButtons'
 import { connect } from 'react-redux'
+
+function SocialSidebar(props) {
+    return (
+        <div className="social-sidebar">
+            <SocialButtons />
+        </div>
+    )
+}
 
 class VideosHeader extends React.Component {
     constructor() {
@@ -13,16 +22,19 @@ class VideosHeader extends React.Component {
             return null
         }
 
-        return <VideoHeader video={video}/>
+        return (
+            <VideoHeader video={video}>
+                <SocialSidebar />
+            </VideoHeader>
+        )
     }
 }
 
 function mapStateToProps(state, ownProps) {
     const videos = state.videos || {}
-    // TODO synchronize this with Video Main somehow
 
     return {
-        video: ownProps.params.videoId ? videos[ownProps.params.videoId] : null,
+        video: videos[ownProps.params.videoId]
     }
 }
 
