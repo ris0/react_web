@@ -31,7 +31,6 @@
     padding-bottom: 40px;
 
     h1 {
-        font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
         text-align: center;
         padding: 30px;
     }
@@ -71,6 +70,12 @@
     }
 }
 
+@media (max-width: 900px) {
+    .video-header {
+        padding-bottom: 0;
+    }
+}
+
 .video-list {
     @include display(flex);
     @include flex-direction(column);
@@ -86,7 +91,6 @@
         margin-bottom: 5px;
 
         h1 {
-            font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
             margin: 0 20px 0 20px;
             font-size: 1.2em;
 
@@ -277,7 +281,7 @@
 }
 
 @media(max-width: 800px) {
-    .l-header-main {
+    .nav {
         .social-buttons {
             display: none;
         }
@@ -301,13 +305,12 @@
     padding-bottom: 30px;
 
     h1 {
-        font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
         margin-top: 0;
     }
 
     a {
         font-size: 0.8em;
-        font-family: 'PierBold', 'Open Sans', Arial, sans-serif;
+        font-family: $font-title;
     }
 
     p {
