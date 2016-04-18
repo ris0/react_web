@@ -58,9 +58,11 @@ function pageHome(state = {}, action) {
 function pageVideo(state = {}, action) {
     switch (action.type) {
         case RECEIVE_VIDEO_DETAILS:
-            return Object.assign({}, state, {
+            const similarContentByVideoId = Object.assign({}, state.similarContentByVideoId, {
                 [action.data.unique_key]: true
             })
+
+            return Object.assign({}, state, { similarContentByVideoId })
     }
     return state
 }

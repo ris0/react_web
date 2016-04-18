@@ -87,9 +87,8 @@ export function fetchHomeIfNeeded() {
 
 export function fetchVideoIfNeeded(videoId) {
     return function(dispatch, getState) {
-        const hasLoadedVideoDetails = getState().pageVideo[videoId]
+        const hasLoadedVideoDetails = getState().pageVideo.similarContentByVideoId[videoId]
         if (hasLoadedVideoDetails) {
-            // TODO handle video not found
             const video = getState().videos[videoId]
             return Promise.resolve(video)
         } else {

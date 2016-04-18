@@ -21,6 +21,6 @@ export default {
         loaded: false
     },
     pageVideo: {
-        relatedContent: []
+        similarContentByVideoId: []
     }
 }

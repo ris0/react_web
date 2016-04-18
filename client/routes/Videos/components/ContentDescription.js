@@ -16,11 +16,7 @@ class ContentDescription extends React.Component {
         return (
             <div className="content-description">
                 <div className="content-title">
-                    <p>category / collection</p>
                     <h1>{title}</h1>
-                    {/*
-                    <Tags items={['health', 'yoga', 'sport', 'body', 'collection', 'workout']}/>
-                    */}
                 </div>
                 <div className="content-body">
                     <p dangerouslySetInnerHTML={this.setHTMLBody(caption)} />
