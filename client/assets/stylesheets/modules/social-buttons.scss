@@ -4,7 +4,7 @@
     @include justify-content(space-around);
 
     .icon {
-        font-size: 30px;
+        font-size: 40px;
     }
 }
 
@@ -14,11 +14,17 @@
     left: 0;
     transform: translateY(-50%);
     background: white;
+    z-index: 1;
 
     a {
         border: 1px solid black;
+        border-bottom: none;
         padding: 10px;
         color: black;
+
+        &:last-child {
+            border-bottom: 1px solid black;
+        }
     }
 
     .social-buttons {
@@ -26,3 +32,17 @@
     }
 }
 
+@media (max-width: 900px) {
+    .social-sidebar {
+        position: inherit;
+        transform: none;
+
+        .social-buttons {
+            @include flex-direction(row);
+
+            a {
+                border: none;
+            }
+        }
+    }
+}
