@@ -4,6 +4,7 @@
 @import 'modules/content-description';
 @import 'modules/tags';
 @import 'modules/social-buttons';
+@import 'modules/errors';
 
 .nav {
     @include display(flex);

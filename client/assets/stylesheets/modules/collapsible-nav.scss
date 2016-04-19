@@ -1,7 +1,6 @@
 .collapsible-nav {
     position: fixed;
     z-index: 997;
-    width: 300px;
     height: 100%;
     left: 0;
     top: $header-height;
@@ -11,13 +10,10 @@
     @include display(flex);
     @include flex-direction(column);
 
-    div {
-        padding: 10px 7% 10px 7%;
-    }
-
     .link {
         border-bottom: 1px solid lightgray;
         font-size: 0.9em;
+        padding: 10px 7% 10px 7%;
     }
 
     a {
@@ -32,8 +28,15 @@
         font-size: 20px;
     }
 
-    .social-buttons .icon {
-        font-size: 40px;
+    .social-buttons  {
+        @include flex-wrap(wrap);
+        a {
+            @include flex-basis(33.333%);
+        }
+
+        .icon {
+            font-size: 40px;
+        }
     }
 }
 

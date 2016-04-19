@@ -1,7 +1,11 @@
 .social-buttons {
     @include display(flex);
-    @include flex-basis(200px);
+    @include flex-basis(40px);
     @include justify-content(space-around);
+
+    a {
+        text-align: center;
+    }
 
     .icon {
         font-size: 40px;

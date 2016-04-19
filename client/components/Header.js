@@ -44,7 +44,7 @@ class Header extends React.Component {
                     <header className="header-main">
                         <h1 className="header-link">
                             <a onClick={this.toggleDropdownNav.bind(this)}>
-                                <span className={`icon ${showDropdownNav ? 'icon-hamburger' : 'icon-hamburger'}`}/>
+                                <span className="icon icon-hamburger" />
                             </a>
                         </h1>
                         <h1 className="header-link">
