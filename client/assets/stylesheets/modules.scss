@@ -209,6 +209,17 @@
 }
 
 ///////////////
+// HOME PAGE
+///////////////
+.home-page.home-page-main {
+    @include video-list-item(100%);
+    .video-list-item {
+        margin: $header-height auto 0;
+        max-width: 1400px;
+    }
+}
+
+///////////////
 // CATEGORY PAGE
 ///////////////
 .category-page { }

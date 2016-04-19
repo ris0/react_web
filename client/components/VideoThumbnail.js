@@ -11,7 +11,7 @@ class VideoThumbnail extends React.Component {
     }
 
     render() {
-        const { video, showCaption } = this.props
+        const { video, showTitle, showCaption } = this.props
 
         return (
             <section className="video-list-item">
@@ -20,10 +20,7 @@ class VideoThumbnail extends React.Component {
                         <img src={video.cover_resource} alt={video.title} />
                     </div>
                     <div className="content-description">
-                        {/* TODO what is this?
-                            <h1>CATEGORY / COLLECTION</h1>
-                        */}
-                        <h1>{video.title}</h1>
+                        { showTitle ? <h1>{video.title}</h1> : null }
                         { showCaption ? <p>{this.clipCaption(video.caption)}</p> : null }
                     </div>
                 </Link>
@@ -31,4 +28,15 @@ class VideoThumbnail extends React.Component {
         )
     }
 }
+
+VideoThumbnail.propTypes = {
+    showTitle: React.PropTypes.bool,
+    showCaption: React.PropTypes.bool
+}
+
+VideoThumbnail.defaultProps = {
+    showTitle: true,
+    showCaption: false
+}
+
 export default VideoThumbnail

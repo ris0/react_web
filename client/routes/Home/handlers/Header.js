@@ -1,5 +1,5 @@
 import React from 'react'
-import VideoHeader from '../../../components/VideoHeader'
+import VideoThumbnail from '../../../components/VideoThumbnail'
 import { setCurrentVideoStatus } from '../../../actions'
 import { connect } from 'react-redux'
 
@@ -10,12 +10,16 @@ class HomeHeader extends React.Component {
     }
 
     render() {
-        const { video, currentVideoStatus, setCurrentVideoStatus } = this.props
+        const { video } = this.props
         if (!video) {
             return null
         }
 
-        return <VideoHeader currentVideoStatus={currentVideoStatus} setCurrentVideoStatus={setCurrentVideoStatus} video={video}/>
+        return (
+            <div className="home-page home-page-main">
+                <VideoThumbnail video={video} showTitle={false} />
+            </div>
+        )
     }
 }
 
@@ -25,8 +29,7 @@ function mapStateToProps(state, ownProps) {
     const [featuredVideo] = state.pageHome.recentVideos
 
     return {
-        video: state.videos[featuredVideo],
-        currentVideoStatus: state.currentVideoData
+        video: state.videos[featuredVideo]
     }
 }
 
