@@ -21,10 +21,8 @@ const app = express()
 
 // TODO set HOST, PORT, etc. in config...
 app.set('env', process.env.NODE_ENV || 'development')
-//app.set('host', config.HOST)
-//app.set('port', config.SERVER_PORT)
-app.set('host', 'localhost')
-app.set('port', 3000)
+app.set('host', process.env.HOST || 'localhost')
+app.set('port', process.env.PORT || '3000')
 app.set('views', path.join(process.env.PWD, 'views'))
 app.set('view engine', 'jade')
 
