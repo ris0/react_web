@@ -7,7 +7,12 @@ class VideoThumbnail extends React.Component {
     }
 
     clipCaption(caption = '') {
-        return `${caption.slice(0, 140)}...`
+        // clip text to X length characters, ensuring that
+        // words are not cut in half
+        const words = caption.slice(0, 160).split(' ')
+        const clippedCaption = words.slice(0, words.length - 1).join(' ')
+
+        return `${clippedCaption}...`
     }
 
     render() {
