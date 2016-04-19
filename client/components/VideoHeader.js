@@ -19,10 +19,10 @@ class VideoHeader extends React.Component {
     }
 
     render() {
-        const { title, video, children } = this.props
+        const { title, video, children, className } = this.props
 
         return (
-            <div className="video-header">
+            <div className={`video-header ${className}`}>
                 { title ? <h1>{title}</h1> : null }
                 <div className="video-main">
                     { this.state.isLoaded && video ? <FlowPlayer video={video} /> : null }
@@ -35,12 +35,14 @@ class VideoHeader extends React.Component {
 
 VideoHeader.propTypes = {
     title: React.PropTypes.string,
-    video: React.PropTypes.object
+    video: React.PropTypes.object,
+    className: React.PropTypes.string
 }
 
 VideoHeader.defaultProps = {
     title: null,
-    video: null
+    video: null,
+    className: ''
 }
 
 export default VideoHeader

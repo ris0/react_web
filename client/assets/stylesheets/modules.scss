@@ -28,7 +28,6 @@
 .video-header {
     background: white;
     position: relative;
-    padding-bottom: 40px;
 
     h1 {
         text-align: center;
@@ -39,7 +38,6 @@
         max-width: 1400px;
         margin: 0 auto;
         cursor: pointer;
-        padding: 0;
 
         .video-image {
             min-width: 0;
@@ -82,6 +80,8 @@
     padding-top: 20px;
     padding-bottom: 20px;
     background: white;
+    max-width: 1400px;
+    margin: 0 auto;
 
     .video-list-title {
         @include display(flex);
@@ -214,7 +214,19 @@
 ///////////////
 // VIDEO PAGE
 ///////////////
-.video-page { }
+.video-page {
+    .video-main {
+        padding: 0 65px 0 65px;
+    }
+}
+
+@media (max-width: 900px) {
+    .video-page {
+        .video-main {
+            padding: 0;
+        }
+    }
+}
 
 ///////////////////////
 // DEFAULT VIDEO LIST

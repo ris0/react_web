@@ -7,7 +7,7 @@ class VideoThumbnail extends React.Component {
     }
 
     clipCaption(caption = '') {
-        return `${caption.slice(0, 240)}...`
+        return `${caption.slice(0, 140)}...`
     }
 
     render() {

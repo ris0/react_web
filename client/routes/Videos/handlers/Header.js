@@ -23,7 +23,7 @@ class VideosHeader extends React.Component {
         }
 
         return (
-            <VideoHeader video={video}>
+            <VideoHeader video={video} className="video-page">
                 <SocialSidebar />
             </VideoHeader>
         )

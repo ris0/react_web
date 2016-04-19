@@ -1,8 +1,10 @@
 .content-description {
     $content-padding: 1%;
-    padding: 20px 2% 20px 2%;
+    padding: 20px 65px 20px 65px;
     @include display(flex);
     background: white;
+    max-width: 1400px;
+    margin: 0 auto;
 
     h1 {
         font-size: 1.1em;
@@ -11,7 +13,6 @@
 
     .content-title {
         @include flex-basis(30%);
-        padding-left: $content-padding;
         padding-right: $content-padding;
 
         p {
@@ -23,7 +24,6 @@
 
     .content-body {
         padding-left: $content-padding;
-        padding-right: $content-padding;
         @include flex-basis(70%);
         @include flex-grow(1);
         line-height: 1.5em;

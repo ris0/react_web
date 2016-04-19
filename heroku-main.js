@@ -7,7 +7,7 @@ pm2.connect(function() {
     pm2.start({
         script: 'index.js',
         name: 'knowsy-staging',
-        exec_mode: 'cluser',
+        exec_mode: 'cluster',
         instances: instances,
         max_memory_restart: maxMemory + 'M',
         env: {
