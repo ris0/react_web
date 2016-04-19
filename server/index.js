@@ -19,6 +19,10 @@ process.env.PWD = path.join(process.cwd(), 'server')
 const store = configureStore(initialState)
 const app = express()
 
+// TODO set HOST, PORT, etc. in config...
+app.set('env', process.env.NODE_ENV || 'development')
+app.set('host', process.env.HOST || 'localhost')
+app.set('port', process.env.PORT || '3000')
 app.set('views', path.join(process.env.PWD, 'views'))
 app.set('view engine', 'jade')
 
@@ -71,4 +75,4 @@ app.get('/*', (req, res) => {
     })
 })
 
-module.exports = (cb) => app.listen(config.SERVER_PORT, cb)
+module.exports = (cb) => app.listen(app.get('port'), cb)
