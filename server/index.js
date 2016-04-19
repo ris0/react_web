@@ -11,6 +11,7 @@ import routes from '../client/routes'
 import configureStore from '../client/configureStore'
 import initialState from '../client/initialState'
 import resolver from './resolver'
+import selectErrorMessage from './selectErrorMessage'
 import URL from 'url'
 import config from 'config'
 import logger from './utils/logger'
@@ -38,6 +39,10 @@ app.use(/^\/api(.+)/, proxy(config.API_ROOT, {
     }
 }))
 
+app.get('/error/:errorCode', (req, res) => {
+    res.render('error', selectErrorMessage(req.params.errorCode, req.query.redirectFrom))
+})
+
 app.get('/*', (req, res) => {
     match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
         if (err) {
@@ -61,16 +66,16 @@ app.get('/*', (req, res) => {
                         })
                     } catch(err) {
                         logger.error(`Attempted to render ${req.url}`, err)
-                        res.status(500).send(err.message)
+                        res.render('error', selectErrorMessage(500, req.url))
                     }
-                }) // TODO render custom 404 page or 500 page
+                })
                 .catch((err) => {
                     logger.warn(`Attempted to fetch data for ${req.url}`, err)
-                    res.status(err.status || 500).send(err.message)
+                    res.render('error', selectErrorMessage(err.status || 500, req.url))
                 })
         } else {
             logger.warn(`${req.url} Not Found`)
-            res.status(404).send('Not Found')
+            res.render('error', selectErrorMessage(404, req.url))
         }
     })
 })
