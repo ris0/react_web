@@ -29,12 +29,12 @@ describe('Reducer', function() {
         });
 
         it('should allow toggling the dropdown navigation', function() {
-            const stateA = reducer({}, { type: 'TOGGLE_DROPDOWN_NAV' })
-            expect(stateA.app.showDropdownNav).to.equal(true)
-            const stateB = reducer(stateA, { type: 'TOGGLE_DROPDOWN_NAV' })
-            expect(stateB.app.showDropdownNav).to.equal(false)
-            const stateC = reducer(stateB, { type: 'TOGGLE_DROPDOWN_NAV' })
-            expect(stateC.app.showDropdownNav).to.equal(true)
+            const stateA = reducer({}, { type: 'TOGGLE_MAIN_NAV' })
+            expect(stateA.app.showMainNav).to.equal(true)
+            const stateB = reducer(stateA, { type: 'TOGGLE_MAIN_NAV' })
+            expect(stateB.app.showMainNav).to.equal(false)
+            const stateC = reducer(stateB, { type: 'TOGGLE_MAIN_NAV' })
+            expect(stateC.app.showMainNav).to.equal(true)
         });
     });
 

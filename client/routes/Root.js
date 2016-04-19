@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SocialButtons from '../components/SocialButtons';
-import { fetchConfigData, toggleDropdownNav } from '../actions'
+import { fetchConfigData, toggleMainNav } from '../actions'
 
 class Root extends React.Component {
     static fetchData(dispatch) {
@@ -30,8 +30,8 @@ class Root extends React.Component {
             header,
             categories,
             navLinks,
-            toggleDropdownNav,
-            showDropdownNav
+            toggleMainNav,
+            showMainNav
         } = this.props;
 
         return (
@@ -39,8 +39,8 @@ class Root extends React.Component {
                 <Header
                     categories={categories}
                     navLinks={navLinks}
-                    onToggleDropdownNav={toggleDropdownNav}
-                    showDropdownNav={showDropdownNav}>
+                    onToggleMainNav={toggleMainNav}
+                    showMainNav={showMainNav}>
                     {header}
                 </Header>
                 <div className="l-main">{main}</div>
@@ -55,12 +55,12 @@ function mapStateToProps(state, ownProps) {
     return {
         categories,
         navLinks: app.navLinks,
-        showDropdownNav: app.showDropdownNav
+        showMainNav: app.showMainNav
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return Object.assign({ dispatch }, bindActionCreators({ toggleDropdownNav }, dispatch))
+    return Object.assign({ dispatch }, bindActionCreators({ toggleMainNav }, dispatch))
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Root);

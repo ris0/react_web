@@ -1,4 +1,4 @@
-.collapsible-nav {
+.main-nav {
     position: fixed;
     z-index: 997;
     height: 100%;
@@ -41,7 +41,7 @@
 @media(max-width: 1200px) { }
 
 @media(max-width: 800px) {
-    .collapsible-nav {
+    .main-nav {
         position: fixed;
         top: $header-height;
         right: 0;

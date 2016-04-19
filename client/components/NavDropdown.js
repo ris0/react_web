@@ -1,4 +1,5 @@
 import React from 'react'
+import { findDOMNode } from 'react-dom'
 import { Link } from 'react-router'
 
 class NavDropdown extends React.Component {
@@ -6,11 +7,26 @@ class NavDropdown extends React.Component {
         super()
     }
 
+    // TODO Genericise this componentDidMount/componentWillUnmount behavior into a higher
+    // level component, same in components/Header.js
+    componentDidMount() {
+        this.clickListener = document.addEventListener('click', (e) => { 
+            const node = findDOMNode(this.refs.containerElement)
+            if (this.props.showDropdown && node && !node.contains(e.target)) {
+                this.props.onToggle()
+            }
+        })
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.clickListener)
+    }
+
     render() {
-        const { className, children, items = [], onToggle, showDropdown } = this.props
+        const { className, children, items, onToggle, showDropdown } = this.props
 
         return (
-            <div className={`nav-dropdown ${className}`}>
+            <div className={`nav-dropdown ${className}`} ref="containerElement">
                 <a className="nav-dropdown-trigger" onClick={onToggle}>{children}</a>
                 {
                     showDropdown ?
@@ -24,7 +40,9 @@ class NavDropdown extends React.Component {
 }
 
 NavDropdown.defaultProps = {
-    className: ''
+    className: '',
+    items: []
 }
 
 export default NavDropdown
+

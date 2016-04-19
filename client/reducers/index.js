@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import {
-    TOGGLE_DROPDOWN_NAV,
+    TOGGLE_MAIN_NAV,
     RECEIVE_CONFIG_DATA,
     RECEIVE_HOMEPAGE_DATA,
     RECEIVE_VIDEO_DETAILS,
@@ -85,8 +85,8 @@ function app(state = {}, action) {
     switch (action.type) {
         case SET_LOADING:
             return Object.assign({}, state, { isLoading: action.isLoading })
-        case TOGGLE_DROPDOWN_NAV:
-            return Object.assign({}, state, { showDropdownNav: !state.showDropdownNav })
+        case TOGGLE_MAIN_NAV:
+            return Object.assign({}, state, { showMainNav: !state.showMainNav })
     }
     return state
 }

@@ -10,7 +10,7 @@ export default {
             'advertise',
             'contact'
         ],
-        showDropdownNav: false,
+        showMainNav: false,
         categories: {},
         currentVideoStatus: null,
     },

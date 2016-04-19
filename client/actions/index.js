@@ -1,8 +1,8 @@
 import { handleResponse, getConfigData, getRandom, getCategoriesFeed, getVideo, getHomepageFeed } from '../utils'
 
-export const TOGGLE_DROPDOWN_NAV = 'TOGGLE_DROPDOWN_NAV'
-export function toggleDropdownNav() {
-    return { type: TOGGLE_DROPDOWN_NAV }
+export const TOGGLE_MAIN_NAV = 'TOGGLE_MAIN_NAV'
+export function toggleMainNav() {
+    return { type: TOGGLE_MAIN_NAV }
 }
 
 export const RECEIVE_CONFIG_DATA = 'RECEIVE_CONFIG_DATA'
