@@ -18,9 +18,8 @@
         margin-top: 5px;
 
         a {
-            text-transform: uppercase;
             padding: 6px 0 6px 0;
-            font-size: 0.9em;
+            @include nav-link;
 
             &:first-child {
                 padding-top: 0;

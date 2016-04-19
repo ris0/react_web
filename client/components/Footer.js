@@ -15,8 +15,8 @@ export default function Footer(props) {
                 </div>
                 <address>
                     <p>knowsy@knowsy.com</p>
-                    <p>+1 (202) 889 8989</p>
-                    <p>+1 (202) 889 7878</p>
+                    <p>+1 (555) 555 5555</p>
+                    <p>+1 (555) 555 5555</p>
                 </address>
             </div>
         </footer>

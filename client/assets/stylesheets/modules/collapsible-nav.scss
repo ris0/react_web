@@ -12,13 +12,11 @@
 
     .link {
         border-bottom: 1px solid lightgray;
-        font-size: 0.9em;
+        @include nav-link;
         padding: 10px 7% 10px 7%;
-        font-family: $font-title;
     }
 
     a {
-        text-transform: uppercase;
         color: black;
         cursor: pointer;
     }
