@@ -39,9 +39,9 @@ app.use(/^\/api(.+)/, proxy(config.API_ROOT, {
     }
 }))
 
-//app.get('/error/:errorCode', (req, res) => {
-//    res.render('error', selectErrorMessage(req.params.errorCode, req.query.redirectFrom))
-//})
+app.get('/error/:errorCode', (req, res) => {
+    res.render('error', selectErrorMessage(req.params.errorCode, req.query.redirectFrom))
+})
 
 app.get('/*', (req, res) => {
     match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {

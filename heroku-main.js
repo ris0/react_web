@@ -11,8 +11,7 @@ pm2.connect(function() {
         instances: instances,
         max_memory_restart: maxMemory + 'M',
         env: {
-            'NODE_ENV': 'production',
-            'PORT': 3000
+            'NODE_ENV': 'production'
         }
     }, function(err) {
         if (err) {
