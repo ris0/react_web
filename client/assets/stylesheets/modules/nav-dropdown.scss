@@ -8,8 +8,8 @@
 
     .nav-dropdown-menu {
         text-align: left;
-        display: flex;
-        flex-direction: column;
+        @include display(flex);
+        @include flex-direction(column);
         border: 1px solid lightgray;
         padding: 10px;
         position: absolute;
