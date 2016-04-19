@@ -26,6 +26,7 @@
 }
 
 .video-header {
+    margin-top: $header-height;
     background: white;
     position: relative;
 
@@ -277,19 +278,25 @@
     }
 }
 // COMPONENTS
-.header-topbar {
-    .header-link {
-        margin: 0 10px 0 0;
-        text-transform: uppercase;
+.header-main {
+    height: $header-height;
+    box-sizing: border-box;
+    .nav-dropdown {
+        @include align-self(flex-end);
     }
 
-    .header-link.header-link-right {
-        margin-right: 0;
+    .icon.icon-hamburger {
+        color: black;
+        font-size: 31px;
+    }
+
+    h1 {
+        margin-right: 10px;
     }
 }
 
 @media(max-width: 1200px) {
-    .header-topbar { }
+    .header-main { }
 }
 
 @media(max-width: 800px) {
@@ -299,7 +306,12 @@
         }
     }
 
-    .header-topbar {
+    .header-main {
+
+        .icon.icon-hamburger {
+            font-size: 22px;
+        }
+
         .header-link-right {
             @include flex-basis(100%);
             @include flex-grow(1);
@@ -309,7 +321,7 @@
 }
 
 @media(max-width: 500px) {
-    .header-topbar {
+    .header-main {
     }
 }
 

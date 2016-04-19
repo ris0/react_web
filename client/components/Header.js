@@ -6,12 +6,7 @@ import { Link } from 'react-router'
 function CollapsibleNav(props) {
     const { onClick, navLinks } = props
     return (
-        <div className="header-topbar collapsible-nav">
-            <header>
-                <a onClick={onClick}>
-                    <h1><span className="icon icon-cross" /></h1>
-                </a>
-            </header>
+        <div className="collapsible-nav">
             {navLinks.map((link) => <div className="link" key={link}><a>{link}</a></div>)}
             <SocialButtons />
         </div>
@@ -46,32 +41,26 @@ class Header extends React.Component {
                         null
                 }
                 <div className="l-header-main">
-                    <div className="header-topbar">
-                        <header>
-                            {
-                                !showDropdownNav ?
-                                    <h1 className="header-link">
-                                        <a onClick={this.toggleDropdownNav.bind(this)}>
-                                            <span className="icon icon-menu" />
-                                        </a>
-                                    </h1>
-                                    : null
-                            }
-                            <h1 className="header-link">
-                                <Link to="/">Knowsy</Link>
-                            </h1>
-                            <NavDropdown
-                                className="header-link header-link-right"
-                                items={categories}
-                                onToggle={this.toggleCategoryDropdown.bind(this)}
-                                showDropdown={showCategoryDropdown}>
-                                <h2>categories</h2>
-                            </NavDropdown>
-                            <div className="nav">
-                                <SocialButtons />
-                            </div>
-                        </header>
-                    </div>
+                    <header className="header-main">
+                        <h1 className="header-link">
+                            <a onClick={this.toggleDropdownNav.bind(this)}>
+                                <span className={`icon ${showDropdownNav ? 'icon-hamburger' : 'icon-hamburger'}`}/>
+                            </a>
+                        </h1>
+                        <h1 className="header-link">
+                            <Link to="/"><img src="/logo.png" alt="Knowsy" /></Link>
+                        </h1>
+                        <NavDropdown
+                            className="header-link header-link-right"
+                            items={categories}
+                            onToggle={this.toggleCategoryDropdown.bind(this)}
+                            showDropdown={showCategoryDropdown}>
+                            <h2>categories</h2>
+                        </NavDropdown>
+                        <div className="nav header-link">
+                            <SocialButtons />
+                        </div>
+                    </header>
                     {children}
                 </div>
             </div>

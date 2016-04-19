@@ -1,19 +1,10 @@
 @font-face {
-    font-family: 'PierBold';
-    src: url('/fonts/pier-bold.otf');
-}
-
-@font-face {
-    font-family: 'CenturySchoolbook';
-    src: url('/fonts/century-schoolbook.otf');
-}
-@font-face {
     font-family: 'icomoon';
-    src:    url('/fonts/icomoon.eot?6fo61i');
-    src:    url('/fonts/icomoon.eot?6fo61i#iefix') format('embedded-opentype'),
-            url('/fonts/icomoon.ttf?6fo61i') format('truetype'),
-            url('/fonts/icomoon.woff?6fo61i') format('woff'),
-            url('/fonts/icomoon.svg?6fo61i#icomoon') format('svg');
+    src:    url('/fonts/icomoon.eot?dso8sq');
+    src:    url('/fonts/icomoon.eot?dso8sq#iefix') format('embedded-opentype'),
+            url('/fonts/icomoon.ttf?dso8sq') format('truetype'),
+            url('/fonts/icomoon.woff?dso8sq') format('woff'),
+            url('/fonts/icomoon.svg?dso8sq#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -33,6 +24,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-hamburger:before {
+    content: "\e904";
+}
 .icon-facebook:before {
     content: "\e900";
 }
@@ -56,9 +50,6 @@
 }
 .icon-youtube:before {
     content: "\e908";
-}
-.icon-menu:before {
-    content: "\e904";
 }
 .icon-cross:before {
     content: "\e909";
