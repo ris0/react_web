@@ -1,5 +1,5 @@
 require('babel-register')
-
+const config = require('config')
 const server = require('./server/index')
 
 if (process.env.NODE_ENV === 'development') {
@@ -7,5 +7,5 @@ if (process.env.NODE_ENV === 'development') {
     // pass webpack dev server fn as callback
     server(require('./webpack/server'))
 } else {
-    server(() => console.log('Starting server...'))
+    server(() => console.log(`Starting server on port: ${config.SERVER_PORT}`))
 }
