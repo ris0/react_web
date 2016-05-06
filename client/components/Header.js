@@ -62,14 +62,14 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-    categories: React.PropTypes.array,
+    categories: React.PropTypes.object,
     navLinks: React.PropTypes.array,
     showMainNav: React.PropTypes.bool,
     onToggleMainNav: React.PropTypes.func
 }
 
 Header.defaultProps = {
-    categories: [],
+    categories: {},
     navLinks: [],
     showMainNav: false,
     onToggleMainNav: () => {}

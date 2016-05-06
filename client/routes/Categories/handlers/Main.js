@@ -3,7 +3,7 @@ import VideoThumbnail from '../../../components/VideoThumbnail'
 import { fetchCategoryContentIfNeeded } from '../../../actions'
 import { connect } from 'react-redux'
 
-class CategoriesMain extends React.Component {
+export class CategoriesMain extends React.Component {
     static fetchData(dispatch, params) {
         const { categoryId } = params
         return dispatch(fetchCategoryContentIfNeeded(Number(categoryId)))

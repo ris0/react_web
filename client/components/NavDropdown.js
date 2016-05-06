@@ -31,7 +31,13 @@ class NavDropdown extends React.Component {
                 {
                     showDropdown ?
                         <div className="nav-dropdown-menu">
-                            { Object.values(items).map((item) => <Link key={item.id} to={`/categories/${item.name}/${item.id}`} onClick={onToggle} key={item.name}>{item.name}</Link>) }
+                            { 
+                                Object.values(items).map((item) =>
+                                    <Link
+                                        key={item.id}
+                                        to={`/categories/${item.name}/${item.id}`}
+                                        onClick={onToggle}>{item.name}</Link>)
+                            }
                         </div> : null
                 }
             </div>
@@ -41,14 +47,14 @@ class NavDropdown extends React.Component {
 
 NavDropdown.propTypes = {
     className: React.PropTypes.string,
-    items: React.PropTypes.array,
+    items: React.PropTypes.object,
     onToggle: React.PropTypes.func,
     showDropdown: React.PropTypes.bool
 }
 
 NavDropdown.defaultProps = {
     className: '',
-    items: [],
+    items: {},
     onToggle: () => {},
     showDropdown: false
 }

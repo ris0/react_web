@@ -2,7 +2,7 @@ import React from 'react'
 import VideoHeader from '../../../components/VideoHeader'
 import { connect } from 'react-redux'
 
-class CategoriesHeader extends React.Component {
+export class CategoriesHeader extends React.Component {
     constructor() {
         super()
     }

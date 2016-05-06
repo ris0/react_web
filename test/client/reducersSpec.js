@@ -1,4 +1,4 @@
-import { expect } from 'chai';
+import { expect } from 'chai'
 import reducer from '../../client/reducers'
 
 describe('Reducer', function() {

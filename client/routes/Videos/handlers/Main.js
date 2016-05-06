@@ -4,7 +4,7 @@ import { fetchRelatedContent, fetchVideoIfNeeded } from '../../../actions'
 import ContentDescription from '../components/ContentDescription'
 import VideoGrid from '../../../components/VideoGrid'
 
-class VideosMain extends React.Component {
+export class VideosMain extends React.Component {
 
     static fetchData(dispatch, params, query) {
         const { videoId } = params

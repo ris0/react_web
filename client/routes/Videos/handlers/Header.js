@@ -11,7 +11,7 @@ function SocialSidebar(props) {
     )
 }
 
-class VideosHeader extends React.Component {
+export class VideosHeader extends React.Component {
     constructor() {
         super()
     }
