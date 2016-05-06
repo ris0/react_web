@@ -16,7 +16,7 @@ class HomeHeader extends React.Component {
 
         return (
             <div className="home-page home-page-main">
-                <VideoThumbnail video={video} showTitle={false} />
+                <VideoThumbnail video={Object.assign({}, video, { cover_resource: '/HomeHead_DoubleDutchBraid.jpg' })} showTitle={false} />
             </div>
         )
     }
