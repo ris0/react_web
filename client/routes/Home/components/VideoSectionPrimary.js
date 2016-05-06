@@ -1,14 +1,17 @@
 import React from 'react'
 import VideoThumbnail from '../../../components/VideoThumbnail'
 
-export default function VideoSectionPrimary(props) {
+function VideoSectionPrimary(props) {
     const [first, ...rest] = props.videos
 
     return (
         <div className="video-list-items">
-            <div className="video-list-item-primary">
-                <VideoThumbnail showCaption={true} video={first} />
-            </div>
+            {
+                first ?
+                    <div className="video-list-item-primary">
+                        <VideoThumbnail showCaption={true} video={first} />
+                    </div> : null
+            }
             <div className="video-list-item-secondary">
                 { rest.map((video, i) => <VideoThumbnail video={video} key={i} />) }
             </div>
@@ -16,3 +19,12 @@ export default function VideoSectionPrimary(props) {
     )
 }
 
+VideoSectionPrimary.propTypes = {
+    videos: React.PropTypes.array
+}
+
+VideoSectionPrimary.defaultProps = {
+    videos: []
+}
+
+export default VideoSectionPrimary

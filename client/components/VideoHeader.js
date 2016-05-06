@@ -40,8 +40,6 @@ VideoHeader.propTypes = {
 }
 
 VideoHeader.defaultProps = {
-    title: null,
-    video: null,
     className: ''
 }
 

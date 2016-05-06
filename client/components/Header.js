@@ -1,44 +1,15 @@
 import React from 'react'
-import { findDOMNode } from 'react-dom'
 import SocialButtons from './SocialButtons'
 import NavDropdown from './NavDropdown'
+import MainNavigation from './MainNavigation'
 import { Link } from 'react-router'
-
-class MainNavigation extends React.Component {
-    constructor() {
-        super()
-    }
-
-    // TODO Genericise this componentDidMount/componentWillUnmount behavior into a higher
-    // level component, same in components/NavDropdown.js
-    componentDidMount() {
-        this.clickListener = document.addEventListener('click', (e) => { 
-            const node = findDOMNode(this.refs.containerElement)
-            if (node && !node.contains(e.target)) {
-                this.props.onClick()
-            }
-        })
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener('click', this.clickListener)
-    }
-
-    render() {
-        const { onClick, navLinks } = this.props
-        return (
-            <div className="main-nav" ref="containerElement">
-                {navLinks.map((link) => <div className="link" key={link}><a>{link}</a></div>)}
-                <SocialButtons />
-            </div>
-        )
-    }
-}
 
 class Header extends React.Component {
     constructor() {
         super()
         this.state = { showCategoryDropdown: false }
+        this.toggleMainNavigation = this.toggleMainNavigation.bind(this)
+        this.toggleCategoryDropdown = this.toggleCategoryDropdown.bind(this)
     }
 
     toggleMainNavigation() {
@@ -59,13 +30,13 @@ class Header extends React.Component {
             <div className="l-header-container">
                 { 
                     showMainNav ?
-                        <MainNavigation onClick={this.toggleMainNavigation.bind(this)} navLinks={navLinks} /> :
+                        <MainNavigation onClick={this.toggleMainNavigation} navLinks={navLinks} /> :
                         null
                 }
                 <div className="l-header-main">
                     <header className="header-main">
                         <h1 className="header-link">
-                            <a onClick={this.toggleMainNavigation.bind(this)}>
+                            <a onClick={this.toggleMainNavigation}>
                                 <span className="icon icon-hamburger" />
                             </a>
                         </h1>
@@ -75,7 +46,7 @@ class Header extends React.Component {
                         <NavDropdown
                             className="header-link header-link-right"
                             items={categories}
-                            onToggle={this.toggleCategoryDropdown.bind(this)}
+                            onToggle={this.toggleCategoryDropdown}
                             showDropdown={showCategoryDropdown}>
                             <h2>categories</h2>
                         </NavDropdown>
@@ -91,12 +62,14 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
+    categories: React.PropTypes.array,
     navLinks: React.PropTypes.array,
     showMainNav: React.PropTypes.bool,
     onToggleMainNav: React.PropTypes.func
 }
 
 Header.defaultProps = {
+    categories: [],
     navLinks: [],
     showMainNav: false,
     onToggleMainNav: () => {}

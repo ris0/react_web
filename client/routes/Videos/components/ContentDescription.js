@@ -26,4 +26,14 @@ class ContentDescription extends React.Component {
     }
 }
 
+ContentDescription.propTypes = {
+    caption: React.PropTypes.string,
+    title: React.PropTypes.string
+}
+
+ContentDescription.defaultProps = {
+    caption: '',
+    title: ''
+}
+
 export default ContentDescription;

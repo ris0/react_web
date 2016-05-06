@@ -8,7 +8,7 @@ class NavDropdown extends React.Component {
     }
 
     // TODO Genericise this componentDidMount/componentWillUnmount behavior into a higher
-    // level component, same in components/Header.js
+    // level component, same in components/MainNavigation.js
     componentDidMount() {
         this.clickListener = document.addEventListener('click', (e) => { 
             const node = findDOMNode(this.refs.containerElement)
@@ -39,9 +39,18 @@ class NavDropdown extends React.Component {
     }
 }
 
+NavDropdown.propTypes = {
+    className: React.PropTypes.string,
+    items: React.PropTypes.array,
+    onToggle: React.PropTypes.func,
+    showDropdown: React.PropTypes.bool
+}
+
 NavDropdown.defaultProps = {
     className: '',
-    items: []
+    items: [],
+    onToggle: () => {},
+    showDropdown: false
 }
 
 export default NavDropdown

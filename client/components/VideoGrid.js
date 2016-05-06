@@ -1,7 +1,6 @@
 import React from 'react'
 import VideoThumbnail from './VideoThumbnail'
 
-// TODO do I really need this component?
 class VideoGrid extends React.Component {
     constructor() {
         super()
@@ -17,7 +16,7 @@ class VideoGrid extends React.Component {
                         <div className="video-list-title">
                             <h1>{title}</h1>
                             {/*
-                                <a><i>See All</i></a>
+                            <a><i>See All</i></a>
                             */}
                         </div> : null
                 }
@@ -37,7 +36,7 @@ class VideoGrid extends React.Component {
     }
 }
 
-VideoGrid.propType = {
+VideoGrid.propTypes = {
     videos: React.PropTypes.array
 }
 

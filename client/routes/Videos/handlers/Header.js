@@ -30,6 +30,10 @@ class VideosHeader extends React.Component {
     }
 }
 
+VideosHeader.propTypes = {
+    video: React.PropTypes.object
+}
+
 function mapStateToProps(state, ownProps) {
     const videos = state.videos || {}
 
