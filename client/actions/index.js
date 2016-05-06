@@ -53,14 +53,10 @@ export function setLoading(isLoading) {
     }
 }
 
-export const SET_CURRENT_VIDEO_STATUS = 'SET_CURRENT_VIDEO_STATUS'
-export function setCurrentVideoStatus(video) {
-    return {
-        type: SET_CURRENT_VIDEO_STATUS,
-        video
-    }
-}
-
+// TODO Note, these fetch methods are fine for now, as they're *relatively*
+// simple, but in the future may look into redux-saga for making this cleaner
+// and more testable
+// TODO probably time to start splitting these up into individual files
 function fetchHome(dispatch) {
     dispatch(setLoading(true))
     return getHomepageFeed()

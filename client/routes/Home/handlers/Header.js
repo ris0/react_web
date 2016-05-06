@@ -1,6 +1,5 @@
 import React from 'react'
 import VideoThumbnail from '../../../components/VideoThumbnail'
-import { setCurrentVideoStatus } from '../../../actions'
 import { connect } from 'react-redux'
 
 class HomeHeader extends React.Component {
@@ -33,4 +32,4 @@ function mapStateToProps(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, { setCurrentVideoStatus })(HomeHeader)
+export default connect(mapStateToProps)(HomeHeader)
