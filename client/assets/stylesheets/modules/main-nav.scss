@@ -6,14 +6,13 @@
     top: $header-height;
     background: white;
     border-right: 1px solid gray;
-    @include flex-basis(20%);
     @include display(flex);
     @include flex-direction(column);
 
     .link {
         border-bottom: 1px solid lightgray;
         @include nav-link;
-        padding: 10px 7% 10px 7%;
+        padding: 20px 60px 20px 60px;
     }
 
     a {
@@ -27,7 +26,6 @@
     }
 
     .social-buttons  {
-        @include flex-wrap(wrap);
         a {
             @include flex-basis(33.333%);
         }
@@ -48,6 +46,10 @@
         width: 100%;
         height: initial;
         border-bottom: 1px solid gray;
+
+        .link {
+            padding-left: 55px;
+        }
 
         .social-buttons {
             @include flex-basis(initial);
