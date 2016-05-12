@@ -38,20 +38,6 @@ describe('Reducer', function() {
         });
     });
 
-    describe('currentVideoData', function() {
-        describe('SET_CURRENT_VIDEO_STATUS', function() {
-            it('should allow setting unique_key of the active video', function() {
-                const state = reducer({}, { type: 'SET_CURRENT_VIDEO_STATUS', video: { unique_key: 12345 }})
-                expect(state.currentVideoData.unique_key).to.equal(12345)
-            });
-
-            it('should allow un-setting the active video', function() {
-                const state = reducer({}, { type: 'SET_CURRENT_VIDEO_STATUS', video: null })
-                expect(state.currentVideoData.unique_key).to.equal(null)
-            });
-        });
-    });
-
     describe('videos', function() {
         describe('RECEIVE_VIDEO_DATA', function() {
             it('should create a hashmap of videos indexed by unique_key', function() {

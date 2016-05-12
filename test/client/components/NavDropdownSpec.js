@@ -10,7 +10,7 @@ import {
 } from 'react-addons-test-utils'
 import NavDropdown from '../../../client/components/NavDropdown'
 
-describe.only('NavDropdown', function() {
+describe('NavDropdown', function() {
     it('should define the component', function() {
         expect(NavDropdown).to.be.a('function')
     });
