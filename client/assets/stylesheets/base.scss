@@ -1,7 +1,7 @@
 $font-color: #444444;
 $font-color-light: #494949;
 $header-height: 71px;
-$font-title: 'PierBold', 'Open Sans', Arial, sans-serif;
+$font-title: 'MarkRegular', 'Open Sans', Arial, sans-serif;
 
 html {
     box-sizing: border-box;
@@ -63,14 +63,14 @@ header {
     }
 
     img {
-        width: 170px;
+        height: 22px;
     }
 }
 
 @media (max-width: 800px) {
     header {
         img {
-            width: 130px;
+            height: 18px;
         }
     }
 }
@@ -80,7 +80,7 @@ header, footer {
 }
 
 footer {
-    background: #323232;
+    border-top: 1px solid lightgray;
     @include display(flex);
     padding-top: 20px;
     color: $font-color-light;

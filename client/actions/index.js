@@ -1,4 +1,11 @@
-import { handleResponse, getConfigData, getRandom, getCategoriesFeed, getVideo, getHomepageFeed } from '../utils'
+import {
+    handleResponse,
+    getConfigData,
+    getRandom,
+    getCategoriesFeed,
+    getVideo,
+    getHomepageFeed
+} from '../utils'
 
 export const TOGGLE_MAIN_NAV = 'TOGGLE_MAIN_NAV'
 export function toggleMainNav() {
@@ -150,6 +157,5 @@ export function fetchConfigData() {
                 })
                 .then((result) => dispatch(receiveConfigData(result)))
         }
-
     }
 }

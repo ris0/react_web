@@ -1,32 +1,33 @@
 .nav-dropdown {
     h2 {
-        font-size: 0.8em;
+        color: gray;
+        font-size: 0.75em;
         &:hover {
             opacity: 0.8;
         }
     }
 
     .nav-dropdown-menu {
-        text-align: left;
         @include display(flex);
-        @include flex-direction(column);
-        border: 1px solid lightgray;
-        padding: 10px;
+        @include flex-wrap(wrap);
+        box-sizing: border-box;
+        text-align: left;
+        max-width: 600px;
+        padding: 15px;
         position: absolute;
         z-index: 999;
         background: white;
         margin-top: 5px;
 
         a {
-            padding: 6px 0 6px 0;
+            @include flex-basis(50%);
             @include nav-link;
+            box-sizing: border-box;
+            padding: 16px 20px 16px 20px;
+            font-size: 12px;
 
-            &:first-child {
-                padding-top: 0;
-            }
-
-            &:last-child {
-                padding-bottom: 0;
+            &:hover {
+                background: rgb(242, 242, 242);
             }
         }
     }
@@ -42,14 +43,7 @@
 @media (max-width: 800px) {
     .nav-dropdown {
         .nav-dropdown-menu {
-            right: 0;
-        }
-    }
-}
-
-@media (max-width: 500px) {
-    .nav-dropdown {
-        .nav-dropdown-menu {
+            @include flex-direction(column);
             right: 0;
         }
     }

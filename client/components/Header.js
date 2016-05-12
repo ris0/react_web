@@ -35,22 +35,22 @@ class Header extends React.Component {
                 }
                 <div className="l-header-main">
                     <header className="header-main">
-                        <h1 className="header-link">
+                        <h1>
                             <a onClick={this.toggleMainNavigation}>
                                 <span className="icon icon-hamburger" />
                             </a>
                         </h1>
-                        <h1 className="header-link">
+                        <h1>
                             <Link to="/"><img src="/logo.png" alt="Knowsy" /></Link>
                         </h1>
                         <NavDropdown
-                            className="header-link header-link-right"
+                            className="header-link-right"
                             items={categories}
                             onToggle={this.toggleCategoryDropdown}
                             showDropdown={showCategoryDropdown}>
                             <h2>categories</h2>
                         </NavDropdown>
-                        <div className="nav header-link">
+                        <div className="nav">
                             <SocialButtons />
                         </div>
                     </header>

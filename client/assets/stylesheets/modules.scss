@@ -27,7 +27,7 @@
 
         a {
             text-decoration: none;
-            color: white;
+            color: gray;
             text-transform: uppercase;
         }
     }
@@ -89,7 +89,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     background: white;
-    max-width: 1400px;
+    max-width: 95%;
     margin: 0 auto;
 
     .video-list-title {
@@ -310,11 +310,15 @@
     }
 
     h1 {
-        margin-right: 15px;
+        margin-right: 20px;
     }
 
     h1:nth-child(2) {
         margin-right: 25px;
+    }
+
+    .header-link-right {
+        margin-left: 60px;
     }
 }
 
@@ -338,6 +342,7 @@
             @include flex-basis(100%);
             @include flex-grow(1);
             text-align: right;
+            margin-left: inherit;
         }
     }
 }
@@ -368,6 +373,18 @@
 
     address {
         margin-top: 10px;
+    }
+
+    .newsletter {
+        input {
+            display: inline-block;
+        }
+
+        button {
+            background: #E1E1E1;
+            padding: 5px 10px 5px 10px;
+            border: 1px solid gray;
+        }
     }
 }
 

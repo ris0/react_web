@@ -9,6 +9,10 @@ function Footer(props) {
                 <p>C 2016 Copyright Knowsy</p>
                 <p>All Rights Reserved</p>
             </div>
+            <div className="newsletter">
+                <input type="text" placeholder="SIGN UP FOR THE KNOWSY WEEKLY NEWSLETTER" />
+                <button>Subscribe</button>
+            </div>
             <div className="footer-right">
                 <div className="nav-links">
                     {navLinks.map((link) => <div key={link}><a>{link}</a></div>)}
