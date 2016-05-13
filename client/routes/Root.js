@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SocialButtons from '../components/SocialButtons';
-import { fetchConfigData, toggleMainNav } from '../actions'
+import { fetchConfigData, toggleMainNav, subscribeToNewsletter } from '../actions'
 
 class Root extends React.Component {
     static fetchData(dispatch) {
@@ -26,12 +26,14 @@ class Root extends React.Component {
 
     render() {
         const {
+            dispatch,
             main,
             header,
             categories,
             navLinks,
             toggleMainNav,
-            showMainNav
+            showMainNav,
+            subscribeToNewsletter
         } = this.props;
 
         return (
@@ -44,7 +46,7 @@ class Root extends React.Component {
                     {header}
                 </Header>
                 <div className="l-main">{main}</div>
-                <Footer navLinks={navLinks} />
+                <Footer navLinks={navLinks} onClickSubscribe={subscribeToNewsletter}/>
             </div>
         );
     }
@@ -60,7 +62,10 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return Object.assign({ dispatch }, bindActionCreators({ toggleMainNav }, dispatch))
+    return Object.assign({
+        dispatch,
+        subscribeToNewsletter: (email) => dispatch(subscribeToNewsletter(email))
+    }, bindActionCreators({ toggleMainNav }, dispatch))
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Root);

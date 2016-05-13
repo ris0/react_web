@@ -1,22 +1,24 @@
 .content-description {
-    $content-padding: 1%;
-    padding: 20px 65px 20px 65px;
+    $content-padding: 65px;
+    padding: 40px 65px 40px 65px;
     @include display(flex);
     background: white;
     max-width: 1400px;
     margin: 0 auto;
 
     p {
+        margin-top: 10px;
         line-height: 20px;
     }
 
     h1 {
-        font-size: 1.3em;
-        margin: 15px 0 15px 0;
+        font-size: 40px;
+        font-family: $font-title-bold;
+        margin: 20px 0 15px 0;
     }
 
     .content-title {
-        @include flex-basis(30%);
+        @include flex-basis(40%);
         padding-right: $content-padding;
 
         p {
@@ -27,12 +29,11 @@
     }
 
     .content-body {
-        padding-left: $content-padding;
-        @include flex-basis(70%);
+        @include flex-basis(60%);
         @include flex-grow(1);
-        line-height: 1.5em;
         p {
-            margin: 10px 0 10px 0;
+            margin: 20px 0 20px 0;
+            line-height: 25px;
         }
     }
 }
@@ -47,6 +48,7 @@
 
         .content-title {
             @include flex-basis(initial);
+            padding-right: 0px;
         }
 
         .content-body {

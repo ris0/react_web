@@ -8,11 +8,12 @@
     }
 
     .icon {
-        font-size: 34px;
+        font-size: 45px;
     }
 }
 
 .social-sidebar {
+    display: none; // for now
     position: absolute;
     top: 50%;
     left: 0;

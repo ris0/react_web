@@ -5,19 +5,21 @@
     left: 0;
     top: $header-height;
     background: white;
-    border-right: 1px solid gray;
+    border-right: 1px solid $border-color;
     @include display(flex);
     @include flex-direction(column);
 
     .link {
-        border-bottom: 1px solid lightgray;
+        border-bottom: 1px solid $border-color;
         @include nav-link;
-        padding: 20px 60px 20px 60px;
+        padding: 20px 65px 20px 65px;
+        // TODO add hover i.e. categories
     }
 
     a {
-        color: gray;
+        color: black;
         cursor: pointer;
+        font-size: 12px;
     }
 
 
@@ -47,7 +49,7 @@
         right: 0;
         width: 100%;
         height: initial;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid $border-color;
 
         .link {
             padding-left: 55px;

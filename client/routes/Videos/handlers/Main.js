@@ -38,7 +38,7 @@ export class VideosMain extends React.Component {
             return null
         }
 
-        const similarContentTitle = <span>similar to <em>{video.title}</em></span>
+        const similarContentTitle = <span>similar how to&#8217;s</span>
 
         return (
             <section className="default-video-list video-page">
@@ -51,7 +51,7 @@ export class VideosMain extends React.Component {
                     </div>
                     </div>
                 */}
-                { <ContentDescription caption={video.caption} title={video.title} /> }
+                <ContentDescription caption={video.caption} title={video.title} />
                 {
                     video.similar && video.similar.length ?
                         <VideoGrid title={similarContentTitle} videos={video.similar} hasMore={false} />

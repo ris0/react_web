@@ -1,7 +1,10 @@
-$font-color: #444444;
+$font-color: black;
 $font-color-light: #494949;
+$border-color: #ccc;
 $header-height: 71px;
 $font-title: 'MarkRegular', 'Open Sans', Arial, sans-serif;
+$font-title-bold: 'MarkBold', 'Open Sans', Arial, sans-serif;
+$font-title-heavy: 'MarkHeavy', 'Open Sans', Arial, sans-serif;
 
 html {
     box-sizing: border-box;
@@ -18,7 +21,6 @@ body {
 h1 {
     font-family: $font-title;
     font-size: 24px;
-    text-transform: uppercase;
     margin: 5px 0 5px 0;
 }
 
@@ -42,9 +44,7 @@ a {
     text-decoration: none;
     cursor: pointer;
 
-    &:hover {
-        opacity: 0.7;
-    }
+    &:hover { }
 }
 
 header {
@@ -54,7 +54,7 @@ header {
     z-index: 998;
     width: 100%;
     padding: 15px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid $border-color;
     letter-spacing: 2px;
     font-family: $font-title;
 
@@ -63,7 +63,7 @@ header {
     }
 
     img {
-        height: 22px;
+        height: 20px;
     }
 }
 
@@ -79,21 +79,3 @@ header, footer {
     background: white;
 }
 
-footer {
-    border-top: 1px solid lightgray;
-    @include display(flex);
-    padding-top: 20px;
-    color: $font-color-light;
-
-    a {
-        font-size: 12px;
-    }
-}
-
-footer {
-    &>div {
-        margin-left: 6.25%;
-        margin-right: 6.25%;
-        @include flex-grow(1);
-    }
-}

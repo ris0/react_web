@@ -60,6 +60,17 @@ export function setLoading(isLoading) {
     }
 }
 
+export function subscribeToNewsletter(email) {
+    return function(dispatch, getState) {
+        console.log('subscribing...', email)
+        // TODO notify user of subscription with popup, or
+        // error notification
+        return new Promise((resolve) => {
+            resolve(email)
+        })
+    }
+}
+
 // TODO Note, these fetch methods are fine for now, as they're *relatively*
 // simple, but in the future may look into redux-saga for making this cleaner
 // and more testable

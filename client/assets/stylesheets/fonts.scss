@@ -1,6 +1,16 @@
 @font-face {
     font-family: 'MarkRegular';
-    src: url('/fonts/MarkRegular.otf');
+    src: url('/fonts/Mark/Mark-Regular/MarkRegular.otf');
+}
+
+@font-face {
+    font-family: 'MarkBold';
+    src: url('/fonts/Mark/Mark-Bold/MarkBold.otf');
+}
+
+@font-face {
+    font-family: 'MarkHeavy';
+    src: url('/fonts/Mark/Mark-Heavy/MarkHeavy.otf');
 }
 
 @font-face {

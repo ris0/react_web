@@ -23,6 +23,7 @@ class VideoThumbnail extends React.Component {
                 <Link to={`/videos/${video.unique_key}`}>
                     <div className="video-list-item-thumb">
                         <img src={video.cover_resource} alt={video.title} />
+                        <img src="/play_icon.png" className="play-icon" />
                     </div>
                     <div className="content-description">
                         { showTitle ? <h1>{video.title}</h1> : null }
