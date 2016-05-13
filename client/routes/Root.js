@@ -18,7 +18,7 @@ class Root extends React.Component {
 
     componentDidMount() {
         const { dispatch } = this.props
-        Root.fetchData(dispatch)
+        this.constructor.fetchData(dispatch)
             .catch((err) => {
                 // TODO redirect to Error page
             })

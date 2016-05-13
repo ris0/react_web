@@ -19,7 +19,7 @@ export class VideosMain extends React.Component {
 
     componentDidMount() {
         const { params, dispatch } = this.props
-        VideosMain.fetchData(dispatch, params)
+        this.constructor.fetchData(dispatch, params)
             .catch((err) => {
                 // TODO redirect to Error page
             })
@@ -30,7 +30,7 @@ export class VideosMain extends React.Component {
         const { params: nextParams } = nextProps
 
         if (nextParams.videoId !== params.videoId) {
-            VideosMain.fetchData(dispatch, nextParams)
+            this.constructor.fetchData(dispatch, nextParams)
         }
     }
 

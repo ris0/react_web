@@ -15,13 +15,13 @@ export class CategoriesMain extends React.Component {
 
     componentDidMount() {
         const { params, dispatch } = this.props
-        CategoriesMain.fetchData(dispatch, params)
+        this.constructor.fetchData(dispatch, params)
     }
 
     componentWillReceiveProps(newProps) {
         const { params, dispatch } = this.props
         if (newProps.params.categoryId !== params.categoryId) {
-            CategoriesMain.fetchData(dispatch, newProps.params)
+            this.constructor.fetchData(dispatch, newProps.params)
         }
     }
 
