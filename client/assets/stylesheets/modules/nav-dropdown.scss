@@ -45,6 +45,7 @@
     .nav-dropdown {
         .nav-dropdown-menu {
             @include flex-direction(column);
+            left: inherit;
             right: 0;
         }
     }
