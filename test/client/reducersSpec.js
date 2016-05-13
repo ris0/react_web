@@ -1,5 +1,6 @@
 import { expect } from 'chai'
 import reducer from '../../client/reducers'
+import initialState from '../../client/initialState'
 
 describe('Reducer', function() {
     it('should return the default state for a bogus action', function() {
@@ -8,14 +9,28 @@ describe('Reducer', function() {
 
     describe('pageVideo', function() {
         it('should update the similarContentByVideoId for the given video', function() {
-            const state = reducer({}, {
+            const state = reducer(initialState, {
                 type: 'RECEIVE_VIDEO_DETAILS',
                 data: {
                     unique_key: 'ABC123'
                 }
             })
 
-            expect(state.pageVideo.similarContentByVideoId['ABC123']).to.be.ok
+            expect(state.pageVideo.propertiesByUniqueId['ABC123'].similarContentByVideoId).to.be.ok
+        });
+
+        describe('SET_VIDEO_PAGE_PROPERTIES', function() {
+            it('should support updating the showAllText property', function() {
+                const state = reducer(initialState, {
+                    type: 'SET_VIDEO_PAGE_PROPERTIES',
+                    data: {
+                        unique_key: 'ABC123',
+                        showAllText: true
+                    }
+                })
+
+                expect(state.pageVideo.propertiesByUniqueId['ABC123'].showAllText).to.equal(true)
+            });
         });
     });
 

@@ -60,6 +60,14 @@ export function setLoading(isLoading) {
     }
 }
 
+export const SET_VIDEO_PAGE_PROPERTIES = 'SET_VIDEO_PAGE_PROPERTIES'
+export function setVideoPageProperties(id, properties) {
+    return {
+        type: SET_VIDEO_PAGE_PROPERTIES,
+        data: Object.assign({}, { unique_key: id }, properties)
+    }
+}
+
 export function subscribeToNewsletter(email) {
     return function(dispatch, getState) {
         console.log('subscribing...', email)
@@ -101,8 +109,9 @@ export function fetchHomeIfNeeded() {
 
 export function fetchVideoIfNeeded(videoId) {
     return function(dispatch, getState) {
-        const hasLoadedVideoDetails = getState().pageVideo.similarContentByVideoId[videoId]
-        if (hasLoadedVideoDetails) {
+        const { pageVideo } = getState()
+        const propertiesForUniqueId = pageVideo.propertiesByUniqueId[videoId]
+        if (propertiesForUniqueId && propertiesForUniqueId.similarContentByVideoId) {
             const video = getState().videos[videoId]
             return Promise.resolve(video)
         } else {

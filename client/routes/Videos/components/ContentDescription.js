@@ -1,5 +1,6 @@
 import React from 'react';
 import Tags from '../../../components/Tags';
+import { clipText } from '../../../utils'
 
 class ContentDescription extends React.Component {
     constructor() {
@@ -11,7 +12,8 @@ class ContentDescription extends React.Component {
     }
 
     render() {
-        const { caption, title } = this.props;
+        const { caption, onClickShowAll, showAllText, title } = this.props
+        const bodyText = showAllText ? caption : clipText(caption, 250)
 
         return (
             <div className="content-description">
@@ -19,7 +21,8 @@ class ContentDescription extends React.Component {
                     <h1>{title}</h1>
                 </div>
                 <div className="content-body">
-                    <p dangerouslySetInnerHTML={this.setHTMLBody(caption)} />
+                    <p dangerouslySetInnerHTML={this.setHTMLBody(bodyText)} />
+                    <button onClick={() => onClickShowAll(!showAllText)}>show { showAllText ? 'less' : 'more' }</button>
                 </div>
             </div>
         );
@@ -28,12 +31,16 @@ class ContentDescription extends React.Component {
 
 ContentDescription.propTypes = {
     caption: React.PropTypes.string,
-    title: React.PropTypes.string
+    title: React.PropTypes.string,
+    showAllText: React.PropTypes.bool,
+    onClickShowAll: React.PropTypes.func
 }
 
 ContentDescription.defaultProps = {
     caption: '',
-    title: ''
+    title: '',
+    showAllText: false,
+    onClickShowAll: () => {}
 }
 
 export default ContentDescription;

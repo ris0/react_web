@@ -1,6 +1,7 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { fetchRelatedContent, fetchVideoIfNeeded } from '../../../actions'
+import { fetchRelatedContent, fetchVideoIfNeeded, setVideoPageProperties } from '../../../actions'
 import ContentDescription from '../components/ContentDescription'
 import VideoGrid from '../../../components/VideoGrid'
 
@@ -13,6 +14,7 @@ export class VideosMain extends React.Component {
 
     constructor() {
         super()
+        this.onClickShowAll = this.onClickShowAll.bind(this)
     }
 
     componentDidMount() {
@@ -32,8 +34,14 @@ export class VideosMain extends React.Component {
         }
     }
 
+    onClickShowAll(showAllText) {
+        const { setVideoPageProperties, video } = this.props
+        setVideoPageProperties(video.unique_key, { showAllText })
+    }
+
     render() {
-        const { relatedContent, video } = this.props
+        const { relatedContent, setVideoPageProperties, showFullContentDescription, video } = this.props
+
         if (!video) {
             return null
         }
@@ -51,7 +59,11 @@ export class VideosMain extends React.Component {
                     </div>
                     </div>
                 */}
-                <ContentDescription caption={video.caption} title={video.title} />
+                <ContentDescription
+                    caption={video.caption}
+                    title={video.title}
+                    onClickShowAll={this.onClickShowAll}
+                    showAllText={showFullContentDescription} />
                 {
                     video.similar && video.similar.length ?
                         <VideoGrid title={similarContentTitle} videos={video.similar} hasMore={false} />
@@ -64,11 +76,19 @@ export class VideosMain extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     const videos = state.videos || {}
+    const { videoId } = ownProps.params
+    const { pageVideo } = state
+    const propertiesByUniqueId = pageVideo.propertiesByUniqueId[videoId] || {}
 
     return {
-        video: ownProps.params.videoId ? videos[ownProps.params.videoId] : null,
-        relatedContent: [] //state.pageVideo.relatedContent
+        video: videos[videoId],
+        relatedContent: [],
+        showFullContentDescription: Boolean(propertiesByUniqueId.showAllText)
     }
 }
 
-export default connect(mapStateToProps)(VideosMain)
+function mapDispatchToProps(dispatch) {
+    return Object.assign({ dispatch }, bindActionCreators({ setVideoPageProperties }, dispatch))
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(VideosMain)

@@ -1,18 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { clipText } from '../utils'
 
 class VideoThumbnail extends React.Component {
     constructor() {
         super()
-    }
-
-    clipCaption(caption = '') {
-        // clip text to X length characters, ensuring that
-        // words are not cut in half
-        const words = caption.slice(0, 160).split(' ')
-        const clippedCaption = words.slice(0, words.length - 1).join(' ')
-
-        return `${clippedCaption}...`
     }
 
     render() {
@@ -27,7 +19,7 @@ class VideoThumbnail extends React.Component {
                     </div>
                     <div className="content-description">
                         { showTitle ? <h1>{video.title}</h1> : null }
-                        { showCaption ? <p>{this.clipCaption(video.caption)}</p> : null }
+                        { showCaption ? <p>{clipText(video.caption)}</p> : null }
                     </div>
                 </Link>
             </section>

@@ -7,6 +7,7 @@ import {
     RECEIVE_VIDEO_DATA,
     RECEIVE_VIDEOS_FOR_CATEGORY,
     SET_CURRENT_VIDEO_STATUS,
+    SET_VIDEO_PAGE_PROPERTIES,
     SET_LOADING
 } from '../actions'
 
@@ -55,14 +56,21 @@ function pageHome(state = {}, action) {
     return state
 }
 
+function updateVideoPageProperties(state, id, properties) {
+    let newPropertiesForUniqueId = Object.assign({}, state.propertiesByUniqueId[id], properties)
+    let propertiesByUniqueId = Object.assign({}, state.propertiesByUniqueId, {
+        [id]: newPropertiesForUniqueId
+    })
+
+    return Object.assign({}, state, { propertiesByUniqueId })
+}
+
 function pageVideo(state = {}, action) {
     switch (action.type) {
         case RECEIVE_VIDEO_DETAILS:
-            const similarContentByVideoId = Object.assign({}, state.similarContentByVideoId, {
-                [action.data.unique_key]: true
-            })
-
-            return Object.assign({}, state, { similarContentByVideoId })
+            return updateVideoPageProperties(state, action.data.unique_key, { similarContentByVideoId: true })
+        case SET_VIDEO_PAGE_PROPERTIES:
+            return updateVideoPageProperties(state, action.data.unique_key, { showAllText: action.data.showAllText })
     }
     return state
 }
