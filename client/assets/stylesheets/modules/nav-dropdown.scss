@@ -1,5 +1,6 @@
 .nav-dropdown {
     h2 {
+        @include hover-bold;
         color: black;
         font-size: 0.75em;
         &:hover {
@@ -23,13 +24,6 @@
         a {
             @include flex-basis(50%);
             @include nav-link;
-            box-sizing: border-box;
-            padding: 16px 20px 16px 20px;
-            font-size: 12px;
-
-            &:hover {
-                background: rgb(242, 242, 242);
-            }
         }
     }
 }

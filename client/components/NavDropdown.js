@@ -24,9 +24,18 @@ class NavDropdown extends React.Component {
 
     render() {
         const { className, children, items, onToggle, showDropdown } = this.props
+        let containerClasses = ['nav-dropdown']
+
+        if (className && className.length) {
+            containerClasses.push(className)
+        }
+
+        if (showDropdown) {
+            containerClasses.push('active')
+        }
 
         return (
-            <div className={`nav-dropdown ${className}`} ref="containerElement">
+            <div className={containerClasses.join(' ')} ref="containerElement">
                 <a className="nav-dropdown-trigger" onClick={onToggle}>{children}</a>
                 {
                     showDropdown ?

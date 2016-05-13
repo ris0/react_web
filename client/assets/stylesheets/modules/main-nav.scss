@@ -10,18 +10,10 @@
     @include flex-direction(column);
 
     .link {
-        border-bottom: 1px solid $border-color;
         @include nav-link;
+        border-bottom: 1px solid $border-color;
         padding: 20px 65px 20px 65px;
-        // TODO add hover i.e. categories
     }
-
-    a {
-        color: black;
-        cursor: pointer;
-        font-size: 12px;
-    }
-
 
     .icon-cross {
         font-size: 20px;

@@ -1,8 +1,26 @@
+@mixin hover-bold {
+    &:hover {
+        font-family: $font-title-bold;
+    }
+}
+
+.active {
+    font-family: $font-title-bold;
+}
+
 @mixin nav-link {
-    font-size: 16px;
+    @include hover-bold;
     letter-spacing: 2px;
     font-family: $font-title;
     text-transform: uppercase;
+    box-sizing: border-box;
+    padding: 16px 20px 16px 20px;
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover {
+        background: rgb(242, 242, 242);
+    }
 }
 
 @import 'modules/nav-dropdown';
