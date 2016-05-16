@@ -18,11 +18,35 @@
             }
 
             .play-icon {
-                color: black;
                 position: absolute;
                 bottom: 10px;
                 left: 10px;
                 width: 30px;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 40px;
+                color: white;
+                width: 25%;
+
+                .play-icon {
+                    position: initial;
+                    width: 60px;
+                    margin-top: 20px;
+                }
+
+                h1 {
+                    font-family: $font-title-heavy;
+                    font-size: 50px;
+                    line-height: 55px;
+                }
+
+                p {
+                    font-family: $font-title;
+                }
             }
         }
 

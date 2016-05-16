@@ -263,7 +263,14 @@
 ///////////////
 // CATEGORY PAGE
 ///////////////
-.category-page { }
+.category-page {
+    @include video-list-item(100%);
+    margin-top: $header-height;
+    .video-list-item {
+        margin: 0 auto;
+        border: none;
+    }
+}
 
 ///////////////
 // VIDEO PAGE

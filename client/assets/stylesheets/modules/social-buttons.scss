@@ -13,8 +13,7 @@
 }
 
 .social-sidebar {
-    display: none; // for now
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 0;
     transform: translateY(-50%);

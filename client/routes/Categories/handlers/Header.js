@@ -1,6 +1,12 @@
 import React from 'react'
-import VideoHeader from '../../../components/VideoHeader'
+import VideoThumbnail from '../../../components/VideoThumbnail'
 import { connect } from 'react-redux'
+
+const first = (items = []) => {
+    if (items && items.length) {
+        return items[0]
+    }
+}
 
 export class CategoriesHeader extends React.Component {
     constructor() {
@@ -10,20 +16,34 @@ export class CategoriesHeader extends React.Component {
     render() {
         const { category, video } = this.props
         if (!video) {
-            //return null
+            return null
         }
 
-        return <VideoHeader title={category.name} video={video}/>
+        return (
+            <div className="category-page">
+                <VideoThumbnail video={video} showTitle={false} showOverlay={true} />
+            </div>
+        )
     }
 }
 
+CategoriesHeader.propTypes = {
+    category: React.PropTypes.object,
+    video: React.PropTypes.object
+}
+
+CategoriesHeader.defaultProps = {
+    category: {}
+}
+
 function mapStateToProps(state, ownProps) {
-    const videos = state.videos || {}
-    // TODO video from categoryContent
+    const { categories, videos } = state
+    const category = categories[ownProps.params.categoryId] || {}
+    const video = category.videos.map((videoId) => videos[videoId])
 
     return {
-        category: state.categories[ownProps.params.categoryId],
-        video: null
+        category,
+        video: first(video)
     }
 }
 
