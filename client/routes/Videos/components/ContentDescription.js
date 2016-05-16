@@ -5,10 +5,20 @@ import { clipText } from '../../../utils'
 class ContentDescription extends React.Component {
     constructor() {
         super();
+        this.onClickShowButton = this.onClickShowButton.bind(this)
     }
 
     setHTMLBody(__html) {
         return { __html }
+    }
+
+    onClickShowButton() {
+        const { onClickShowAll, showAllText } = this.props
+        onClickShowAll(!showAllText)
+        if (showAllText) {
+            // TODO scroll back to top?
+            //window.scrollTo(0, 0)
+        }
     }
 
     render() {
@@ -22,7 +32,7 @@ class ContentDescription extends React.Component {
                 </div>
                 <div className="content-body">
                     <p dangerouslySetInnerHTML={this.setHTMLBody(bodyText)} />
-                    <button onClick={() => onClickShowAll(!showAllText)}>show { showAllText ? 'less' : 'more' }</button>
+                    <button onClick={this.onClickShowButton}>show { showAllText ? 'less' : 'more' }</button>
                 </div>
             </div>
         );
