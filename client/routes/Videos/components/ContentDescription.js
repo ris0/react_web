@@ -14,10 +14,11 @@ class ContentDescription extends React.Component {
 
     onClickShowButton() {
         const { onClickShowAll, showAllText } = this.props
+        const { contentDescription } = this.refs
         onClickShowAll(!showAllText)
-        if (showAllText) {
-            // TODO scroll back to top?
-            //window.scrollTo(0, 0)
+        if (showAllText && contentDescription) {
+            // FIXME feels janky and wrong... fix this
+            //contentDescription.scrollIntoView()
         }
     }
 
@@ -26,7 +27,7 @@ class ContentDescription extends React.Component {
         const bodyText = showAllText ? caption : clipText(caption, 250)
 
         return (
-            <div className="content-description">
+            <div className="content-description" ref="contentDescription">
                 <div className="content-title">
                     <h1>{title}</h1>
                 </div>
