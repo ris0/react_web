@@ -110,6 +110,24 @@
     }
 }
 
+
+.video-list-title {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+
+    h1 {
+        margin: 0 20px 0 20px;
+        font-size: 25px;
+        text-transform: uppercase;
+        font-family: $font-title-light;
+
+        em {
+            font-size: 0.9em;
+        }
+    }
+}
+
 .video-list {
     @include display(flex);
     @include flex-direction(column);
@@ -117,25 +135,6 @@
     background: white;
     max-width: 95%;
     margin: 0 auto;
-
-    .video-list-title {
-        @include display(flex);
-        @include align-self(center);
-        @include align-items(baseline);
-        margin-top: 50px;
-        margin-bottom: 50px;
-
-        h1 {
-            margin: 0 20px 0 20px;
-            font-size: 25px;
-            text-transform: uppercase;
-            font-family: $font-title-light;
-
-            em {
-                font-size: 0.9em;
-            }
-        }
-    }
 
     .video-list-items {
         @include display(flex);

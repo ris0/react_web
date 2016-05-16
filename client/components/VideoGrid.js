@@ -1,6 +1,8 @@
 import React from 'react'
 import VideoThumbnail from './VideoThumbnail'
 
+// TODO either get rid of this component, or make it a better generic video list that handles
+// different types of video lists...
 class VideoGrid extends React.Component {
     constructor() {
         super()
@@ -15,9 +17,6 @@ class VideoGrid extends React.Component {
                     title ?
                         <div className="video-list-title">
                             <h1>{title}</h1>
-                            {/*
-                            <a><i>See All</i></a>
-                            */}
                         </div> : null
                 }
                 <div className="video-list-items">
