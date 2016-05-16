@@ -7,16 +7,17 @@
     margin: 0 auto;
 
     button {
-        border: 1px solid black;
+        font-family: $font-title;
+        border: 1px solid $border-color;
         background: white;
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 10px;
+        font-size: 12px;
         text-transform: uppercase;
         cursor: pointer;
         outline: none;
 
         &:hover {
-            background: lightgray;
+            background: $highlight-color;
         }
     }
 

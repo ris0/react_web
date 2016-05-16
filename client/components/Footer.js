@@ -11,7 +11,7 @@ class Footer extends React.Component {
         return (
             <footer className="footer-main">
                 <div className="legal">
-                    <h1>knowsy</h1>
+                    <img src="/logo.png" alt="Knowsy" />
                     <p>C 2016 Copyright Knowsy</p>
                     <p>All Rights Reserved</p>
 

@@ -129,6 +129,7 @@
             margin: 0 20px 0 20px;
             font-size: 25px;
             text-transform: uppercase;
+            font-family: $font-title-light;
 
             em {
                 font-size: 0.9em;
@@ -428,6 +429,9 @@
 
     .legal {
         @include flex-basis(20%);
+        img {
+            margin-bottom: 6px;
+        }
     }
 
     .newsletter {
