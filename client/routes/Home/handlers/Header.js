@@ -24,8 +24,7 @@ class HomeHeader extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     // TODO use featuredVideo, but we don't have any for now...
-    //const [featuredVideo] = state.pageHome.featuredVideos
-    const [featuredVideo] = state.pageHome.recentVideos
+    const [featuredVideo] = state.pageHome.featuredVideos
 
     return {
         video: state.videos[featuredVideo]

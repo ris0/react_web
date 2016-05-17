@@ -50,15 +50,6 @@ export class VideosMain extends React.Component {
 
         return (
             <section className="default-video-list video-page">
-                {/*
-                    <div className="section video-user-controls">
-                    <div>
-                    <a href="#"><i className="fa fa-clock-o"/>&nbsp;watch later</a>
-                    <a href="#"><i className="fa fa-plus" />&nbsp;add to queue</a>
-                    <a href="#"><i className="fa fa-heart-o" /></a>
-                    </div>
-                    </div>
-                */}
                 <ContentDescription
                     caption={video.caption}
                     title={video.title}

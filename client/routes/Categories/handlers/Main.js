@@ -3,6 +3,45 @@ import VideoThumbnail from '../../../components/VideoThumbnail'
 import { fetchCategoryContentIfNeeded } from '../../../actions'
 import { connect } from 'react-redux'
 
+// Carousel
+import VideoGrid from '../../../components/VideoGrid'
+import Slider from 'react-slick'
+
+            //<VideoGrid title={title} videos={videos} hasMore={false} />
+function Carousel(props) {
+    const { title, videos } = props
+
+    return (
+        <div className="carousel">
+            <div className="video-list-title">
+                <h1>{title}</h1>
+            </div>
+            <p>...soon</p>
+            { false ?
+                <Slider
+                className="video-list-items"
+                dots={true}
+                infinite={true}
+                slidesToShow={3}
+                slidesToScroll={3}
+                speed={500}>
+                <div><h3>Test</h3></div>
+                <div><h3>Test</h3></div>
+                <div><h3>Test</h3></div>
+                <div><h3>Test</h3></div>
+                <div><h3>Test</h3></div>
+                <div><h3>Test</h3></div>
+                <div><h3>Test</h3></div>
+                <div><h3>Test</h3></div>
+                <div><h3>Test</h3></div>
+                <div><h3>Test</h3></div>
+                {/* videos.map((video, i) => <VideoThumbnail video={video} key={i} />) */}
+                </Slider> : null
+            }
+        </div>
+    )
+}
+
 export class CategoriesMain extends React.Component {
     static fetchData(dispatch, params) {
         const { categoryId } = params
@@ -29,8 +68,9 @@ export class CategoriesMain extends React.Component {
         const { category, videos } = this.props
 
         return (
-            <section className="default-video-list category-page">
-                <div className="section video-list">
+            <section className="default-video-list">
+                { videos.length ? <Carousel title="Series" videos={videos} /> : null }
+                <div className="video-list">
                     {
                         videos.length ?
                             <div className="video-list-items">

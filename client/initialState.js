@@ -5,9 +5,7 @@ export default {
         isLoading: false,
         navLinks: [
             'about',
-            'subscribe',
             'jobs',
-            'advertise',
             'contact'
         ],
         showMainNav: false,

@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchHomeIfNeeded } from '../../../actions'
 import VideoThumbnail from '../../../components/VideoThumbnail'
+import VideoGrid from '../../../components/VideoGrid'
 import VideoSectionPrimary from '../components/VideoSectionPrimary'
 import { connect } from 'react-redux'
 import { flatten, partitionN } from '../../../utils'
@@ -36,19 +37,9 @@ class HomeMain extends React.Component {
 
         return (
             <section className="home-page">
-                <div className="section video-list">
-                    <VideoSectionPrimary videos={videoSectionOne}/>
-                    <VideoSectionPrimary videos={videoSectionTwo}/>
-                    {
-                        videoSectionThree.length ?
-                            <div className="video-list-items">
-                                {
-                                    videoSectionThree.map((video, i) => <VideoThumbnail video={video} key={i} />)
-                                }
-                            </div>
-                            : null
-                    }
-                </div>
+                <VideoSectionPrimary videos={videoSectionOne} />
+                <VideoSectionPrimary videos={videoSectionTwo} />
+                <VideoGrid videos={videoSectionThree} hasMore={false}/>
             </section>
         )
     }
@@ -59,7 +50,7 @@ function dereferenceVideos(state, name) {
 }
 
 function mapStateToProps(state, ownProps) {
-    const [_, ...recentVideos] = dereferenceVideos(state, 'recentVideos')
+    const recentVideos = dereferenceVideos(state, 'recentVideos')
     return {
         recentVideos
     }

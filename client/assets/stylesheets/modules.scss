@@ -58,6 +58,13 @@
     }
 }
 
+.carousel {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .video-header {
     margin-top: $header-height;
     background: white;
@@ -162,7 +169,7 @@
 // HOME PAGE
 ///////////////
 .home-page {
-    margin-top: 40px;
+    margin-top: $header-height;
 
     .video-list {
         .video-list-items {
@@ -214,9 +221,10 @@
                     @include video-list-item(50%);
                 }
 
-                &:last-child {
-                    @include video-list-item(50%);
-                }
+            }
+
+            &:last-child {
+                @include video-list-item(50%);
             }
         }
     }
@@ -236,7 +244,6 @@
     .home-page {
         .video-list {
             .video-list-items {
-
                 .video-list-item-secondary {
                     @include video-list-item(100%);
                 }
@@ -249,9 +256,6 @@
     }
 }
 
-///////////////
-// HOME PAGE
-///////////////
 .home-page.home-page-main {
     @include video-list-item(100%);
     .video-list-item {

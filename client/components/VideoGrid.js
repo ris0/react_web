@@ -3,6 +3,7 @@ import VideoThumbnail from './VideoThumbnail'
 
 // TODO either get rid of this component, or make it a better generic video list that handles
 // different types of video lists...
+//... maybe abstract out title/load more -related stuff, and just let user supply actual video list...
 class VideoGrid extends React.Component {
     constructor() {
         super()
@@ -13,23 +14,17 @@ class VideoGrid extends React.Component {
 
         return (
             <section className="video-list">
-                {
-                    title ?
+                { title ?
                         <div className="video-list-title">
                             <h1>{title}</h1>
-                        </div> : null
-                }
+                        </div> : null }
                 <div className="video-list-items">
-                    {
-                        videos.map((video, i) => <VideoThumbnail video={video} key={i} />)
-                    }
+                    { videos.map((video, i) => <VideoThumbnail video={video} key={i} />) }
                 </div>
-                {
-                    hasMore ?
+                { hasMore ?
                         <div className="video-list-footer">
                             <a><i>Load More</i></a>
-                        </div> : null
-                }
+                        </div> : null }
             </section>
         )
     }
