@@ -9,6 +9,8 @@ class ContentDescription extends React.Component {
         this.onClickShowButton = this.onClickShowButton.bind(this)
     }
 
+    // TODO now that we have better content description fields
+    // can we ditch dangerouslySetInnerHTML?
     setHTMLBody(__html) {
         return { __html }
     }

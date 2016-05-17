@@ -25,11 +25,9 @@ function Units(props) {
 function Ingredients(props) {
     const { ingredients } = props
 
-    // FIXME "ingredients" field spelled wrong on API response,
-    // spelled "incredient"
     return (
         <ul>
-            { ingredients.map((item) => <li key={item.incredient}>{item.incredient} </li>) }
+            { ingredients.map((item) => <li key={item.ingredient}>{item.ingredient} </li>) }
         </ul>
     )
 }
