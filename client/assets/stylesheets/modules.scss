@@ -31,6 +31,7 @@
 @import 'modules/social-buttons';
 @import 'modules/errors';
 @import 'modules/carousel';
+@import 'modules/recipe';
 
 .nav {
     @include display(flex);

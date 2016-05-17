@@ -51,8 +51,7 @@ export class VideosMain extends React.Component {
         return (
             <section className="default-video-list video-page">
                 <ContentDescription
-                    caption={video.caption}
-                    title={video.title}
+                    video={video}
                     onClickShowAll={this.onClickShowAll}
                     showAllText={showFullContentDescription} />
                 {

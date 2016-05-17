@@ -1,0 +1,25 @@
+.recipe {
+    h1 {
+        font-size: 16px;
+        font-family: $font-title-bold;
+        margin-bottom: 0;
+    }
+
+    .ingredients ul {
+        padding-left: 22px;
+        list-style: none;
+        display: inline-block;
+
+        &:last-child {
+            padding-left: 15px;
+        }
+    }
+
+    .ingredients ul, ol {
+        margin-top: 15px;
+    }
+
+    .ingredient span:last-child {
+        //margin-left: 10px;
+    }
+}

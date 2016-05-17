@@ -1,6 +1,7 @@
 import React from 'react';
-import Tags from '../../../components/Tags';
+import Tags from '../../../components/Tags'
 import { clipText } from '../../../utils'
+import Recipe from './Recipe'
 
 class ContentDescription extends React.Component {
     constructor() {
@@ -23,17 +24,19 @@ class ContentDescription extends React.Component {
     }
 
     render() {
-        const { caption, onClickShowAll, showAllText, title } = this.props
-        const bodyText = showAllText ? caption : clipText(caption, 250)
+        const { video, onClickShowAll, showAllText } = this.props
+        const bodyText = showAllText ? video.caption : clipText(video.caption, 250)
 
         return (
             <div className="content-description" ref="contentDescription">
                 <div className="content-title">
-                    <h1>{title}</h1>
+                    <h1>{video.title}</h1>
                 </div>
                 <div className="content-body">
                     <p dangerouslySetInnerHTML={this.setHTMLBody(bodyText)} />
                     <button onClick={this.onClickShowButton}>show { showAllText ? 'less' : 'more' }</button>
+                    { showAllText && Recipe.isRecipe(video) ?
+                            <Recipe instructions={video.directions} ingredients={video.recipe} /> : null }
                 </div>
             </div>
         );
@@ -41,15 +44,13 @@ class ContentDescription extends React.Component {
 }
 
 ContentDescription.propTypes = {
-    caption: React.PropTypes.string,
-    title: React.PropTypes.string,
+    video: React.PropTypes.object,
     showAllText: React.PropTypes.bool,
     onClickShowAll: React.PropTypes.func
 }
 
 ContentDescription.defaultProps = {
-    caption: '',
-    title: '',
+    video: {},
     showAllText: false,
     onClickShowAll: () => {}
 }
