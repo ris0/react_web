@@ -20,10 +20,10 @@ class VideoThumbnail extends React.Component {
     }
 
     render() {
-        const { video, showTitle, showCaption, showOverlay } = this.props
+        const { className, video, showTitle, showCaption, showOverlay } = this.props
 
         return (
-            <section className="video-list-item">
+            <section className={className}>
                 <Link to={`/videos/${video.unique_key}`}>
                     <div className="video-list-item-thumb">
                         <img src={video.cover_resource} alt={video.title} />
@@ -43,13 +43,15 @@ class VideoThumbnail extends React.Component {
 VideoThumbnail.propTypes = {
     showTitle: React.PropTypes.bool,
     showCaption: React.PropTypes.bool,
-    showOverlay: React.PropTypes.bool
+    showOverlay: React.PropTypes.bool,
+    className: React.PropTypes.string
 }
 
 VideoThumbnail.defaultProps = {
     showTitle: true,
     showCaption: false,
-    showOverlay: false
+    showOverlay: false,
+    className: 'video-list-item'
 }
 
 export default VideoThumbnail

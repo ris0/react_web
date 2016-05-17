@@ -5,42 +5,37 @@ import { connect } from 'react-redux'
 
 // Carousel
 import VideoGrid from '../../../components/VideoGrid'
-import Slider from 'react-slick'
 
-            //<VideoGrid title={title} videos={videos} hasMore={false} />
-function Carousel(props) {
-    const { title, videos } = props
-    const imgUrl = "https://s3.amazonaws.com/staging.theknowsy.com/content/i/e5/bd/30/4b/20/90/e5bd304b2090db509f7a5ae6f272702755d4b91a.jpg"
+export class Carousel extends React.Component {
+    constructor() {
+        super()
+    }
 
-    return (
-        <div className="carousel">
-            <div className="video-list-title">
-                <h1>{title}</h1>
+    componentDidMount() {
+        const { carousel } = this.refs
+        const { videos } = this.props
+        this.flickity = new Flickity(carousel, {
+            initialIndex: videos.length / 2
+        })
+    }
+
+    render() {
+        const { title, videos } = this.props
+        const testVideos = [0,1,2].reduce((acc) => {
+            return acc.concat(videos);
+        }, [])
+
+        return (
+            <div className="carousel">
+                <div className="video-list-title">
+                    <h1>{title}</h1>
+                </div>
+                <div ref="carousel">
+                    { testVideos.map((video, idx) => <VideoThumbnail video={video} key={`test-${idx}`} />) }
+                </div>
             </div>
-            <Slider
-                className="nope-video-list-items"
-                dots={true}
-                infinite={true}
-                slidesToShow={4}
-                slidesToScroll={4}
-                speed={500}>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    <div><img src={imgUrl} alt="" /></div>
-                    {/* videos.map((video, i) => <VideoThumbnail video={video} key={`test-i`} />) */}
-            </Slider>
-        </div>
-    )
+        )
+    }
 }
 
 export class CategoriesMain extends React.Component {
@@ -71,7 +66,7 @@ export class CategoriesMain extends React.Component {
         return (
             <section className="default-video-list">
                 <div className="video-list">
-                    { videos.length ? <Carousel title="Series... (work in progress)" videos={videos} /> : null }
+                    { videos.length ? <Carousel title="Series" videos={videos} /> : null }
                 </div>
                 <div className="video-list">
                     {

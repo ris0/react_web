@@ -1,47 +1,54 @@
-// TODO don't copy/paste this
-@mixin video-list-border {
-    border-left: 20px solid white;
-    border-right: 20px solid white;
-    border-bottom: 20px solid white;
-    box-sizing: border-box;
-}
-
 .carousel {
-    .slick-list {
-        position: relative;
+    @mixin carousel-button {
+        font-family: $font-title-light;
+        color: black;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
-    .slick-prev, .slick-next {
-        width: 100px;
-        height: 50px;
+    .video-list-item {
+        width: 25%;
+    }
+
+    padding-bottom: 60px;
+
+    .flickity-prev-next-button {
+        width: 130px;
+        height: 60px;
         background: $highlight-color;
-        top: 55%;
-        transform: translateY(-50%);
+        font-size: 25px;
         cursor: pointer;
+        border-radius: initial;
 
         &:hover {
             opacity: 0.9;
         }
-    }
 
-    .slick-next:before {
-        font-family: $font-title-light;
-        color: black;
-        content: "NEXT →";
-    }
-
-    .slick-prev:before {
-        font-family: $font-title-light;
-        color: black;
-        content: "← PREV";
-    }
-
-    .slick-slide {
-        height: initial;
-
-        img {
-            max-width: 100%;
-            @include video-list-border;
+        svg {
+            top: 50%;
+            transform: translateY(-50%);
+            height: 35%;
         }
+
+        &.previous svg {
+            left: -25px;
+        }
+
+        &.next svg {
+            left: 75px;
+        }
+    }
+
+    .next:before {
+        @include carousel-button;
+        content: "NEXT";
+        left: 20px;
+    }
+
+    .previous:before {
+        @include carousel-button;
+        content: "PREV";
+        right: 20px;
     }
 }
