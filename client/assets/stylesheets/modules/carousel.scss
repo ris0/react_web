@@ -1,0 +1,47 @@
+// TODO don't copy/paste this
+@mixin video-list-border {
+    border-left: 20px solid white;
+    border-right: 20px solid white;
+    border-bottom: 20px solid white;
+    box-sizing: border-box;
+}
+
+.carousel {
+    .slick-list {
+        position: relative;
+    }
+
+    .slick-prev, .slick-next {
+        width: 100px;
+        height: 50px;
+        background: $highlight-color;
+        top: 55%;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+
+    .slick-next:before {
+        font-family: $font-title-light;
+        color: black;
+        content: "NEXT →";
+    }
+
+    .slick-prev:before {
+        font-family: $font-title-light;
+        color: black;
+        content: "← PREV";
+    }
+
+    .slick-slide {
+        height: initial;
+
+        img {
+            max-width: 100%;
+            @include video-list-border;
+        }
+    }
+}

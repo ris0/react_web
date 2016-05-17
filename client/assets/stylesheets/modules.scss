@@ -30,6 +30,7 @@
 @import 'modules/tags';
 @import 'modules/social-buttons';
 @import 'modules/errors';
+@import 'modules/carousel';
 
 .nav {
     @include display(flex);

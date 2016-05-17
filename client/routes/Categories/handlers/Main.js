@@ -10,34 +10,35 @@ import Slider from 'react-slick'
             //<VideoGrid title={title} videos={videos} hasMore={false} />
 function Carousel(props) {
     const { title, videos } = props
+    const imgUrl = "https://s3.amazonaws.com/staging.theknowsy.com/content/i/e5/bd/30/4b/20/90/e5bd304b2090db509f7a5ae6f272702755d4b91a.jpg"
 
     return (
         <div className="carousel">
             <div className="video-list-title">
                 <h1>{title}</h1>
             </div>
-            <p>...soon</p>
-            { false ?
-                <Slider
-                className="video-list-items"
+            <Slider
+                className="nope-video-list-items"
                 dots={true}
                 infinite={true}
-                slidesToShow={3}
-                slidesToScroll={3}
+                slidesToShow={4}
+                slidesToScroll={4}
                 speed={500}>
-                <div><h3>Test</h3></div>
-                <div><h3>Test</h3></div>
-                <div><h3>Test</h3></div>
-                <div><h3>Test</h3></div>
-                <div><h3>Test</h3></div>
-                <div><h3>Test</h3></div>
-                <div><h3>Test</h3></div>
-                <div><h3>Test</h3></div>
-                <div><h3>Test</h3></div>
-                <div><h3>Test</h3></div>
-                {/* videos.map((video, i) => <VideoThumbnail video={video} key={i} />) */}
-                </Slider> : null
-            }
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    <div><img src={imgUrl} alt="" /></div>
+                    {/* videos.map((video, i) => <VideoThumbnail video={video} key={`test-i`} />) */}
+            </Slider>
         </div>
     )
 }
@@ -69,7 +70,9 @@ export class CategoriesMain extends React.Component {
 
         return (
             <section className="default-video-list">
-                { videos.length ? <Carousel title="Series" videos={videos} /> : null }
+                <div className="video-list">
+                    { videos.length ? <Carousel title="Series... (work in progress)" videos={videos} /> : null }
+                </div>
                 <div className="video-list">
                     {
                         videos.length ?

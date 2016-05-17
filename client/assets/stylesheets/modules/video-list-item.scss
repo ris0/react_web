@@ -1,13 +1,17 @@
+@mixin video-list-border {
+    border-left: 20px solid white;
+    border-right: 20px solid white;
+    border-bottom: 20px solid white;
+    box-sizing: border-box;
+}
+
 @mixin video-list-item($width: 25%) {
     .video-list-item {
         @include display(flex);
         @include flex-direction(column);
         @include flex-basis($width);
+        @include video-list-border;
         min-width: 0;
-        border-left: 20px solid white;
-        border-right: 20px solid white;
-        border-bottom: 20px solid white;
-        box-sizing: border-box;
         cursor: pointer;
 
         .video-list-item-thumb {
