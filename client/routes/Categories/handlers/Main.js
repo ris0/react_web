@@ -3,9 +3,6 @@ import VideoThumbnail from '../../../components/VideoThumbnail'
 import { fetchCategoryContentIfNeeded } from '../../../actions'
 import { connect } from 'react-redux'
 
-// Carousel
-import VideoGrid from '../../../components/VideoGrid'
-
 export class Carousel extends React.Component {
     constructor() {
         super()
@@ -19,11 +16,12 @@ export class Carousel extends React.Component {
         })
     }
 
+    componentWillUnmount() {
+        this.flickity.destroy()
+    }
+
     render() {
         const { title, videos } = this.props
-        const testVideos = [0,1,2].reduce((acc) => {
-            return acc.concat(videos);
-        }, [])
 
         return (
             <div className="carousel">
@@ -31,7 +29,7 @@ export class Carousel extends React.Component {
                     <h1>{title}</h1>
                 </div>
                 <div ref="carousel">
-                    { testVideos.map((video, idx) => <VideoThumbnail video={video} key={`test-${idx}`} />) }
+                    { videos.map((video, idx) => <VideoThumbnail video={video} key={`test-${idx}`} />) }
                 </div>
             </div>
         )
