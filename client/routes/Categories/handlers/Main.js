@@ -1,40 +1,8 @@
 import React from 'react';
 import VideoThumbnail from '../../../components/VideoThumbnail'
+import Carousel from '../../../components/Carousel'
 import { fetchCategoryContentIfNeeded } from '../../../actions'
 import { connect } from 'react-redux'
-
-export class Carousel extends React.Component {
-    constructor() {
-        super()
-    }
-
-    componentDidMount() {
-        const { carousel } = this.refs
-        const { videos } = this.props
-        this.flickity = new Flickity(carousel, {
-            initialIndex: videos.length / 2
-        })
-    }
-
-    componentWillUnmount() {
-        this.flickity.destroy()
-    }
-
-    render() {
-        const { title, videos } = this.props
-
-        return (
-            <div className="carousel">
-                <div className="video-list-title">
-                    <h1>{title}</h1>
-                </div>
-                <div ref="carousel">
-                    { videos.map((video, idx) => <VideoThumbnail video={video} key={`test-${idx}`} />) }
-                </div>
-            </div>
-        )
-    }
-}
 
 export class CategoriesMain extends React.Component {
     static fetchData(dispatch, params) {
