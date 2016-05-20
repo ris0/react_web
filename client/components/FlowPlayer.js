@@ -11,7 +11,7 @@ class FlowPlayer extends React.Component {
         flowplayer(this.refs.player, {
             clip: {
                 sources: [
-                    { type: 'video/mp4', src: video.resource }
+                    { type: 'video/mp4', src: video.resources.video }
                 ]
             },
             autoplay: true

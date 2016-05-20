@@ -24,7 +24,7 @@ export class CategoriesHeader extends React.Component {
                 <div className="video-list-title">
                     <h1>{category.name}</h1>
                 </div>
-                <VideoThumbnail video={video} showTitle={false} showOverlay={true} />
+                <VideoThumbnail video={video} isFeature={true} showTitle={false} showOverlay={true} />
             </div>
         )
     }
