@@ -40,6 +40,8 @@
     .social-sidebar {
         position: inherit;
         transform: none;
+        width: 50%;
+        margin: 0 auto;
 
         .social-buttons {
             @include flex-direction(row);
@@ -49,5 +51,12 @@
                 border: none;
             }
         }
+    }
+}
+
+@media (max-width: 500px) {
+    .social-sidebar {
+        width: 100%;
+        margin: inherit;
     }
 }
