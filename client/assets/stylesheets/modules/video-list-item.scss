@@ -1,5 +1,5 @@
 @mixin video-list-border {
-    $border-size: 20px;
+    $border-size: 25px;
     border-left:  $border-size solid white;
     border-right: $border-size solid white;
     border-bottom: $border-size solid white;
@@ -35,7 +35,7 @@
                 transform: translateY(-50%);
                 left: 40px;
                 color: white;
-                width: 25%;
+                width: 33.333%;
 
                 .play-icon {
                     position: initial;

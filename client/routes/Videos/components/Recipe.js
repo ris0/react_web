@@ -6,16 +6,12 @@ function Units(props) {
     return (
         <ul>
             { ingredients.map((item, idx) => {
-                let unit;
-                if (item.unit) {
-                    unit = <span>{` ${item.unit} `}</span>
-                }
-
                 return (
-                    <li className="ingredient-unit" key={idx}>
-                        <span>{`${item.amount || 1}`}</span>
-                        { unit }
-                    </li>
+                    item.unit ?
+                            <li className="ingredient-unit" key={idx}>
+                                <span>{`${item.amount || 1}`}</span>
+                                <span>{` ${item.unit} `}</span>
+                            </li> : null
                 )
             }) }
         </ul>
