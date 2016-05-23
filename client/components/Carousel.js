@@ -10,12 +10,12 @@ class Carousel extends React.Component {
         const { carousel } = this.refs
         const { videos } = this.props
         this.flickity = new Flickity(carousel, {
-            initialIndex: videos.length / 2
+            initialIndex: Math.floor(videos.length / 2)
         })
     }
 
     componentWillUnmount() {
-        this.flickity.destroy()
+        this.flickity && this.flickity.destroy()
     }
 
     render() {
