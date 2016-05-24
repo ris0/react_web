@@ -7,6 +7,7 @@
 @import 'modules/errors';
 @import 'modules/carousel';
 @import 'modules/recipe';
+@import 'modules/video-player';
 
 .nav {
     @include display(flex);

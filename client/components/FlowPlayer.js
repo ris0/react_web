@@ -20,7 +20,7 @@ class FlowPlayer extends React.Component {
     }
 
     render() {
-        return <div ref="player" className="functional" />
+        return <div ref="player" className="functional video-player" />
     }
 }
 
