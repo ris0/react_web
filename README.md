@@ -18,7 +18,7 @@ npm run test:watch
 
 Development mode uses [React Hot Loader](http://gaearon.github.io/react-hot-loader/) for instaneous live-reloading.
 
-To kick things off, make sure you can successfully `npm install` dependencies, then just run: `npm run start-dev`
+To kick things off, make sure you can successfully `npm install` dependencies, then just run: `npm run start:dev`
 
 Point your browser at `http://localhost:3000`
 

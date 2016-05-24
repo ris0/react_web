@@ -6,8 +6,11 @@
   "scripts": {
     "postinstall": "npm run build && cp -r ./node_modules/flowplayer ./server/assets/flowplayer",
     "start": "NODE_ENV=production ./node_modules/.bin/pm2 start index.js -i 0 -e /var/log/pm2/error.log -o /var/log/pm2/app.log",
+    "stop": "./node_modules/.bin/pm2 stop index.js",
+    "reload": "./node_modules/.bin/pm2 reload index.js",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack/prod.config.js",
-    "start-dev": "NODE_ENV=development node index.js",
+    "clean": "if [ -d ./build ]; then rm -r build; fi;",
+    "start:dev": "NODE_ENV=development node index.js",
     "test": "./node_modules/.bin/mocha",
     "test:watch": "./node_modules/.bin/mocha -w"
   },

@@ -7,7 +7,7 @@ import { render } from 'react-dom'
 import routes from './routes'
 import configureStore from './configureStore'
 
-//require('./assets/stylesheets/main.scss')
+require('./assets/stylesheets/main.scss')
 
 const store = configureStore(window.__INITIAL_STATE__)
 

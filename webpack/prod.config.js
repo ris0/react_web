@@ -34,10 +34,6 @@ module.exports = {
         ]
     },
 
-//    sassLoader: {
-//        includePaths: [path.resolve(__dirname, '..', 'client/assets/stylesheets')]
-//    },
-//
     resolve: {
         alias: {
             // NOTE: currently, `config` module doesn't play well with webpack
