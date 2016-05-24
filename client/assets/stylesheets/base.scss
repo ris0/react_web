@@ -104,6 +104,10 @@ header, footer {
     font-size: 12px;
     cursor: pointer;
 
+    a {
+        color: black;
+    }
+
     &:hover {
         background: rgb(242, 242, 242);
     }

@@ -332,6 +332,47 @@
     }
 }
 
+///////////////
+// ABOUT PAGE
+///////////////
+.about-page {
+    //margin-top: $header-height;
+
+    section {
+    }
+
+    h1 {
+        font-size: 38px;
+        font-family: $font-title-bold;
+
+    }
+
+    .about-body {
+        width: 78%;
+        margin: 0 auto;
+        border-bottom: 1px solid black;
+        padding: 45px 80px 45px 80px;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        @include display(flex);
+
+        div:first-child {
+            @include flex-basis(40%);
+        }
+
+        div:last-child {
+            @include flex-basis(60%);
+        }
+    }
+}
+
+.page-header {
+    margin-top: $header-height;
+}
+
 ///////////////////////
 // DEFAULT VIDEO LIST
 ///////////////////////

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import { findDOMNode } from 'react-dom'
 import SocialButtons from './SocialButtons'
 
@@ -26,7 +27,7 @@ class MainNavigation extends React.Component {
         const { navLinks } = this.props
         return (
             <div className="main-nav" ref="containerElement">
-                {navLinks.map((link) => <div className="link" key={link}><a>{link}</a></div>)}
+                {navLinks.map((link) => <div className="link" key={link}><Link to={`/${link}`}>{link}</Link></div>)}
                 <SocialButtons />
             </div>
         )
