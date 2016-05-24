@@ -17,7 +17,6 @@ import config from 'config'
 import logger from './utils/logger'
 
 process.env.PWD = path.join(process.cwd(), 'server')
-const store = configureStore(initialState)
 const app = express()
 
 // TODO set HOST, PORT, etc. in config...
@@ -45,6 +44,8 @@ app.get('/error/:errorCode', (req, res) => {
 
 app.get('/*', (req, res) => {
     match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
+        const store = configureStore(initialState)
+
         if (err) {
             logger.warn(err)
             res.status(500).send(err.message)
