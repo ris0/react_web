@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run build && cp -r ./node_modules/flowplayer ./server/assets/flowplayer",
-    "start": "NODE_ENV=production ./node_modules/.bin/pm2 start index.js -i 0 -e '/var/log/app_error.log' -o '/var/log/pm2.log'",
+    "start": "NODE_ENV=production ./node_modules/.bin/pm2 start index.js -i 0 -e /var/log/pm2/error.log -o /var/log/pm2/app.log",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack/prod.config.js",
     "start-dev": "NODE_ENV=development node index.js",
     "test": "./node_modules/.bin/mocha",
@@ -50,7 +50,7 @@
     "express-http-proxy": "0.6.0",
     "flowplayer": "6.0.5",
     "isomorphic-fetch": "2.2.1",
-    "jade": "1.11.0",
+    "jade": "2.11.0",
     "json-loader": "0.5.4",
     "pm2": "1.0.2",
     "react": "15.0.1",
