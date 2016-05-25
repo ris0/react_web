@@ -15,20 +15,31 @@
 .social-sidebar {
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 10px;
     transform: translateY(-50%);
-    background: white;
     z-index: 1;
 
     a {
-        border: 1px solid black;
+        margin-top: 10px;
+        border-radius: 40px;
         border-bottom: none;
-        padding: 10px;
-        color: black;
+        padding: 5px;
+        color: white;
 
-        &:last-child {
-            border-bottom: 1px solid black;
+        &.facebook {
+            background: #395596;
         }
+
+        &.twitter {
+            background: #00A9EC;
+        }
+
+        &.pinterest  {
+            background: #C5232A;
+        }
+
+        // email #6AD789
+        // dots #43D6D9
     }
 
     .social-buttons {

@@ -162,13 +162,14 @@
 
             .video-list-item-primary {
                 min-width: 0;
-                @include flex-basis(54%);
+                @include flex-basis(55%);
                 @include display(flex);
                 @include video-list-item(100%);
 
                 .content-description h1 {
                     font-family: $font-title-heavy;
                     font-size: 1.5em;
+                    margin-top: 18px;
                 }
             }
 
@@ -180,7 +181,7 @@
 
             .video-list-item-secondary {
                 min-width: 0;
-                @include flex-basis(46%);
+                @include flex-basis(45%);
                 @include display(flex);
                 @include flex-wrap(wrap);
                 @include video-list-item(50%);
@@ -470,9 +471,10 @@
     @include justify-content(space-between);
     @include align-items(baseline);
     @include flex-wrap(wrap);
-    border-top: 1px solid $border-color;
-    padding: 20px 40px 0 40px;
+    padding: 20px 0px 0 0px;
     color: $font-color-light;
+    max-width: 95%;
+    margin: 0 auto;
 
     h1 {
         text-transform: uppercase;

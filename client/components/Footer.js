@@ -9,20 +9,22 @@ class Footer extends React.Component {
         const { navLinks, onClickSubscribe } = this.props;
 
         return (
-            <footer className="footer-main">
-                <div className="legal">
-                    <img src="/logo.png" alt="Knowsy" />
-                    <p>C 2016 Copyright Knowsy</p>
-                    <p>All Rights Reserved</p>
+            <footer>
+                <div className="footer-main">
+                    <div className="legal">
+                        <img src="/logo.png" alt="Knowsy" />
+                        <p>C 2016 Copyright Knowsy</p>
+                        <p>All Rights Reserved</p>
 
-                </div>
-                <div className="newsletter">
-                    <input type="email" placeholder="SIGN UP FOR OUR NEWSLETTER" ref="email"/>
-                    <button onClick={() => onClickSubscribe(this.refs.email.value)}>Subscribe</button>
-                </div>
-                <div className="footer-nav">
-                    <div className="nav-links">
-                        {navLinks.map((link) => <div key={link}><a>{link}</a></div>)}
+                    </div>
+                    <div className="newsletter">
+                        <input type="email" placeholder="SIGN UP FOR OUR NEWSLETTER" ref="email"/>
+                        <button onClick={() => onClickSubscribe(this.refs.email.value)}>Subscribe</button>
+                    </div>
+                    <div className="footer-nav">
+                        <div className="nav-links">
+                            {navLinks.map((link) => <div key={link}><a>{link}</a></div>)}
+                        </div>
                     </div>
                 </div>
             </footer>
