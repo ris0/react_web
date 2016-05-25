@@ -14,7 +14,9 @@ class FlowPlayer extends React.Component {
                     { type: 'video/mp4', src: video.resources.video }
                 ]
             },
-            autoplay: true
+            autoplay: true,
+            //splash: true,
+            //poster: 'https://lh3.googleusercontent.com/_jW-N0BYAMIaT6Q9_MPJd0i8Cz_IzNVMNLmvs3PC2IhiGih_e4CYQsf6u892imfZzkrSuQ=w2560-h1664'
             //poster: video.cover_resource
         })
     }

@@ -23,7 +23,7 @@ export class VideosHeader extends React.Component {
         }
 
         return (
-            <VideoHeader video={video} className="video-page">
+            <VideoHeader video={video} className="page-header video-page">
                 <SocialSidebar />
             </VideoHeader>
         )

@@ -72,3 +72,24 @@
     }
 }
 
+@media(max-width: 600px) {
+    .content-description {
+        padding: 0 30px 30px 30px;
+
+        .content-body {
+            p {
+                margin-top: 0;
+            }
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        button {
+            padding: 18px;
+            width: 100%;
+        }
+    }
+}
+

@@ -20,7 +20,7 @@ export class CategoriesHeader extends React.Component {
         }
 
         return (
-            <div className="category-page">
+            <div className="page-header category-page">
                 <div className="video-list-title">
                     <h1>{category.name}</h1>
                 </div>

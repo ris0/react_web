@@ -8,9 +8,10 @@ class Carousel extends React.Component {
 
     componentDidMount() {
         const { carousel } = this.refs
-        const { videos } = this.props
+        const { videos, showDots } = this.props
         this.flickity = new Flickity(carousel, {
-            initialIndex: Math.floor(videos.length / 2)
+            initialIndex: Math.floor(videos.length / 2),
+            pageDots: showDots
         })
     }
 
@@ -35,11 +36,13 @@ class Carousel extends React.Component {
 }
 
 Carousel.propTypes = {
-    videos: React.PropTypes.array
+    videos: React.PropTypes.array,
+    showDots: React.PropTypes.bool
 }
 
 Carousel.defaultProps = {
-    videos: []
+    videos: [],
+    showDots: true
 }
 
 export default Carousel

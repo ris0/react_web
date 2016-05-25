@@ -15,7 +15,7 @@ class HomeHeader extends React.Component {
         }
 
         return (
-            <div className="home-page home-page-main">
+            <div className="page-header home-page home-page-main">
                 <VideoThumbnail video={video} isFeature={true} showTitle={false} showOverlay={true} />
             </div>
         )

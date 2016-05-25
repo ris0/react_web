@@ -30,10 +30,12 @@ export class CategoriesMain extends React.Component {
         const { category, videos } = this.props
 
         return (
-            <section className="default-video-list">
+            <section className="category-page default-video-list">
+                {/* TODO series functionality
                 <div className="video-list">
-                    { videos.length ? <Carousel title="Series" videos={videos} /> : null }
+                    { videos.length ? <Carousel title="Series" showDots={false} videos={videos} /> : null }
                 </div>
+                */}
                 <div className="video-list">
                     {
                         videos.length ?
