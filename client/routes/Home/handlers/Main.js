@@ -14,18 +14,34 @@ class HomeMain extends React.Component {
 
     constructor() {
         super()
+        this.state = {
+            windowWidth: window.innerWidth
+        }
+        this.handleResize = this.handleResize.bind(this)
     }
 
     componentDidMount() {
         const { dispatch } = this.props
+        window.addEventListener('resize', this.handleResize)
         this.constructor.fetchData(dispatch)
             .catch((err) => {
                 // TODO redirect to Error page
             })
     }
 
+    handleResize(e) {
+        this.setState({
+            windowWidth: window.innerWidth
+        })
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize)
+    }
+
     render() {
         const { recentVideos } = this.props
+        const { windowWidth } = this.state
 
         const [
             videoSectionOne = [],
@@ -38,7 +54,7 @@ class HomeMain extends React.Component {
         return (
             <section className="home-page">
                 <VideoSectionPrimary videos={videoSectionOne} />
-                <VideoSectionPrimary videos={videoSectionTwo} useAlternateLayout={document.body.clientWidth > 1200 ? true : false} />
+                <VideoSectionPrimary videos={videoSectionTwo} useAlternateLayout={windowWidth > 1200} />
                 <VideoGrid videos={videoSectionThree} hasMore={false}/>
             </section>
         )
