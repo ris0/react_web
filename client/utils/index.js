@@ -81,8 +81,13 @@ export function partitionN(n, collection = []) {
 export function clipText(text = '', chars = 160) {
     // clip text to X length characters, ensuring that
     // words are not cut in half
-    const words = text.slice(0, chars).split(' ')
-    const clippedText = words.slice(0, words.length - 1).join(' ')
 
-    return `${clippedText}...`
+    if (text.length) {
+        const words = text.slice(0, chars).split(' ')
+        const clippedText = words.slice(0, words.length - 1).join(' ')
+
+        return `${clippedText}...`
+    } else {
+        return ''
+    }
 }

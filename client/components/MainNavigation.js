@@ -27,7 +27,12 @@ class MainNavigation extends React.Component {
         const { navLinks } = this.props
         return (
             <div className="main-nav" ref="containerElement">
-                {navLinks.map((link) => <div className="link" key={link}><Link to={`/${link}`}>{link}</Link></div>)}
+                {
+                    navLinks.map((link) =>
+                        <div className="link" key={link}>
+                            <Link to={`/${link}`}>{link}</Link>
+                        </div>)
+                }
                 <SocialButtons />
             </div>
         )

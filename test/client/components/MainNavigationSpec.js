@@ -19,7 +19,7 @@ describe('MainNavigation', function() {
 
     it('should render SocialButtons', function() {
         const mainNavigation = shallow(<MainNavigation />)
-        expect(mainNavigation.find(SocialButtons).length).to.eql(1)
+        expect(mainNavigation.find(SocialButtons)).to.have.length(1)
     });
 });
 

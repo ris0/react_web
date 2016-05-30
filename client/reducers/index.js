@@ -6,7 +6,6 @@ import {
     RECEIVE_VIDEO_DETAILS,
     RECEIVE_VIDEO_DATA,
     RECEIVE_VIDEOS_FOR_CATEGORY,
-    SET_CURRENT_VIDEO_STATUS,
     SET_VIDEO_PAGE_PROPERTIES,
     SET_LOADING
 } from '../actions'
@@ -79,16 +78,6 @@ function user(state = {}, action) {
     return state
 }
 
-function currentVideoData(state = {}, action) {
-    switch (action.type) {
-        case SET_CURRENT_VIDEO_STATUS:
-            return {
-                unique_key: action.video && action.video.unique_key
-            }
-    }
-    return state
-}
-
 function app(state = {}, action) {
     switch (action.type) {
         case SET_LOADING:
@@ -104,7 +93,6 @@ const rootReducer = combineReducers({
     user,
     videos,
     categories,
-    currentVideoData,
     pageHome,
     pageVideo
 })

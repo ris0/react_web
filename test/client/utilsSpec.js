@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { all, flatten, partitionN } from '../../client/utils'
+import { all, clipText, flatten, partitionN } from '../../client/utils'
 
 describe('flatten', function() {
     it('should flatten a nested array of stuff', function() {
@@ -29,3 +29,12 @@ describe('partitionN', function() {
     });
 });
 
+describe('clipText', function() {
+    it('should clip text to a maximum of the specified length without breaking words', function() {
+        expect(clipText('here is a sentence do not break me', 20)).to.equal('here is a sentence...')
+    });
+
+    it('should return an empty string for an empty input', function() {
+        expect(clipText('')).to.equal('')
+    });
+})

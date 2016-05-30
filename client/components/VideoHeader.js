@@ -5,7 +5,7 @@ class VideoHeader extends React.Component {
     constructor() {
         super()
         this.state = {
-            isLoaded: true
+            isLoaded: true // TODO shoudl this be true by default??
         }
     }
 
@@ -20,12 +20,13 @@ class VideoHeader extends React.Component {
 
     render() {
         const { title, video, children, className } = this.props
+        const { isLoaded } = this.state
 
         return (
             <div className={`video-header ${className}`}>
                 { title ? <h1>{title}</h1> : null }
                 <div className="video-main">
-                    { this.state.isLoaded && video ? <FlowPlayer video={video} /> : null }
+                    { isLoaded && video ? <FlowPlayer video={video} /> : null }
                     { children }
                 </div>
             </div>
