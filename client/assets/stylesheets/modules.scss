@@ -582,26 +582,44 @@
 
 @media(max-width: 1200px) {
     .footer-main {
-//        @include flex-direction(column-reverse);
-//
-//        .footer-nav .nav-links {
-//            @include flex-direction(row);
-//        }
-//
-//        .legal, .newsletter, .footer-nav {
-//            @include flex-basis(inherit);
-//        }
-//
-//        &>div {
-//            width: 100%;
-//        }
+        .footer-nav {
+            @include flex-basis(10%);
+        }
+    }
+}
+
+@media(max-width: 900px) {
+    .footer-main {
+        .footer-nav .nav-links {
+            @include flex-direction(column);
+            @include flex-basis(0%);
+
+            &>div {
+                margin: 10px 0;
+            }
+        }
     }
 }
 
 @media(max-width: 500px) {
     .footer-main {
+        @include flex-direction(column);
         .newsletter {
-            order: 1
+            width: 100%;
+            order: -1;
+            @include flex-basis(inherit);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .legal {
+            width: 100%;
+            text-align: center;
+        }
+
+        .footer-nav {
+            order: -1;
+            width: 100%;
         }
 
         .nav-links {
