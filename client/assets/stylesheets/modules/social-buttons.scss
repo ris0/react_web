@@ -49,6 +49,7 @@
 
 @media (max-width: 900px) {
     .social-sidebar {
+        display: none !important; // for now...
         position: inherit;
         transform: none;
         width: 50%;
