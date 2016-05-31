@@ -1,33 +1,44 @@
 import React from 'react'
 import VideoThumbnail from '../../../components/VideoThumbnail'
+import Carousel from '../../../components/Carousel'
 import { connect } from 'react-redux'
 
-class HomeHeader extends React.Component {
+export class HomeHeader extends React.Component {
 
     constructor() {
         super()
     }
 
     render() {
-        const { video } = this.props
-        if (!video) {
-            return null
-        }
+        const { videos } = this.props
 
         return (
             <div className="page-header home-page home-page-main">
-                <VideoThumbnail video={video} isFeature={true} showTitle={false} showOverlay={true} />
+                {
+                    videos ?
+                        <Carousel showArrows={false}>
+                        {
+                            videos.map((video) => {
+                                return <VideoThumbnail
+                                            key={video.unique_key}
+                                            video={video}
+                                            isFeature={true}
+                                            showTitle={false}
+                                            showOverlay={true} />
+                            })
+                        }
+                        </Carousel> : null
+                }
             </div>
         )
     }
 }
 
 function mapStateToProps(state, ownProps) {
-    // TODO use featuredVideo, but we don't have any for now...
-    const [featuredVideo] = state.pageHome.featuredVideos
+    const { featuredVideos } = state.pageHome
 
     return {
-        video: state.videos[featuredVideo]
+        videos: featuredVideos.map((videoId => state.videos[videoId]))
     }
 }
 

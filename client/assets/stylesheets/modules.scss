@@ -381,6 +381,26 @@
     margin-top: $header-height;
 }
 
+.page-header.home-page {
+
+    .carousel {
+        .flickity-page-dots {
+            width: inherit;
+            position: absolute;
+            left: 10;
+            bottom: 20;
+
+            .dot {
+                background: white;
+            }
+        }
+
+        .video-list-item {
+            width: 100%;
+        }
+    }
+}
+
 ///////////////////////
 // DEFAULT VIDEO LIST
 ///////////////////////

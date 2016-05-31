@@ -8,10 +8,13 @@ class Carousel extends React.Component {
 
     componentDidMount() {
         const { carousel } = this.refs
-        const { videos, showDots } = this.props
+        const { videos, showArrows, showDots } = this.props
         this.flickity = new Flickity(carousel, {
             initialIndex: Math.floor(videos.length / 2),
-            pageDots: showDots
+            pageDots: showDots,
+            prevNextButtons: showArrows,
+            cellAlign: 'left', // TODO REMOVE/toggle via prop?
+            wrapAround: true
         })
     }
 
@@ -20,15 +23,22 @@ class Carousel extends React.Component {
     }
 
     render() {
-        const { title, videos } = this.props
+        const { title, children, videos } = this.props
 
         return (
             <div className="carousel">
-                <div className="video-list-title">
-                    <h1>{title}</h1>
-                </div>
+                {
+                    title ?
+                        <div className="video-list-title">
+                            <h1>{title}</h1>
+                        </div> : null
+                }
                 <div ref="carousel">
-                    { videos.map((video, idx) => <VideoThumbnail video={video} key={video.unique_key} />) }
+                    { 
+                        children ?
+                            children :
+                            videos.map((video, idx) => <VideoThumbnail video={video} key={video.unique_key} />) 
+                    }
                 </div>
             </div>
         )
@@ -37,12 +47,14 @@ class Carousel extends React.Component {
 
 Carousel.propTypes = {
     videos: React.PropTypes.array,
-    showDots: React.PropTypes.bool
+    showDots: React.PropTypes.bool,
+    showArrows: React.PropTypes.bool
 }
 
 Carousel.defaultProps = {
     videos: [],
-    showDots: true
+    showDots: true,
+    showArrows: true
 }
 
 export default Carousel

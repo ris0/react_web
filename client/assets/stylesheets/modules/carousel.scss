@@ -7,11 +7,12 @@
         transform: translateY(-50%);
     }
 
-    .video-list-item {
-        width: 25%;
-    }
+    //padding-bottom: 60px;
 
-    padding-bottom: 60px;
+    .video-list-item {
+        // FIXME probably shouldn't be in the generic carousel CSS
+        // width: 25%;
+    }
 
     .flickity-prev-next-button {
         width: 130px;
