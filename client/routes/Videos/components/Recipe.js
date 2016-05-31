@@ -47,12 +47,12 @@ function Recipe(props) {
     )
 }
 
-Recipe.isRecipe = (video) => {
+Recipe.isRecipe = (video = {}) => {
     return [
         'directions',
         'supplies',
         'recipe'
-    ].every((field) => Boolean(video[field].length))
+    ].every((field) => Boolean(video[field]) && Boolean(video[field].length))
 }
 
 Recipe.propTypes = {

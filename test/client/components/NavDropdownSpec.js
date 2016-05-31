@@ -8,7 +8,7 @@ import NavDropdown from '../../../client/components/NavDropdown'
 describe('NavDropdown', function() {
     it('should define the component', function() {
         expect(NavDropdown).to.be.a('function')
-    });
+    })
 
     describe('Dropdown Trigger', function() {
         it('should render passed children', function() {
@@ -19,7 +19,7 @@ describe('NavDropdown', function() {
 
             const h1 = navDropdown.find('h1').first()
             expect(h1.text()).to.eql('CLICKME')
-        });
+        })
 
         it('should call the provided onToggle handler when clicked', function() {
             const onToggle = td.function()
@@ -31,8 +31,8 @@ describe('NavDropdown', function() {
             a.simulate('click')
 
             td.verify(onToggle())
-        });
-    });
+        })
+    })
 
     it('should render all links if the dropdown is open', function() {
         const navDropdown = shallow(
@@ -50,7 +50,7 @@ describe('NavDropdown', function() {
         expect(links.at(0).props().to).to.eql('/categories/Uno/1')
         expect(links.at(1).props().to).to.eql('/categories/Dos/2')
         expect(links.at(2).props().to).to.eql('/categories/Tres/3')
-    });
+    })
 
     it('should not render links if the dropdown is not open', function() {
         const navDropdown = shallow(
@@ -65,6 +65,6 @@ describe('NavDropdown', function() {
 
         const links = navDropdown.find(Link)
         expect(links.length).to.eql(0)
-    });
-});
+    })
+})
 
