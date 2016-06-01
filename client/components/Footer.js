@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router'
 
 class Footer extends React.Component {
     constructor() {
@@ -12,7 +13,9 @@ class Footer extends React.Component {
             <footer>
                 <div className="footer-main">
                     <div className="legal">
-                        <img src="/logo.png" alt="Knowsy" />
+                        <Link to="/">
+                            <img src="/logo.png" alt="Knowsy" />
+                        </Link>
                         <p>C 2016 Copyright Knowsy</p>
                         <p>All Rights Reserved</p>
 
@@ -23,7 +26,7 @@ class Footer extends React.Component {
                     </div>
                     <div className="footer-nav">
                         <div className="nav-links">
-                            {navLinks.map((link) => <div key={link}><a>{link}</a></div>)}
+                            {navLinks.map((link) => <div key={link}><Link to={link}>{link}</Link></div>)}
                         </div>
                     </div>
                 </div>
