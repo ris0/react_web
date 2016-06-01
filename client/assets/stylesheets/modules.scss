@@ -36,13 +36,6 @@
     }
 }
 
-.carousel {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 .video-header {
     margin-top: $header-height;
     background: white;
@@ -557,6 +550,14 @@
 
             &:focus {
                 outline: none;
+            }
+
+            &:invalid {
+                box-shadow: 0 0 5px rgb(255, 60, 60);
+            }
+
+            &:valid {
+                //box-shadow: 0 0 5px green;
             }
         }
 
