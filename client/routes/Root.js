@@ -32,6 +32,7 @@ class Root extends React.Component {
             categories,
             navLinks,
             toggleMainNav,
+            socialIcons,
             showMainNav,
             subscribeToNewsletter
         } = this.props;
@@ -42,6 +43,7 @@ class Root extends React.Component {
                     categories={categories}
                     navLinks={navLinks}
                     onToggleMainNav={toggleMainNav}
+                    socialIcons={socialIcons}
                     showMainNav={showMainNav}>
                     {header}
                 </Header>
@@ -57,6 +59,7 @@ function mapStateToProps(state, ownProps) {
     return {
         categories,
         navLinks: app.navLinks,
+        socialIcons: app.socialIcons,
         showMainNav: app.showMainNav
     }
 }

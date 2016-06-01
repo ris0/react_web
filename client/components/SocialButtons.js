@@ -1,26 +1,30 @@
 import React from 'react';
 
 function SocialButtons(props) {
-    const { className } = props;
+    const { icons, className } = props;
     return (
         <div className={`social-buttons ${className}`}>
-            <a href="#" className="facebook"><span className="icon icon-facebook" /></a>
-            <a href="#" className="twitter"><span className="icon icon-twitter" /></a>
-            <a href="#" className="pinterest"><span className="icon icon-pinterest" /></a>
-            {/*
-            <a href="#"><span className="icon icon-youtube" /></a>
-            <a href="#"><span className="icon icon-instagram_round" /></a>
-            */}
+            {
+                icons.map((icon) => {
+                    return (
+                        <a href="#" className={icon.name} key={icon.name}>
+                            <span className={`icon icon-${icon.iconName || icon.name}`}/>
+                        </a>
+                    )
+                })
+            }
         </div>
     )
 }
 
 SocialButtons.propTypes = {
-    className: React.PropTypes.string
+    className: React.PropTypes.string,
+    icons: React.PropTypes.array
 }
 
 SocialButtons.defaultProps = {
-    className: ''
+    className: '',
+    icons: []
 }
 
 export default SocialButtons

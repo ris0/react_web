@@ -24,7 +24,7 @@ class MainNavigation extends React.Component {
     }
 
     render() {
-        const { navLinks } = this.props
+        const { navLinks, socialIcons } = this.props
         return (
             <div className="main-nav" ref="containerElement">
                 {
@@ -33,7 +33,7 @@ class MainNavigation extends React.Component {
                             <Link to={`/${link}`}>{link}</Link>
                         </div>)
                 }
-                <SocialButtons />
+                <SocialButtons icons={socialIcons} />
             </div>
         )
     }
@@ -41,11 +41,13 @@ class MainNavigation extends React.Component {
 
 MainNavigation.propTypes = {
     navLinks: React.PropTypes.array,
+    socialIcons: React.PropTypes.array,
     onClick: React.PropTypes.func
 }
 
 MainNavigation.defaultProps = {
     navLinks: [],
+    socialIcons: [],
     onClick: () => {}
 }
 

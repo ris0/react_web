@@ -23,14 +23,14 @@ class Header extends React.Component {
     }
 
     render() {
-        const { categories, children, navLinks, showMainNav } = this.props
+        const { categories, children, navLinks, socialIcons, showMainNav } = this.props
         const { showCategoryDropdown } = this.state
 
         return (
             <div className="l-header-container">
                 { 
                     showMainNav ?
-                        <MainNavigation onClick={this.toggleMainNavigation} navLinks={navLinks} /> :
+                        <MainNavigation onClick={this.toggleMainNavigation} navLinks={navLinks} socialIcons={socialIcons} /> :
                         null
                 }
                 <div className="l-header-main">
@@ -51,7 +51,7 @@ class Header extends React.Component {
                             <h2>categories</h2>
                         </NavDropdown>
                         <div className="nav">
-                            <SocialButtons />
+                            <SocialButtons icons={socialIcons} />
                         </div>
                     </header>
                     {children}
@@ -65,14 +65,16 @@ Header.propTypes = {
     categories: React.PropTypes.object,
     navLinks: React.PropTypes.array,
     showMainNav: React.PropTypes.bool,
-    onToggleMainNav: React.PropTypes.func
+    onToggleMainNav: React.PropTypes.func,
+    socialIcons: React.PropTypes.array
 }
 
 Header.defaultProps = {
     categories: {},
     navLinks: [],
     showMainNav: false,
-    onToggleMainNav: () => {}
+    onToggleMainNav: () => {},
+    socialIcons: []
 }
 
 export default Header
