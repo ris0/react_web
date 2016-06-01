@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { clipText } from '../utils'
+import handleResizeContainer from './handleResizeContainer'
+import VideoThumbnailImage from './VideoThumbnailImage'
 
 function TextOverlay(props) {
     const { title, description } = props
@@ -20,19 +22,25 @@ class VideoThumbnail extends React.Component {
     }
 
     render() {
-        const { className, isFeature, video, showTitle, showCaption, showOverlay } = this.props
+        const {
+            className,
+            isFeature,
+            showCaption,
+            showOverlay,
+            showTitle,
+            video,
+            windowWidth
+        } = this.props
 
         if (!video) {
             return null
         }
 
-        const imgSrc = isFeature ? video.resources.feature : video.resources.cover
-
         return (
             <section className={className}>
                 <Link to={`/videos/${video.unique_key}`}>
                     <div className="video-list-item-thumb">
-                        <img src={imgSrc} alt={video.title} />
+                        <VideoThumbnailImage isFeature={isFeature} windowWidth={windowWidth} video={video} />
                         { !showOverlay ? <img src="/play_icon_small.png" className="play-icon" /> : null }
                         { showOverlay ? <TextOverlay title={video.title} description={video.shortCaption} /> : null }
                     </div>
@@ -63,4 +71,4 @@ VideoThumbnail.defaultProps = {
     showTitle: true
 }
 
-export default VideoThumbnail
+export default handleResizeContainer(VideoThumbnail)

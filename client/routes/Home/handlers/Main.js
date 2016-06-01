@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { createElement } from 'react'
 import { fetchHomeIfNeeded } from '../../../actions'
 import VideoThumbnail from '../../../components/VideoThumbnail'
 import VideoGrid from '../../../components/VideoGrid'
+import handleResizeContainer from '../../../components/handleResizeContainer'
 import VideoSectionPrimary from '../components/VideoSectionPrimary'
 import { connect } from 'react-redux'
 import { flatten, partitionN } from '../../../utils'
@@ -14,34 +15,18 @@ class HomeMain extends React.Component {
 
     constructor() {
         super()
-        this.state = {
-            windowWidth: window.innerWidth
-        }
-        this.handleResize = this.handleResize.bind(this)
     }
 
     componentDidMount() {
         const { dispatch } = this.props
-        window.addEventListener('resize', this.handleResize)
         this.constructor.fetchData(dispatch)
             .catch((err) => {
                 // TODO redirect to Error page
             })
     }
 
-    handleResize(e) {
-        this.setState({
-            windowWidth: window.innerWidth
-        })
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.handleResize)
-    }
-
     render() {
-        const { recentVideos } = this.props
-        const { windowWidth } = this.state
+        const { recentVideos, windowWidth } = this.props
 
         const [
             videoSectionOne = [],
@@ -72,4 +57,4 @@ function mapStateToProps(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps)(HomeMain)
+export default connect(mapStateToProps)(handleResizeContainer(HomeMain))
