@@ -18,20 +18,16 @@
 .footer-nav {
     .nav-links {
         @include display(flex);
-        @include justify-content(space-between);
+        @include justify-content(flex-end);
         @include flex-wrap(wrap);
+
+        &>div {
+            margin: 0 10px 0 10px;
+        }
 
         a {
             text-decoration: none;
             text-transform: uppercase;
-        }
-    }
-}
-
-@media(max-width: 500px) {
-    .footer-nav {
-        .nav-links {
-
         }
     }
 }
@@ -527,9 +523,9 @@
     }
 
     .legal {
+        @include flex-basis(140px);
         font-family: $font-title-light;
         size: 8px;
-        @include flex-basis(20%);
         img {
             margin-bottom: 6px;
         }
@@ -538,6 +534,7 @@
     .newsletter {
         @include flex-grow(2);
         @include flex-basis(40%);
+        text-align: center;
 
         input {
             box-sizing: border-box;
@@ -575,19 +572,6 @@
             }
         }
     }
-
-    .footer-nav {
-        @include flex-basis(4%);
-        @include flex-grow(1);
-    }
-}
-
-@media(max-width: 1200px) {
-    .footer-main {
-        .footer-nav {
-            @include flex-basis(10%);
-        }
-    }
 }
 
 @media(max-width: 900px) {
@@ -603,7 +587,7 @@
     }
 }
 
-@media(max-width: 500px) {
+@media(max-width: 600px) {
     .footer-main {
         @include flex-direction(column);
         .newsletter {

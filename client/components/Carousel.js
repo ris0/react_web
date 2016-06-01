@@ -1,5 +1,4 @@
 import React from 'react';
-import VideoThumbnail from './VideoThumbnail'
 
 class Carousel extends React.Component {
     constructor() {
@@ -8,9 +7,8 @@ class Carousel extends React.Component {
 
     componentDidMount() {
         const { carousel } = this.refs
-        const { videos, showArrows, showDots } = this.props
+        const { children: carouselItems, showArrows, showDots } = this.props
         this.flickity = new Flickity(carousel, {
-            initialIndex: Math.floor(videos.length / 2),
             pageDots: showDots,
             prevNextButtons: showArrows,
             cellAlign: 'left', // TODO REMOVE/toggle via prop?
@@ -22,8 +20,25 @@ class Carousel extends React.Component {
         this.flickity && this.flickity.destroy()
     }
 
+    componentWillReceiveProps(newProps) {
+        if (!this.props.isLoaded && newProps.isLoaded) {
+            // Hack to ensure that Flickity carousel *always* renders properly.
+            // There seems to be an issue with Flickity (or rather with the interplay
+            // between Flickity and react/single page apps in general) where if images
+            // in a carousel load slowly, Flickity can't figure out the dimensions that
+            // the carousel should be, so you end up with a collapsed carousel with a 0px
+            // height. calling the `resize` method on the flickity instance fixes this,
+            // but we have to wait until at least one of the images has been loaded. we
+            // rely on the consuming component to set the `isLoaded` flag when at least
+            // one of the images has been loaded. Here, if `isLoaded` was previously
+            // false and the has been changed to true, we re-jigger our carousel via
+            // a call to `resize`
+            this.flickity && this.flickity.resize()
+        }
+    }
+
     render() {
-        const { title, children, videos } = this.props
+        const { title, children: carouselItems } = this.props
 
         return (
             <div className="carousel">
@@ -34,11 +49,7 @@ class Carousel extends React.Component {
                         </div> : null
                 }
                 <div ref="carousel">
-                    { 
-                        children ?
-                            children :
-                            videos.map((video, idx) => <VideoThumbnail video={video} key={video.unique_key} />) 
-                    }
+                    { carouselItems }
                 </div>
             </div>
         )

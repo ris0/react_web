@@ -7,6 +7,23 @@ export class HomeHeader extends React.Component {
 
     constructor() {
         super()
+        this.state = {
+            isLoaded: false
+        }
+        this.onLoaded = this.onLoaded.bind(this)
+    }
+
+    onLoaded() {
+        // Hacky junk to ensure that at least one image has been
+        // fully loaded (and therefore availble to Carousel) for
+        // dimension-calculation purposes. We only really need one
+        // to be loaded. see `components/Carousel.js` for more
+        // details
+        if (!this.state.isLoaded) {
+            this.setState({
+                isLoaded: true
+            })
+        }
     }
 
     render() {
@@ -15,17 +32,17 @@ export class HomeHeader extends React.Component {
         return (
             <div className="page-header home-page home-page-main">
                 {
-                    videos ?
-                        <Carousel showArrows={false}>
+                    videos && videos.length ?
+                        <Carousel showArrows={false} isLoaded={this.state.isLoaded}>
                         {
-                            videos.map((video) => {
-                                return <VideoThumbnail
-                                            key={video.unique_key}
-                                            video={video}
-                                            isFeature={true}
-                                            showTitle={false}
-                                            showOverlay={true} />
-                            })
+                            videos.map((video, i) =>
+                                <VideoThumbnail
+                                    key={video.unique_key + i}
+                                    onLoad={this.onLoaded}
+                                    video={video}
+                                    isFeature={true}
+                                    showTitle={false}
+                                    showOverlay={true} />)
                         }
                         </Carousel> : null
                 }

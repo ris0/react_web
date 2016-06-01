@@ -24,6 +24,7 @@ class VideoThumbnail extends React.Component {
     render() {
         const {
             className,
+            onLoad,
             isFeature,
             showCaption,
             showOverlay,
@@ -40,7 +41,7 @@ class VideoThumbnail extends React.Component {
             <section className={className}>
                 <Link to={`/videos/${video.unique_key}`}>
                     <div className="video-list-item-thumb">
-                        <VideoThumbnailImage isFeature={isFeature} windowWidth={windowWidth} video={video} />
+                        <VideoThumbnailImage isFeature={isFeature} onLoad={onLoad} windowWidth={windowWidth} video={video} />
                         { !showOverlay ? <img src="/play_icon_small.png" className="play-icon" /> : null }
                         { showOverlay ? <TextOverlay title={video.title} description={video.shortCaption} /> : null }
                     </div>
@@ -57,6 +58,7 @@ class VideoThumbnail extends React.Component {
 VideoThumbnail.propTypes = {
     className: React.PropTypes.string,
     isFeature: React.PropTypes.bool,
+    onLoad: React.PropTypes.func,
     showCaption: React.PropTypes.bool,
     showOverlay: React.PropTypes.bool,
     showTitle: React.PropTypes.bool,
@@ -66,6 +68,7 @@ VideoThumbnail.propTypes = {
 VideoThumbnail.defaultProps = {
     className: 'video-list-item',
     isFeature: false,
+    onLoad: () => {},
     showCaption: false,
     showOverlay: false,
     showTitle: true

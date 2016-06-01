@@ -6,7 +6,7 @@ function isMobile(obj = {}) {
 }
 
 export default function VideoThumbnailImage(props = {}) {
-    const { isFeature, video, windowWidth } = props
+    const { isFeature, onLoad, video, windowWidth } = props
     const resourceKey = isFeature ? 'feature' : 'cover'
 
     let imgSrc
@@ -16,5 +16,5 @@ export default function VideoThumbnailImage(props = {}) {
         imgSrc = video.resources[resourceKey]
     }
 
-    return <img src={imgSrc} alt={video.title} />
+    return <img onLoad={onLoad} src={imgSrc} alt={video.title} />
 }
