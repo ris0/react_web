@@ -1,13 +1,17 @@
 import React from 'react';
 
 function SocialButtons(props) {
-    const { icons, className } = props;
+    const { icons, className, shareable } = props;
     return (
         <div className={`social-buttons ${className}`}>
             {
                 icons.map((icon) => {
                     return (
-                        <a href="#" className={icon.name} key={icon.name}>
+                        <a
+                            href={shareable ? null : 'http://instagram.com'}
+                            className={icon.name}
+                            onClick={shareable ? window.alert.bind(window, 'SHARE') : null}
+                            key={icon.name}>
                             <span className={`icon icon-${icon.iconName || icon.name}`}/>
                         </a>
                     )
@@ -19,12 +23,14 @@ function SocialButtons(props) {
 
 SocialButtons.propTypes = {
     className: React.PropTypes.string,
-    icons: React.PropTypes.array
+    icons: React.PropTypes.array,
+    shareable: React.PropTypes.bool
 }
 
 SocialButtons.defaultProps = {
     className: '',
-    icons: []
+    icons: [],
+    shareable: false
 }
 
 export default SocialButtons
