@@ -21,6 +21,11 @@ class VideoThumbnail extends React.Component {
 
     render() {
         const { className, isFeature, video, showTitle, showCaption, showOverlay } = this.props
+
+        if (!video) {
+            return null
+        }
+
         const imgSrc = isFeature ? video.resources.feature : video.resources.cover
 
         return (
@@ -42,19 +47,20 @@ class VideoThumbnail extends React.Component {
 }
 
 VideoThumbnail.propTypes = {
+    className: React.PropTypes.string,
     isFeature: React.PropTypes.bool,
-    showTitle: React.PropTypes.bool,
     showCaption: React.PropTypes.bool,
     showOverlay: React.PropTypes.bool,
-    className: React.PropTypes.string
+    showTitle: React.PropTypes.bool,
+    video: React.PropTypes.object
 }
 
 VideoThumbnail.defaultProps = {
+    className: 'video-list-item',
     isFeature: false,
-    showTitle: true,
     showCaption: false,
     showOverlay: false,
-    className: 'video-list-item'
+    showTitle: true
 }
 
 export default VideoThumbnail
