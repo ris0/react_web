@@ -1,5 +1,5 @@
 import React from 'react'
-import FlowPlayer from './FlowPlayer'
+import VideoPlayer from './FlowPlayer'
 
 class VideoHeader extends React.Component {
     constructor() {
@@ -26,7 +26,7 @@ class VideoHeader extends React.Component {
             <div className={`video-header ${className}`}>
                 { title ? <h1>{title}</h1> : null }
                 <div className="video-main">
-                    { isLoaded && video ? <FlowPlayer video={video} /> : null }
+                    { isLoaded && video ? <VideoPlayer video={video} /> : null }
                     { children }
                 </div>
             </div>

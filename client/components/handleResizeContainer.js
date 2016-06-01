@@ -6,6 +6,7 @@ export default function handleResizeContainer(Component) {
             super()
             this.state = {
                 windowWidth: window.innerWidth
+                // isMobile: false ???
             }
             this.handleResize = this.handleResize.bind(this)
         }
