@@ -24,14 +24,16 @@ class MainNavigation extends React.Component {
     }
 
     render() {
-        const { navLinks, socialIcons } = this.props
+        const { navLinks, onClick, socialIcons } = this.props
         return (
             <div className="main-nav" ref="containerElement">
                 {
                     navLinks.map((link) =>
-                        <div className="link" key={link}>
-                            <Link to={`/${link}`}>{link}</Link>
-                        </div>)
+                                 <Link
+                                    className="link"
+                                    onClick={onClick}
+                                    to={`/${link}`}
+                                    key={link}>{link}</Link>)
                 }
                 <SocialButtons icons={socialIcons} />
             </div>
