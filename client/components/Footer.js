@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router'
+import NewsletterSignup from './NewsletterSignup'
 
 class Footer extends React.Component {
     constructor() {
@@ -20,10 +21,7 @@ class Footer extends React.Component {
                         <p>All Rights Reserved</p>
 
                     </div>
-                    <div className="newsletter">
-                        <input type="email" placeholder="SIGN UP FOR OUR NEWSLETTER" ref="email"/>
-                        <button onClick={() => onClickSubscribe(this.refs.email.value)}>Subscribe</button>
-                    </div>
+                    <NewsletterSignup onSubscribe={onClickSubscribe} />
                     <div className="footer-nav">
                         <div className="nav-links">
                             {navLinks.map((link) => <div key={link}><Link to={link}>{link}</Link></div>)}
