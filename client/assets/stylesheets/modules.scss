@@ -564,20 +564,7 @@
     }
 }
 
-@media(max-width: 900px) {
-    .footer-main {
-        .footer-nav .nav-links {
-            @include flex-direction(column);
-            @include flex-basis(0%);
-
-            &>div {
-                margin: 10px 0;
-            }
-        }
-    }
-}
-
-@media(max-width: 600px) {
+@media(max-width: 800px) {
     .footer-main {
         @include flex-direction(column);
         .newsletter {
