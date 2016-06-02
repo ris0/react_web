@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 function SocialSidebar(props) {
     return (
         <div className="social-sidebar">
-            <SocialButtons icons={props.icons} />
+            <SocialButtons shareable={true} icons={props.icons} />
         </div>
     )
 }

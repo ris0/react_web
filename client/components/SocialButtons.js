@@ -8,7 +8,7 @@ function SocialButtons(props) {
                 icons.map((icon) => {
                     return (
                         <a
-                            href={shareable ? null : 'http://instagram.com'}
+                            href={shareable ? null : icon.link}
                             className={icon.name}
                             onClick={shareable ? window.alert.bind(window, 'SHARE') : null}
                             key={icon.name}>

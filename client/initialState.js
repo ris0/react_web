@@ -1,7 +1,16 @@
 const baseSocialIcons = [
-    { name: 'facebook' },
-    { name: 'twitter' },
-    { name: 'pinterest' }
+    {
+        name: 'facebook',
+        link: 'https://www.facebook.com/knowsyco'
+    },
+    {
+        name: 'twitter',
+        link: 'https://twitter.com/knowsyco'
+    },
+    {
+        name: 'pinterest',
+        link: 'https://www.pinterest.com/knowsyco'
+    }
 ]
 
 export default {
@@ -15,8 +24,15 @@ export default {
             'contact'
         ],
         socialIcons: baseSocialIcons.concat([
-            { name: 'youtube' },
-            { name: 'instagram', iconName: 'instagram_round' }
+            {
+                name: 'youtube',
+                link: null
+            },
+            {
+                name: 'instagram',
+                link: 'https://www.instagram.com/knowsyco',
+                iconName: 'instagram_round'
+            }
         ]),
         socialShareIcons: baseSocialIcons,
         showMainNav: false,
