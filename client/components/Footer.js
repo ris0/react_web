@@ -24,7 +24,7 @@ class Footer extends React.Component {
                     <NewsletterSignup onSubscribe={onClickSubscribe} />
                     <div className="footer-nav">
                         <div className="nav-links">
-                            {navLinks.map((link) => <div key={link}><Link to={link}>{link}</Link></div>)}
+                            {navLinks.map((link) => <div key={link}><Link to={'/about' /* for now... */}>{link}</Link></div>)}
                         </div>
                     </div>
                 </div>
