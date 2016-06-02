@@ -49,26 +49,28 @@
 
 @media (max-width: 900px) {
     .social-sidebar {
-        display: none !important; // for now...
-        position: inherit;
-        transform: none;
-        width: 50%;
-        margin: 0 auto;
-
-        .social-buttons {
-            @include flex-direction(row);
-
-            a {
-                padding: 10px 0 10px 0;
-                border: none;
-            }
-        }
+        display: none; // for now
     }
 }
 
 @media (max-width: 500px) {
     .social-sidebar {
         width: 100%;
-        margin: inherit;
+        margin: 0 auto;
+        padding: 6px 0;
+        left: initial;
+        top: inherit;
+        bottom: 0;
+        background: white;
+        position: fixed;
+        transform: none;
+
+        .social-buttons {
+            @include flex-direction(row);
+        }
+
+        a {
+            margin: 0;
+        }
     }
 }

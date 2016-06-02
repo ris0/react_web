@@ -1,15 +1,7 @@
 import React from 'react'
 import VideoHeader from '../../../components/VideoHeader'
-import SocialButtons from '../../../components/SocialButtons'
+import SocialSidebar from '../components/SocialSidebar'
 import { connect } from 'react-redux'
-
-function SocialSidebar(props) {
-    return (
-        <div className="social-sidebar">
-            <SocialButtons shareable={true} icons={props.icons} />
-        </div>
-    )
-}
 
 export class VideosHeader extends React.Component {
     constructor() {
