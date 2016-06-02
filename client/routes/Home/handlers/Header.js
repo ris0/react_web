@@ -33,7 +33,7 @@ export class HomeHeader extends React.Component {
             <div className="page-header home-page home-page-main">
                 {
                     videos && videos.length ?
-                        <Carousel showArrows={false} isLoaded={this.state.isLoaded}>
+                        <Carousel autoPlay={true} showArrows={false} isLoaded={this.state.isLoaded}>
                         {
                             videos.map((video, i) =>
                                 <VideoThumbnail

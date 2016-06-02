@@ -1,5 +1,9 @@
 import React from 'react';
 
+function share() {
+    window.alert('SHARE')
+}
+
 function SocialButtons(props) {
     const { icons, className, shareable } = props;
     return (
@@ -10,7 +14,7 @@ function SocialButtons(props) {
                         <a
                             href={shareable ? null : icon.link}
                             className={icon.name}
-                            onClick={shareable ? window.alert.bind(window, 'SHARE') : null}
+                            onClick={shareable ? share : null}
                             key={icon.name}>
                             <span className={`icon icon-${icon.iconName || icon.name}`}/>
                         </a>

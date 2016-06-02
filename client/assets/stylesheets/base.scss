@@ -99,11 +99,16 @@ header, footer {
 
 @mixin nav-link {
     @include hover-bold;
+    @include display(flex);
+    @include flex-direction(column);
+    @include justify-content(center);
     letter-spacing: 2px;
     font-family: $font-title;
     text-transform: uppercase;
     box-sizing: border-box;
-    padding: 16px 20px 16px 20px;
+    height: 45px;
+    padding-left: 20px;
+    padding-right: 20px;
     font-size: 12px;
     cursor: pointer;
 

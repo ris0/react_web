@@ -111,7 +111,6 @@
 .video-list {
     @include display(flex);
     @include flex-direction(column);
-    padding-bottom: 20px;
     background: white;
     max-width: 95%;
     margin: 0 auto;
@@ -142,9 +141,10 @@
 // HOME PAGE
 ///////////////
 .home-page {
-    margin-top: 40px;
+    margin-top: 30px;
 
     .video-list {
+
         .video-list-items {
             max-width: 100%;
             @include video-list-item;
@@ -177,11 +177,11 @@
             }
 
             .video-list-item-primary.alternate {
-                @include flex-basis(54%);
+                @include flex-basis(50%);
             }
 
             .video-list-item-secondary.alternate {
-                @include flex-basis(23%);
+                @include flex-basis(25%);
 
                 .video-list-item {
                     @include flex-basis(100%);
@@ -192,7 +192,7 @@
 }
 
 @media(max-width: 1000px) {
-    .home-page {
+    .home-page, .category-page {
         .overlay h1 {
             font-size: 42px !important;
             line-height: initial !important;
@@ -224,6 +224,10 @@
             }
         }
 
+    }
+
+    .home-page, .category-page {
+
         .overlay {
             transform: translateY(-30%) !important;
 
@@ -245,8 +249,7 @@
 }
 
 @media(max-width: 600px) {
-    .home-page {
-
+    .home-page, .category-page {
         .overlay {
             width: 100% !important;
             left: 0 !important;

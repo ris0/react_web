@@ -7,8 +7,9 @@ class Carousel extends React.Component {
 
     componentDidMount() {
         const { carousel } = this.refs
-        const { children: carouselItems, showArrows, showDots } = this.props
+        const { autoPlay, children: carouselItems, showArrows, showDots } = this.props
         this.flickity = new Flickity(carousel, {
+            autoPlay,
             pageDots: showDots,
             prevNextButtons: showArrows,
             cellAlign: 'left', // TODO REMOVE/toggle via prop?
@@ -57,12 +58,14 @@ class Carousel extends React.Component {
 }
 
 Carousel.propTypes = {
+    autoPlay: React.PropTypes.bool,
     videos: React.PropTypes.array,
     showDots: React.PropTypes.bool,
     showArrows: React.PropTypes.bool
 }
 
 Carousel.defaultProps = {
+    autoPlay: false,
     videos: [],
     showDots: true,
     showArrows: true

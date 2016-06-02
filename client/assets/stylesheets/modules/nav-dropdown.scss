@@ -45,8 +45,8 @@
             max-width: 75%;
 
             a {
-                padding-top: 30px;
-                padding-bottom: 30px;
+                @include flex-basis(initial);
+                height: 70px;
             }
         }
     }
