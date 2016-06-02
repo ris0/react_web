@@ -39,7 +39,7 @@ class HomeMain extends React.Component {
         return (
             <section className="home-page">
                 <VideoSectionPrimary videos={videoSectionOne} />
-                <VideoSectionPrimary videos={videoSectionTwo} useAlternateLayout={windowWidth > 1200} />
+                <VideoSectionPrimary videos={videoSectionTwo} useAlternateLayout={windowWidth > 800} />
                 <VideoGrid videos={videoSectionThree} hasMore={false}/>
             </section>
         )
