@@ -539,11 +539,8 @@
                 outline: none;
             }
 
-            &:invalid {
-                box-shadow: 0 0 5px rgb(255, 60, 60);
-            }
 
-            &:valid {
+            .valid {
                 //box-shadow: 0 0 5px green;
             }
         }
@@ -560,6 +557,14 @@
             &:hover {
                 background: lightgray;
             }
+        }
+
+        .invalid {
+            box-shadow: 0 0 5px rgb(255, 60, 60);
+        }
+
+        .valid {
+            box-shadow: 0 0 5px rgb(0, 255, 0);
         }
     }
 }
