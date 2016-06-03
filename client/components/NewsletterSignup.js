@@ -1,30 +1,49 @@
 import React from 'react';
+import {validateEmail} from '../utils/validator'
 
-export default class NewsletterSignup extends React.Component {
+class NewsletterSignup extends React.Component {
     constructor() {
         super()
-        this.onClickSubscribe = this.onClickSubscribe.bind(this)
+        this.onClickSubscribe = this.onClickSubscribe.bind(this);
         this.state = {
-            buttonText: 'Subscribe'
+            buttonText: 'Subscribe',
+            inputClassName: ''
         }
     }
 
     onClickSubscribe() {
-        const { onSubscribe } = this.props
+        const { onSubscribe } = this.props;
 
-        onSubscribe(this.refs.email.value)
-        this.setState({ buttonText: 'Thanks!' })
-        this.refs.email.value = ''
-        setTimeout(() => this.setState({ buttonText: 'Subscribe' }), 3000)
+        if (!validateEmail(this.refs.email.value)) {
+            this.setState({ inputClassName: 'Invalid', buttonText: 'Invalid E-mail' });
+            setTimeout(() => this.setState({ inputClassName: '', buttonText: 'Subscribe' }), 3000)
+        } else {
+            onSubscribe(this.refs.email.value);
+            this.refs.email.value = '';
+            this.setState({ inputClassName: 'Valid', buttonText: 'Thanks!' });
+            setTimeout(() => this.setState({ buttonText: 'Subscribe' }), 3000)
+        }
+
     }
 
     render() {
-        const { buttonText } = this.state
+        const { buttonText, inputClassName } = this.state;
         return (
             <div className="newsletter">
-                <input type="email" placeholder="SIGN UP FOR OUR NEWSLETTER" ref="email" />
+                <input type="email" placeholder="SIGN UP FOR OUR NEWSLETTER" ref="email" className={inputClassName} />
                 <button onClick={this.onClickSubscribe}>{buttonText}</button>
             </div>
         )
     }
 }
+
+NewsletterSignup.propTypes = {
+    onSubscribe: React.PropTypes.func
+};
+
+NewsletterSignup.defaultProps = {
+    onSubscribe: () => {  }
+};
+
+export default NewsletterSignup
+
