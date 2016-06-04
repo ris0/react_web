@@ -17,12 +17,12 @@ function buildUrl(url, params) {
     return requestUrl
 }
 
-const HOMEPAGE = '/web/homepage'
+const HOMEPAGE = '/web/home'
 const EXPLORE = '/explore'
 const VIDEO = '/content'
 const FEED = '/feed' // + /[account_name]
 const CONFIG = '/config'
-const CATEGORY_FEED = '/content/sample'
+const CATEGORY_FEED = '/web/category'
 
 function request(url, body) {
     return fetch(url, {
@@ -48,7 +48,7 @@ export function getHomepageFeed() {
 }
 
 export function getCategoriesFeed(categoryId) {
-    return request(buildUrl(CATEGORY_FEED, { category_ids: categoryId }))
+    return request(buildUrl(CATEGORY_FEED, { category_id: categoryId }))
 }
 
 export function getVideo(id) {
