@@ -39,9 +39,15 @@ function Recipe(props) {
             </section>
             <section className="instructions">
                 <h1>Instructions</h1>
-                <ol>
-                    { instructions.map((step, idx) => <li key={idx}>{step}</li>) }
-                </ol>
+                {
+                    instructions.map((instruction, instructionId) =>
+                        <div className="instruction" key={instructionId}>
+                            <h2>{instruction.description}</h2>
+                            <ol>
+                            { instruction.steps.map((step, stepId) => <li key={stepId}>{step}</li>) }
+                            </ol>
+                        </div>)
+                }
             </section>
         </section>
     )
