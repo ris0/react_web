@@ -31,10 +31,8 @@ function categories(state = {}, action) {
                 }), state)
 
         case RECEIVE_VIDEOS_FOR_CATEGORY:
-            const { categoryId, videoIds } = action.data
-            const updatedCategory = Object.assign({}, state[categoryId], {
-                videos: videoIds
-            })
+            const { categoryId, recentIds, featuredIds } = action.data
+            const updatedCategory = Object.assign({}, state[categoryId], { recentIds, featuredIds })
             return Object.assign({}, state, {
                 [categoryId]: updatedCategory
             })

@@ -40,7 +40,7 @@ export const RECEIVE_VIDEOS_FOR_CATEGORY = 'RECEIVE_VIDEOS_FOR_CATEGORY'
 export function receiveVideosForCategory(categoryId, videoIds) {
     return {
         type: RECEIVE_VIDEOS_FOR_CATEGORY,
-        data: { categoryId, videoIds }
+        data: Object.assign({ categoryId }, videoIds )
     }
 }
 
@@ -136,12 +136,15 @@ function fetchCategoryContent(dispatch, categoryId) {
             dispatch(setLoading(false))
             return handleResponse(response)
         })
-        .then((result) => {
+        .then(({ recent, featured }) => {
             // Note: this sucks, but this needs to happen in this order or else mapping fns may
             // look for a video (from a category) that isn't in the videos hash
             // TODO investigate https://github.com/acdlite/redux-batched-updates
-            dispatch(receiveVideoData(result))
-            dispatch(receiveVideosForCategory(categoryId, result.map((video) => video.unique_key)))
+            dispatch(receiveVideoData([...recent, ...featured]))
+            dispatch(receiveVideosForCategory(categoryId, {
+                recentIds: recent.map((video) => video.unique_key),
+                featuredIds: featured.map((video) => video.unique_key)
+            }))
         })
 }
 

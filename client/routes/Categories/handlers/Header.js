@@ -14,10 +14,14 @@ export class CategoriesHeader extends React.Component {
     }
 
     render() {
-        const { category, video } = this.props
+        const { category, videos } = this.props
+
+        // FIXME FOR NOW
+        const [video] = videos
         if (!video) {
             return null
         }
+
 
         return (
             <div className="page-header category-page">
@@ -32,21 +36,21 @@ export class CategoriesHeader extends React.Component {
 
 CategoriesHeader.propTypes = {
     category: React.PropTypes.object,
-    video: React.PropTypes.object
+    videos: React.PropTypes.array
 }
 
 CategoriesHeader.defaultProps = {
-    category: {}
+    category: {},
+    videos: []
 }
 
 function mapStateToProps(state, ownProps) {
     const { categories, videos } = state
     const category = categories[ownProps.params.categoryId] || {}
-    const video = category.videos.map((videoId) => videos[videoId])
 
     return {
         category,
-        video: first(video)
+        videos: category.featuredIds ? category.featuredIds.map((videoId) => videos[videoId]) : []
     }
 }
 
