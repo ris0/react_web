@@ -53,11 +53,10 @@ export class CategoriesMain extends React.Component {
 function mapStateToProps(state, ownProps) {
     const { categories, videos } = state
     const category = categories[ownProps.params.categoryId] || {}
-    const [_, ...restOfVideos] = category.videos ? category.videos.map((videoId) => videos[videoId]) : []
 
     return {
         category,
-        videos: restOfVideos
+        videos: category.recentIds ? category.recentIds.map((videoId) => videos[videoId]) : []
     }
 }
 

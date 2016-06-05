@@ -191,35 +191,39 @@ describe('Reducer', function() {
                 const state = reducer(
                     {
                         categories: {
-                            1: { name: 'Bad Movies', id: 1, videos: [] },
-                            2: { name: 'Terrible Movies', id: 2, videos: [] }
+                            1: { name: 'Bad Movies', id: 1, recentIds: [], featuredIds: [] },
+                            2: { name: 'Terrible Movies', id: 2, recentIds: [], featuredIds: [] }
                         }
                     },
                     {
                         type: 'RECEIVE_VIDEOS_FOR_CATEGORY',
                         data: {
                             categoryId: 2,
-                            videoIds: [7,34,8]
+                            recentIds: [7,34,8],
+                            featuredIds: [1,3,4]
                         }
                     })
 
-                expect(state.categories[2].videos).to.eql([7,34,8])
-                expect(state.categories[1].videos).to.eql([])
+                expect(state.categories[2].recentIds).to.eql([7,34,8])
+                expect(state.categories[2].featuredIds).to.eql([1,3,4])
+                expect(state.categories[1].recentIds).to.eql([])
+                expect(state.categories[1].featuredIds).to.eql([])
             });
 
             it('should NOT update other properties', function() {
                 const state = reducer(
                     {
                         categories: {
-                            1: { name: 'Bad Movies', id: 1, videos: [] },
-                            2: { name: 'Terrible Movies', id: 2, videos: [] }
+                            1: { name: 'Bad Movies', id: 1, recentIds: [], featuredIds: [] },
+                            2: { name: 'Terrible Movies', id: 2, recentIds: [], featuredIds: [] }
                         }
                     },
                     {
                         type: 'RECEIVE_VIDEOS_FOR_CATEGORY',
                         data: {
                             categoryId: 2,
-                            videoIds: [7,34,8]
+                            recentIds: [7,34,8],
+                            featuredIds: [],
                         }
                     })
 
@@ -236,11 +240,12 @@ describe('Reducer', function() {
                         type: 'RECEIVE_VIDEOS_FOR_CATEGORY',
                         data: {
                             categoryId: 2,
-                            videoIds: [7,34,8]
+                            featuredIds: [7,34,8],
+                            recentIds: []
                         }
                     })
 
-                expect(state.categories[2].videos).to.eql([7,34,8])
+                expect(state.categories[2].featuredIds).to.eql([7,34,8])
             });
         });
     });
