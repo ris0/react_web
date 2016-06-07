@@ -34,7 +34,14 @@ export default {
                 iconName: 'instagram_round'
             }
         ]),
-        socialShareIcons: baseSocialIcons,
+        socialShareIcons: baseSocialIcons.concat([
+            {
+                name: 'email',
+                link: null,
+                iconName: 'mail'
+            }
+
+        ]),
         showMainNav: false,
         categories: {},
         currentVideoStatus: null,
