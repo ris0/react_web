@@ -262,6 +262,7 @@
     .home-page {
         .video-list {
             .video-list-items {
+                max-width: 100%;
                 .video-list-item-secondary {
                     @include video-list-item(100%);
                 }
