@@ -32,7 +32,7 @@ class MainNavigation extends React.Component {
                                  <Link
                                     className="link"
                                     onClick={onClick}
-                                    to={`/about` /* for now... */}
+                                    to={`/${link}`}
                                     key={link}>{link}</Link>)
                 }
                 <SocialButtons icons={socialIcons} />
