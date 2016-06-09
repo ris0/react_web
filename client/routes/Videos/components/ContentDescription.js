@@ -6,7 +6,8 @@ import Recipe from './Recipe'
 function ContentActions(props) {
     const { onClickPrint, video } = props
     const paragraphBreak = '%0D%0A%0D%0A'
-    const emailBody = `${video.title}${paragraphBreak}${video.caption}${paragraphBreak}${window.location.href}`
+    const link = window.location && window.location.href
+    const emailBody = `${video.title}${paragraphBreak}${video.caption}${paragraphBreak}${link}`
 
     return (
         <div className="content-actions">
