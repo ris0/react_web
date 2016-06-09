@@ -13,8 +13,7 @@ class Carousel extends React.Component {
             pageDots: showDots,
             prevNextButtons: showArrows,
             cellAlign: 'left', // TODO REMOVE/toggle via prop?
-            wrapAround: true,
-            touchVerticalScroll: false
+            wrapAround: true
         })
     }
 
