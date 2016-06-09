@@ -82,8 +82,8 @@
 
 
 .video-list-title {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 35px;
+    margin-bottom: 35px;
     text-align: center;
 
     h1 {
@@ -262,6 +262,7 @@
     .home-page {
         .video-list {
             .video-list-items {
+                max-width: 100%;
                 .video-list-item-secondary {
                     @include video-list-item(100%);
                 }
@@ -438,7 +439,7 @@
     }
 
     .icon.icon-hamburger {
-        color: black;
+        color: $knowsy-dark;
         font-size: 23px;
     }
 
@@ -494,7 +495,7 @@
     a {
         font-size: 12px;
         font-family: $font-title;
-        color: black;
+        color: $knowsy-dark;
     }
 
     &>div {
@@ -534,14 +535,11 @@
             border-right: none;
             font-size: 12px;
             width: 60%;
+            border-radius: 0;
+            -webkit-appearance: none;
 
             &:focus {
                 outline: none;
-            }
-
-
-            .valid {
-                //box-shadow: 0 0 5px green;
             }
         }
 
@@ -549,6 +547,7 @@
             cursor: pointer;
             background: #E1E1E1;
             padding: 15px 25px;
+            margin: 0;
             border: 1px solid $border-color;
             outline: none;
             font-size: 12px;
@@ -598,6 +597,12 @@
                 margin: 15px 0;
             }
         }
+    }
+}
+
+@media(max-width: 500px) {
+    .footer-main .newsletter input {
+        font-size: 10px;
     }
 }
 

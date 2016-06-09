@@ -1,7 +1,7 @@
 .carousel {
     @mixin carousel-button {
         font-family: $font-title-light;
-        color: black;
+        color: $knowsy-dark;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);

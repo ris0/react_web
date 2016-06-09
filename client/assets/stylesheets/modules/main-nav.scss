@@ -13,7 +13,7 @@
         @include nav-link;
         border-bottom: 1px solid $border-color;
         padding: 20px 65px 20px 65px;
-        color: black;
+        color: $knowsy-dark;
     }
 
     .icon-cross {
@@ -23,7 +23,7 @@
     .social-buttons  {
         margin: 20px 10px 20px 10px;
         a {
-            color: black;
+            color: $knowsy-dark;
             @include flex-basis(33.333%);
         }
 
