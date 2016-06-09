@@ -82,8 +82,8 @@
 
 
 .video-list-title {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 35px;
+    margin-bottom: 35px;
     text-align: center;
 
     h1 {
@@ -438,7 +438,7 @@
     }
 
     .icon.icon-hamburger {
-        color: black;
+        color: $knowsy-dark;
         font-size: 23px;
     }
 
@@ -494,7 +494,7 @@
     a {
         font-size: 12px;
         font-family: $font-title;
-        color: black;
+        color: $knowsy-dark;
     }
 
     &>div {
@@ -598,6 +598,12 @@
                 margin: 15px 0;
             }
         }
+    }
+}
+
+@media(max-width: 500px) {
+    .footer-main .newsletter input {
+        font-size: 10px;
     }
 }
 

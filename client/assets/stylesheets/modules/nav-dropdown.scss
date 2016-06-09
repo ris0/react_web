@@ -1,7 +1,7 @@
 .nav-dropdown {
     h2 {
         @include hover-bold;
-        color: black;
+        color: $knowsy-dark;
         font-size: 0.75em;
         letter-spacing: 1;
         &:hover {

@@ -67,10 +67,8 @@
         background: white;
         position: fixed;
         transform: none;
-
         box-shadow: inset 0px 8px 15px -13px rgba(black,0.8);
-        
-        
+
         .social-buttons {
             @include flex-direction(row);
         }
