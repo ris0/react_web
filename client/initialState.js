@@ -26,7 +26,7 @@ export default {
         socialIcons: baseSocialIcons.concat([
             {
                 name: 'youtube',
-                link: null
+                link: 'https://www.youtube.com/user/knowsy'
             },
             {
                 name: 'instagram',
