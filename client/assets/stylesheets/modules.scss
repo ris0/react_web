@@ -529,7 +529,8 @@
 
         input {
             box-sizing: border-box;
-            padding: 15px;
+            padding: 0 15px;
+            height: 48px;
             display: inline-block;
             border: 1px solid $border-color;
             border-right: none;
@@ -546,8 +547,9 @@
         button {
             cursor: pointer;
             background: #E1E1E1;
-            padding: 15px 25px;
+            padding: 0 25px;
             margin: 0;
+            height: 48px;
             border: 1px solid $border-color;
             outline: none;
             font-size: 12px;
