@@ -5,6 +5,8 @@ import Recipe from './Recipe'
 
 function ContentActions(props) {
     const { onClickPrint, video } = props
+    const paragraphBreak = '%0D%0A%0D%0A'
+    const emailBody = `${video.title}${paragraphBreak}${video.caption}${paragraphBreak}${window.location.href}`
 
     return (
         <div className="content-actions">
@@ -12,7 +14,7 @@ function ContentActions(props) {
                 <img className="icon icon-print" src="/printer_icon.png" alt="print" />
                 <span><h2>print</h2></span>
             </a>
-            <a className="icon-wrapper" href={`mailto:?subject=Knowsy: ${video.title}&body=${video.caption}`}>
+            <a className="icon-wrapper" href={`mailto:?subject=Knowsy: ${video.title}&body=${emailBody}`}>
                 <img className="icon" src="/share_icon.png" alt="share" />
                 <span><h2>share</h2></span>
             </a>
