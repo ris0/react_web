@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { findDOMNode } from 'react-dom'
 import SocialButtons from './SocialButtons'
 
 class MainNavigation extends React.Component {
@@ -12,7 +11,7 @@ class MainNavigation extends React.Component {
     // level component, same in components/NavDropdown.js
     componentDidMount() {
         this.clickListener = document.addEventListener('click', (e) => { 
-            const node = findDOMNode(this.refs.containerElement)
+            const node = this.refs.containerElement
             if (node && !node.contains(e.target)) {
                 this.props.onClick()
             }

@@ -1,5 +1,4 @@
 import React from 'react'
-import { findDOMNode } from 'react-dom'
 import { Link } from 'react-router'
 
 class NavDropdown extends React.Component {
@@ -11,15 +10,18 @@ class NavDropdown extends React.Component {
     // level component, same in components/MainNavigation.js
     componentDidMount() {
         this.clickListener = document.addEventListener('click', (e) => { 
-            const node = findDOMNode(this.refs.containerElement)
+            const node = this.refs.containerElement
             if (this.props.showDropdown && node && !node.contains(e.target)) {
                 this.props.onToggle()
             }
         })
+
+        this.touchmoveListener = this.refs.containerElement.addEventListener('touchmove', (e) => e.preventDefault())
     }
 
     componentWillUnmount() {
         document.removeEventListener('click', this.clickListener)
+        this.refs.containerElement.removeEventListener('touchmove', this.touchmoveListener)
     }
 
     render() {
