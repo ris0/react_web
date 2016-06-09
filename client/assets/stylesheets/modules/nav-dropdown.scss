@@ -46,7 +46,11 @@
 
             a {
                 @include flex-basis(initial);
-                height: 70px;
+                height: 60px;
+                &:hover {
+                    background: initial;
+                    font-family: $font-title;
+                }
             }
         }
     }
