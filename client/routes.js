@@ -24,7 +24,7 @@ const routes = (
     <Route path="/" component={Root}>
         <IndexRoute components={HomeRoutes} />
         <Route path="home" components={HomeRoutes} />
-        <Route path="categories/:categoryName/:categoryId" getComponents={getCategories} />
+        <Route path="categories/:categoryName/:categoryId" getComponents={getCategories} onEnter={() => window.scrollTo && window.scrollTo(0, 0)}/>
         <Route path="videos/:videoId" getComponent={getVideos} onEnter={() => window.scrollTo && window.scrollTo(0, 0)}/>
         <Route path="about" getComponents={getAbout} />
     </Route>
