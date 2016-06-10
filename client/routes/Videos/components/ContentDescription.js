@@ -15,7 +15,7 @@ function ContentActions(props) {
                 <img className="icon icon-print" src="/printer_icon.png" alt="print" />
                 <span><h2>print</h2></span>
             </a>
-            <a className="icon-wrapper" href={`mailto:?subject=Knowsy: ${video.title}&body=${emailBody}`}>
+            <a className="icon-wrapper" href={`mailto:?subject=KNOWSY: ${video.title}&body=${emailBody}`}>
                 <img className="icon" src="/share_icon.png" alt="share" />
                 <span><h2>share</h2></span>
             </a>

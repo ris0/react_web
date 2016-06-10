@@ -112,7 +112,7 @@
     @include display(flex);
     @include flex-direction(column);
     background: white;
-    max-width: 95%;
+    max-width: 100%;
     margin: 0 auto;
 
     .video-list-items {
@@ -134,6 +134,12 @@
         display: flex;
         justify-content: center;
         padding-top: 30px;
+    }
+}
+
+@media(max-width: 1400px) {
+    .video-list {
+        max-width: 95%;
     }
 }
 
@@ -358,7 +364,9 @@
 }
 
 .page-header {
-    margin-top: $header-height;
+    max-width: 1400px;
+    margin: $header-height auto;
+    width: 100%;
 }
 
 .page-header.home-page {
@@ -484,7 +492,7 @@
     @include flex-wrap(wrap);
     padding: 20px 0px 0 0px;
     color: $font-color-light;
-    max-width: 95%;
+    max-width: 1400px;
     margin: 0 auto;
 
     h1 {

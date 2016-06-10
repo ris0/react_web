@@ -28,30 +28,32 @@ class Header extends React.Component {
 
         return (
             <div className="l-header-container">
-                { 
-                    showMainNav ?
-                        <MainNavigation onClick={this.toggleMainNavigation} navLinks={navLinks} socialIcons={socialIcons} /> :
-                        null
-                }
                 <div className="l-header-main">
                     <header className="header-main">
-                        <h1>
-                            <a onClick={this.toggleMainNavigation}>
-                                <span className="icon icon-hamburger" />
-                            </a>
-                        </h1>
-                        <h1>
-                            <Link to="/"><img src="/logo.png" alt="Knowsy" /></Link>
-                        </h1>
-                        <NavDropdown
-                            className="header-link-right"
-                            items={categories}
-                            onToggle={this.toggleCategoryDropdown}
-                            showDropdown={showCategoryDropdown}>
-                            <h2>categories</h2>
-                        </NavDropdown>
-                        <div className="nav">
-                            <SocialButtons icons={socialIcons} />
+                        <div className="header-wrapper">
+                            {
+                            showMainNav ?
+                                <MainNavigation onClick={this.toggleMainNavigation} navLinks={navLinks} socialIcons={socialIcons} /> :
+                                null
+                            }
+                            <h1>
+                                <a onClick={this.toggleMainNavigation}>
+                                    <span className="icon icon-hamburger" />
+                                </a>
+                            </h1>
+                            <h1>
+                                <Link to="/"><img src="/logo.png" alt="Knowsy" /></Link>
+                            </h1>
+                            <NavDropdown
+                                className="header-link-right"
+                                items={categories}
+                                onToggle={this.toggleCategoryDropdown}
+                                showDropdown={showCategoryDropdown}>
+                                <h2>categories</h2>
+                            </NavDropdown>
+                            <div className="nav">
+                                <SocialButtons icons={socialIcons} />
+                            </div>
                         </div>
                     </header>
                     {children}
