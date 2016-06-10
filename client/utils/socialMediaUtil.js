@@ -23,8 +23,10 @@ export function pinterestShare(content) { // url, media
 }
 
 export function buildEmailLink(video = {}) {
-    const paragraphBreak = '%0D%0A%0D%0A'
-    const link = window.location && window.location.href
-    const emailBody = `${video.titles.main}${paragraphBreak}${video.caption}${paragraphBreak}${link}`
-    return `mailto:?subject=KNOWSY: ${video.titles.main}&body=${emailBody}`
+    if (video && video.titles) {
+        const paragraphBreak = '%0D%0A%0D%0A'
+        const link = window.location && window.location.href
+        const emailBody = `${video.titles.main}${paragraphBreak}${video.caption}${paragraphBreak}${link}`
+        return `mailto:?subject=KNOWSY: ${video.titles.main}&body=${emailBody}`
+    }
 }
