@@ -1,5 +1,6 @@
 import React from 'react';
 import Tags from '../../../components/Tags'
+import SocialSidebar from './SocialSidebar'
 import { clipText } from '../../../utils'
 import Recipe from './Recipe'
 import { buildEmailLink } from '../../../utils/socialMediaUtil'
@@ -51,13 +52,14 @@ export class ContentDescription extends React.Component {
     }
 
     render() {
-        const { video, onClickShowAll, showAllText } = this.props
+        const { video, onClickShowAll, socialShareIcons, showAllText } = this.props
         const bodyText = showAllText ? video.caption : clipText(video.caption, 250)
 
         return (
             <div className="content-description" ref="contentDescription">
                 <div className="content-title">
                     <h1>{video.title}</h1>
+                    <SocialSidebar content={video} icons={socialShareIcons} />
                     <ContentActions onClickPrint={this.onPrint} video={video} />
                 </div>
                 <div className="content-body">
@@ -73,12 +75,14 @@ export class ContentDescription extends React.Component {
 
 ContentDescription.propTypes = {
     video: React.PropTypes.object,
+    socialShareIcons: React.PropTypes.array,
     showAllText: React.PropTypes.bool,
     onClickShowAll: React.PropTypes.func
 }
 
 ContentDescription.defaultProps = {
     video: {},
+    socialShareIcons: [],
     showAllText: false,
     onClickShowAll: () => {}
 }
