@@ -1,7 +1,4 @@
 $font-color: $knowsy-dark;
-$font-color-light: #494949;
-$border-color: #ccc;
-$highlight-color: #f2f2f2;
 $header-height: 67px;
 $logo-height: 17px;
 $font-title: 'MarkRegular', 'Open Sans', Arial, sans-serif;
@@ -52,9 +49,15 @@ a {
     &:hover { }
 }
 
-header {
+.header-wrapper {
     @include display(flex);
     @include align-items(center);
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+header {
     position: fixed;
     z-index: 998;
     width: 100%;
