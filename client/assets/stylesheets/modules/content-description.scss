@@ -74,6 +74,28 @@
             line-height: 25px;
         }
     }
+
+    .social-sidebar {
+        position: initial;
+        margin-top: 40px;
+        display: none;
+
+        .social-buttons {
+            @include flex-direction(row);
+        }
+    }
+}
+
+@media(max-width: 900px) {
+    .content-description {
+        .content-actions {
+            display: none;
+        }
+
+        .social-sidebar {
+            display: block;
+        }
+    }
 }
 
 @media(max-width: 800px) {
@@ -114,9 +136,13 @@
             width: 100%;
         }
     }
+}
 
-    .content-actions {
-        display: none;
+@media(max-width: 500px) {
+    .content-description {
+        .social-sidebar {
+            display: none;
+        }
     }
 }
 
