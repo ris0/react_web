@@ -6,22 +6,29 @@
     .preload, .duration, .volume-range {
         background-color: rgb(194, 194, 194);
     }
-
-
 }
 
+// override default flowplayer styles
 .flowplayer {
     max-height: 620px;
-}
 
-//@media (max-width: 500px) {
-//    .video-player.flowplayer {
-//        //height: 100%;
-//    }
-//
-//    .flowplayer {
-//        background-size: auto 100% !important;
-//        width: 100%;
-//        height: 90%;
-//    }
-//}
+    .fp-progress {
+        background-color: rgb(255, 255, 255);
+    }
+
+    .fp-buffer {
+        background-color: rgb(194, 194, 194);
+    }
+
+    .fp-timeline {
+        background-color: rgb(149,149,149) !important;
+    }
+
+    .fp-volumelevel {
+        background-color: rgb(255,255,255);
+    }
+
+    .fp-volumeslider {
+        background-color: rgb(149,149,149);
+    }
+}
