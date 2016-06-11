@@ -4,7 +4,6 @@
 
     a {
         text-align: center;
-        width: 40px;
     }
 
     .icon {
@@ -42,6 +41,10 @@
             background: $knowsy-green;
         }
         // dots #43D6D9
+    }
+
+    .icon {
+        font-size: 30px;
     }
 
     .social-buttons {
