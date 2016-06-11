@@ -32,3 +32,8 @@
         background-color: rgb(149,149,149);
     }
 }
+
+.is-splash.flowplayer .fp-ui, .is-paused.flowplayer .fp-ui {
+    background: url('/play_icon.png') center no-repeat !important;
+    background-size: 11% !important;
+}
