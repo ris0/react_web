@@ -12,18 +12,17 @@ class NewsletterSignup extends React.Component {
     }
 
     onClickSubscribe() {
-        const { onSubscribe } = this.props;
-
+        const { onSubscribe} = this.props;
         if (!validateEmail(this.refs.email.value)) {
             this.setState({ inputClassName: 'Invalid', buttonText: 'Invalid E-mail' });
             setTimeout(() => this.setState({ inputClassName: '', buttonText: 'Subscribe' }), 3000)
+
         } else {
             onSubscribe(this.refs.email.value);
             this.refs.email.value = '';
             this.setState({ inputClassName: 'Valid', buttonText: 'Thanks!' });
-            setTimeout(() => this.setState({ buttonText: 'Subscribe' }), 3000)
+            setTimeout(() => this.setState({ inputClassName: '', buttonText: 'Subscribe' }), 3000)
         }
-
     }
 
     render() {
