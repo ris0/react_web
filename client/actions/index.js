@@ -4,7 +4,8 @@ import {
     getRandom,
     getCategoriesFeed,
     getVideo,
-    getHomepageFeed
+    getHomepageFeed,
+    addSubscriber
 } from '../utils'
 
 export const TOGGLE_MAIN_NAV = 'TOGGLE_MAIN_NAV'
@@ -68,14 +69,9 @@ export function setVideoPageProperties(id, properties) {
     }
 }
 
-export function subscribeToNewsletter(email) {
+export function subscribeToNewsletter(email_address) {
     return function(dispatch, getState) {
-        console.log('subscribing...', email)
-        // TODO notify user of subscription with popup, or
-        // error notification
-        return new Promise((resolve) => {
-            resolve(email)
-        })
+        return addSubscriber({ email_address })
     }
 }
 
