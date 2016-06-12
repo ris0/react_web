@@ -1,5 +1,5 @@
 import React from 'react'
-import {facebookShare, twitterShare, pinterestShare, emailShare} from '../utils/socialMedia'
+import {facebookShare, twitterShare, pinterestShare, emailShare} from '../utils/socialMediaUtil'
 
 function share(icon) {
     const service = icon.name
