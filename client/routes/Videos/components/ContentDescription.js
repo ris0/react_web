@@ -2,12 +2,10 @@ import React from 'react';
 import Tags from '../../../components/Tags'
 import { clipText } from '../../../utils'
 import Recipe from './Recipe'
+import { buildEmailLink } from '../../../utils/socialMediaUtil'
 
 function ContentActions(props) {
     const { onClickPrint, video } = props
-    const paragraphBreak = '%0D%0A%0D%0A'
-    const link = window.location && window.location.href
-    const emailBody = `${video.title}${paragraphBreak}${video.caption}${paragraphBreak}${link}`
 
     return (
         <div className="content-actions">
@@ -15,7 +13,7 @@ function ContentActions(props) {
                 <img className="icon icon-print" src="/printer_icon.png" alt="print" />
                 <span><h2>print</h2></span>
             </a>
-            <a className="icon-wrapper" href={`mailto:?subject=KNOWSY: ${video.title}&body=${emailBody}`}>
+            <a className="icon-wrapper" href={buildEmailLink(video)}>
                 <img className="icon" src="/share_icon.png" alt="share" />
                 <span><h2>share</h2></span>
             </a>

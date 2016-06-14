@@ -16,7 +16,7 @@ export class VideosHeader extends React.Component {
 
         return (
             <VideoHeader video={video} className="page-header video-page">
-                <SocialSidebar icons={socialShareIcons} />
+                <SocialSidebar content={video} icons={socialShareIcons} />
             </VideoHeader>
         )
     }

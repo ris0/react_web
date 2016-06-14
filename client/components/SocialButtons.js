@@ -1,9 +1,10 @@
 import React from 'react'
-import {facebookShare, twitterShare, pinterestShare, emailShare} from '../utils/socialMediaUtil'
+import { facebookShare, twitterShare, pinterestShare, buildEmailLink } from '../utils/socialMediaUtil'
 
 function share(icon) {
     const service = icon.name
 
+    // TODO update this message stuff
     const content = {
         name: service,
         appId: '',
@@ -16,13 +17,22 @@ function share(icon) {
         case 'facebook': return facebookShare(content)
         case 'twitter': return twitterShare(content)
         case 'pinterest': return pinterestShare(content)
-        case 'email': return emailShare(content)
         default: return
     }
 }
 
+function buildLink(icon, content) {
+    if (icon.name === 'email') {
+        return  buildEmailLink(content)
+    } else if (content) {
+        return null
+    } else {
+        return icon.link
+    }
+}
+
 function SocialButtons(props) {
-    const { icons, className, shareable} = props
+    const { content, icons, className } = props
 
     return (
         <div className={`social-buttons ${className}`}>
@@ -30,9 +40,9 @@ function SocialButtons(props) {
                 icons.map((icon) => {
                     return (
                         <a
-                            href={shareable ? null : icon.link}
+                            href={buildLink(icon, content)}
                             className={icon.name}
-                            onClick={shareable ? () => share(icon) : null}
+                            onClick={content ? () => share(icon) : null}
                             key={icon.name}>
                             <span className={`icon icon-${icon.iconName || icon.name}`}/>
                         </a>
@@ -44,14 +54,13 @@ function SocialButtons(props) {
 
 SocialButtons.propTypes = {
     className: React.PropTypes.string,
-    icons: React.PropTypes.array,
-    shareable: React.PropTypes.bool
+    content: React.PropTypes.object,
+    icons: React.PropTypes.array
 }
 
 SocialButtons.defaultProps = {
     className: '',
-    icons: [],
-    shareable: false
+    icons: []
 }
 
 export default SocialButtons

@@ -22,7 +22,9 @@ export function pinterestShare(content) { // url, media
     window.open(result)
 }
 
-export function emailShare(content) {
-    var result = "mailto:?subject=" + encodeURIComponent(content.message) + "&body=" + encodeURIComponent(content.url)
-    window.open(result)
+export function buildEmailLink(video = {}) {
+    const paragraphBreak = '%0D%0A%0D%0A'
+    const link = window.location && window.location.href
+    const emailBody = `${video.titles.main}${paragraphBreak}${video.caption}${paragraphBreak}${link}`
+    return `mailto:?subject=KNOWSY: ${video.titles.main}&body=${emailBody}`
 }
