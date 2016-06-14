@@ -40,7 +40,7 @@ export class VideosMain extends React.Component {
     }
 
     render() {
-        const { relatedContent, setVideoPageProperties, showFullContentDescription, video } = this.props
+        const { relatedContent, socialShareIcons, setVideoPageProperties, showFullContentDescription, video } = this.props
 
         if (!video) {
             return null
@@ -53,6 +53,7 @@ export class VideosMain extends React.Component {
                 <ContentDescription
                     video={video}
                     onClickShowAll={this.onClickShowAll}
+                    socialShareIcons={socialShareIcons}
                     showAllText={showFullContentDescription} />
                 {
                     video.similar && video.similar.length ?
@@ -73,6 +74,7 @@ function mapStateToProps(state, ownProps) {
     return {
         video: videos[videoId],
         relatedContent: [],
+        socialShareIcons: state.app.socialShareIcons,
         showFullContentDescription: Boolean(propertiesByUniqueId.showAllText)
     }
 }
