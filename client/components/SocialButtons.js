@@ -1,11 +1,29 @@
-import React from 'react';
+import React from 'react'
+import {facebookShare, twitterShare, pinterestShare, emailShare} from '../utils/socialMediaUtil'
 
-function share() {
-    window.alert('SHARE')
+function share(icon) {
+    const service = icon.name
+
+    const content = {
+        name: service,
+        appId: '',
+        message: 'Find more videos likes this on Knowsy.co!',
+        media: window.location.href,
+        url: window.location.href
+    }
+
+    switch (service) {
+        case 'facebook': return facebookShare(content)
+        case 'twitter': return twitterShare(content)
+        case 'pinterest': return pinterestShare(content)
+        case 'email': return emailShare(content)
+        default: return
+    }
 }
 
 function SocialButtons(props) {
-    const { icons, className, shareable } = props;
+    const { icons, className, shareable} = props
+
     return (
         <div className={`social-buttons ${className}`}>
             {
@@ -14,7 +32,7 @@ function SocialButtons(props) {
                         <a
                             href={shareable ? null : icon.link}
                             className={icon.name}
-                            onClick={shareable ? share : null}
+                            onClick={shareable ? () => share(icon) : null}
                             key={icon.name}>
                             <span className={`icon icon-${icon.iconName || icon.name}`}/>
                         </a>
@@ -22,8 +40,7 @@ function SocialButtons(props) {
                 })
             }
         </div>
-    )
-}
+    )}
 
 SocialButtons.propTypes = {
     className: React.PropTypes.string,
