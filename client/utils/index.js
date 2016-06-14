@@ -43,8 +43,9 @@ export const handleResponse = (response) => {
     return response.json()
 }
 
-export function addSubscriber(url, params) {
-    return buildUrl(url, params)
+export function addSubscriber(params) {
+    console.log('addSubscriber being called')
+    return request(buildUrl('/api/marketing/email_list', params))
 }
 
 export function getHomepageFeed() {

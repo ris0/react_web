@@ -1,5 +1,4 @@
 import React from 'react';
-import {addSubscriber} from '../utils/index.js'
 import {validateEmail} from '../utils/validator'
 
 class NewsletterSignup extends React.Component {
@@ -14,12 +13,14 @@ class NewsletterSignup extends React.Component {
 
     onClickSubscribe() {
 
+        const { onSubscribe} = this.props;
+
         if (!validateEmail(this.refs.email.value)) {
             this.setState({ inputClassName: 'Invalid', buttonText: 'Invalid E-mail' });
             setTimeout(() => this.setState({ inputClassName: '', buttonText: 'Subscribe' }), 3000)
 
         } else {
-            addSubscriber('/api/marketing/email_list', this.refs.email.value);
+            onSubscribe(this.refs.email.value);
             this.refs.email.value = '';
             this.setState({ inputClassName: 'Valid', buttonText: 'Thanks!' });
             setTimeout(() => this.setState({ inputClassName: '', buttonText: 'Subscribe' }), 3000)
@@ -30,10 +31,10 @@ class NewsletterSignup extends React.Component {
     render() {
         const { buttonText, inputClassName } = this.state;
         return (
-            <div className="newsletter">
+            <divj className="newsletter">
                 <input type="email" placeholder="SIGN UP FOR OUR NEWSLETTER" ref="email" className={inputClassName} />
                 <button onClick={this.onClickSubscribe}>{buttonText}</button>
-            </div>
+            </divj>
         )
     }
 }
