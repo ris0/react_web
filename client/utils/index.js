@@ -23,6 +23,7 @@ const VIDEO = '/content'
 const FEED = '/feed' // + /[account_name]
 const CONFIG = '/config'
 const CATEGORY_FEED = '/web/category'
+const NEWSLETTER = '/marketing/email_list'
 
 function request(url, body) {
     return fetch(url, {
@@ -41,6 +42,10 @@ export const handleResponse = (response) => {
     }
 
     return response.json()
+}
+
+export function addSubscriber(params) {
+    return request(buildUrl(NEWSLETTER, params))
 }
 
 export function getHomepageFeed() {
