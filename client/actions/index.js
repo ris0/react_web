@@ -71,7 +71,7 @@ export function setVideoPageProperties(id, properties) {
 
 export function subscribeToNewsletter(email_address) {
     return function(dispatch, getState) {
-        return addSubscriber({ email_address })
+        return addSubscriber(email_address)
     }
 }
 
