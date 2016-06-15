@@ -26,8 +26,5 @@ node_modules
 build
 .DS_Store
 
-*.mp4
-server/assets/flowplayer
-
 # Rich's weird system files
 .idea

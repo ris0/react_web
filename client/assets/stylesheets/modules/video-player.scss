@@ -31,6 +31,13 @@
     .fp-volumeslider {
         background-color: rgb(149,149,149);
     }
+
+
+}
+
+.flowplayer.is-mouseout .fp-timeline{
+    display: none;
+    margin: 0 !important
 }
 
 .is-splash.flowplayer .fp-ui, .is-paused.flowplayer .fp-ui {

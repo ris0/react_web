@@ -1,4 +1,6 @@
 import React from 'react'
+import config from 'config'
+const { FLOWPLAYER_KEY } = config
 
 class FlowPlayer extends React.Component {
     constructor() {
@@ -15,12 +17,14 @@ class FlowPlayer extends React.Component {
                 ]
             },
             autoplay: true,
-            poster: video.resources.feature
+            poster: video.resources.feature,
+            key: FLOWPLAYER_KEY
         })
+
     }
 
     render() {
-        return <div ref="player" className="functional video-player" />
+        return <div ref="player" className="functional video-player"/>
     }
 }
 
