@@ -31,11 +31,6 @@ class Header extends React.Component {
                 <div className="l-header-main">
                     <header className="header-main">
                         <div className="header-wrapper">
-                            {
-                            showMainNav ?
-                                <MainNavigation onClick={this.toggleMainNavigation} navLinks={navLinks} socialIcons={socialIcons} /> :
-                                null
-                            }
                             <h1>
                                 <a onClick={this.toggleMainNavigation}>
                                     <span className="icon icon-hamburger" />
@@ -54,6 +49,11 @@ class Header extends React.Component {
                             <div className="nav">
                                 <SocialButtons icons={socialIcons} />
                             </div>
+                            {
+                            showMainNav ?
+                                <MainNavigation onClick={this.toggleMainNavigation} navLinks={navLinks} socialIcons={socialIcons} /> :
+                                null
+                            }
                         </div>
                     </header>
                     {children}
