@@ -24,6 +24,10 @@ const FEED = '/feed' // + /[account_name]
 const CONFIG = '/config'
 const CATEGORY_FEED = '/web/category'
 const NEWSLETTER = '/marketing/email_list'
+const USAGE = {
+    CONTENT_VIEW: '/1/usage/content/view',
+    CONTENT_PLAY: '/1/usage/video/play'
+}
 
 let baseRequest = {
     headers: {
@@ -40,6 +44,37 @@ export const handleResponse = (response) => {
     }
 
     return response.json()
+}
+
+export function contentViewed(ids = []) {
+    // TODO
+    // why does this even need to be sent by the front-end? if we want to
+    // track which content is visible (for example, on the homepage), why
+    // not just log this sort of information on the back-end when homepage
+    // content is fetched? as of right now, we don't have real "account"
+    // models anyway, so this is just dumb data not tied to any particular
+    // user
+    //
+    // TODO likely need
+    //request.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+    return fetch(buildUrl(USAGE.CONTENT_VIEW), Object.assign({}, baseRequest, {
+        method: 'POST',
+        body: {
+            content_ids: ids
+        }
+    }))
+}
+
+export function contentPlayed(id, duration) {
+    // TODO likely need
+    //request.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+    return fetch(buildUrl(USAGE.CONTENT_PLAY), Object.assign({}, baseRequest, {
+        method: 'POST',
+        body: {
+            content_id: id,
+            secs_duration: duration
+        }
+    }))
 }
 
 export function addSubscriber(emailAddress) {
