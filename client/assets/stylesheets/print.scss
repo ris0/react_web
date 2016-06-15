@@ -3,7 +3,7 @@
         display: none !important;
     }
 
-    header {
+    .header-wrapper {
         position: initial;
 
         &>* {
@@ -13,6 +13,8 @@
         h1:nth-child(2) {
             display: block;
         }
+
+        @include justify-content(center);
     }
 
     .video-page {

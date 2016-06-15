@@ -23,13 +23,12 @@ const VIDEO = '/content'
 const FEED = '/feed' // + /[account_name]
 const CONFIG = '/config'
 const CATEGORY_FEED = '/web/category'
+const NEWSLETTER = '/marketing/email_list'
 
-function request(url, body) {
-    return fetch(url, {
-        headers: {
-            Authorization: `KnowsyAPI api_key="${API_KEY}"`
-        }
-    })
+let baseRequest = {
+    headers: {
+        Authorization: `KnowsyAPI api_key="${API_KEY}"`
+    }
 }
 
 export const handleResponse = (response) => {
@@ -43,24 +42,34 @@ export const handleResponse = (response) => {
     return response.json()
 }
 
+export function addSubscriber(emailAddress) {
+    const request = Object.assign({}, baseRequest, {
+        method: 'POST',
+        body: `email_address=${emailAddress}`
+    })
+    request.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+
+    return fetch(buildUrl(NEWSLETTER), request)
+}
+
 export function getHomepageFeed() {
-    return request(buildUrl(HOMEPAGE))
+    return fetch(buildUrl(HOMEPAGE), baseRequest)
 }
 
 export function getCategoriesFeed(categoryId) {
-    return request(buildUrl(CATEGORY_FEED, { category_id: categoryId }))
+    return fetch(buildUrl(CATEGORY_FEED, { category_id: categoryId }), baseRequest)
 }
 
 export function getVideo(id) {
-    return request(buildUrl(VIDEO, { unique_key: id }))
+    return fetch(buildUrl(VIDEO, { unique_key: id }), baseRequest)
 }
 
 export function getRandom() {
-    return request(buildUrl(EXPLORE))
+    return fetch(buildUrl(EXPLORE), baseRequest)
 }
 
 export function getConfigData() {
-    return request(buildUrl(CONFIG))
+    return fetch(buildUrl(CONFIG), baseRequest)
 }
 
 // TODO move to fn utils
