@@ -34,12 +34,17 @@
     }
 }
 
-@media(max-width: 1200px) { }
+@media(max-width: 1400px) {
+    .main-nav {
+        left: -15px;
+    }
+}
 
 @media(max-width: 800px) {
     .main-nav {
         position: fixed;
         top: $header-height;
+        left: 0;
         right: 0;
         width: 100%;
         height: initial;
