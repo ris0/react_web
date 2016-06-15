@@ -4,5 +4,6 @@ module.exports = {
     "API_KEY": "8I07oEYXnVhd9yX8RWZv9sYdVwCpc89c",
     "SERVER_PORT": 3000,
     "HOST": "localhost",
-    "NODE_ENV": "development"
+    "NODE_ENV": "development",
+    "FLOWPLAYER_KEY": '$836991715585956'
 }
