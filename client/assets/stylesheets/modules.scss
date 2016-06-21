@@ -8,6 +8,7 @@
 @import 'modules/carousel';
 @import 'modules/recipe';
 @import 'modules/video-player';
+@import 'modules/jobs';
 
 .nav {
     @include display(flex);
