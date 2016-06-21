@@ -5,6 +5,7 @@ import HomeRoutes from './routes/Home'
 import getCategories from './routes/Categories'
 import getVideos from './routes/Videos'
 import getAbout from './routes/About'
+import getJobs from './routes/Jobs'
 
 if (typeof(window) === 'undefined') {
     global.window = new Object()
@@ -27,6 +28,7 @@ const routes = (
         <Route path="categories/:categoryName/:categoryId" getComponents={getCategories} onEnter={() => window.scrollTo && window.scrollTo(0, 0)}/>
         <Route path="videos/:videoId" getComponent={getVideos} onEnter={() => window.scrollTo && window.scrollTo(0, 0)}/>
         <Route path="about" getComponents={getAbout} />
+        <Route path="jobs" getComponents={getJobs} />
     </Route>
 )
 
