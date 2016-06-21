@@ -6,9 +6,13 @@ import SocialButtons from '../../../client/components/SocialButtons'
 import SocialSidebar from '../../../client/routes/Videos/components/SocialSidebar.js'
 
 describe('SocialButtons', function() {
-
     beforeEach(function () {
-        this.icons = [{'facebook':'facebook'},{'twitter':'twitter'},{'pinterest':'pinterest'},{'email':'email'}]
+        this.icons = [
+            { name: 'facebook' },
+            { name: 'twitter' },
+            { name: 'pinterest' },
+            { name: 'email' }
+        ]
         this.share = td.function();
         this.socialButtons = shallow( <SocialButtons icons={this.icons} onClick={this.share()}/>)
         this.mountedButtons = mount(<SocialButtons icons={this.icons} onClick={this.share()}/>)
@@ -24,7 +28,7 @@ describe('SocialButtons', function() {
     });
 
     it('it should invoke share() when clicked', function() {
-        this.clickButtons.simulate('click');
+        this.clickButtons.first().simulate('click');
         td.verify(this.share());
     });
 });

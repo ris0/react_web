@@ -43,10 +43,10 @@ class VideoThumbnail extends React.Component {
                     <div className="video-list-item-thumb">
                         <VideoThumbnailImage isFeature={isFeature} onLoad={onLoad} windowWidth={windowWidth} video={video} />
                         { !showOverlay ? <img src="/play_icon_small.png" className="play-icon" /> : null }
-                        { showOverlay ? <TextOverlay title={video.title} description={video.shortCaption} /> : null }
+                        { showOverlay ? <TextOverlay title={video.titles.main} description={video.shortCaption} /> : null }
                     </div>
                     <div className="content-description">
-                        { showTitle ? <h1>{video.title}</h1> : null }
+                        { showTitle ? <h1>{video.titles.main}</h1> : null }
                         { showCaption ? <p>{clipText(video.caption)}</p> : null }
                     </div>
                 </Link>

@@ -36,6 +36,7 @@ class HomeMain extends React.Component {
 
         const videoSectionThree = flatten(rest)
 
+        // TODO need to re-use this layout on category page
         return (
             <section className="home-page">
                 <VideoSectionPrimary videos={videoSectionOne} />

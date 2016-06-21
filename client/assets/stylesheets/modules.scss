@@ -311,6 +311,8 @@
 ///////////////
 .video-page {
     .video-main {
+        @include display(flex);
+        @include justify-content(center);
         padding: 0 65px 0 65px;
     }
 

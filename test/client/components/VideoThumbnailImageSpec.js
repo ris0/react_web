@@ -4,7 +4,9 @@ import { shallow } from 'enzyme'
 import VideoThumbnailImage from '../../../client/components/VideoThumbnailImage'
 
 const video = {
-    title: 'Something about cats',
+    titles: {
+        main: 'Something about cats'
+    },
     resources: {
         mobile: {
             feature: 'a-mobile-feature-image'
@@ -15,6 +17,12 @@ const video = {
 }
 
 describe('VideoThumbnailImage', function() {
+    it('should render an img tab with the alt prop set to the video title', function() {
+        const videoThumbnailImage = shallow(<VideoThumbnailImage video={video} />)
+        const img = videoThumbnailImage.find('img')
+        expect(img.props().alt).to.eql('Something about cats')
+    });
+
     describe('large screens', function() {
         beforeEach(function() {
             this.windowWidth = 800
@@ -31,7 +39,6 @@ describe('VideoThumbnailImage', function() {
             const img = videoThumbnailImage.find('img')
             expect(img.props().src).to.eql('a-large-cover-image')
         })
-
     });
 
     describe('mobile', function() {
