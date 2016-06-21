@@ -1,11 +1,6 @@
 import React from 'react'
 import { jobsData }from '../test-data.js'
 
-function shortDesc(input) {
-    var test = input
-    return test.substring(0,250);
-}
-
 function Job({ data }) {
     return (
         <div className='job'>
